@@ -8,15 +8,13 @@ exports[`Overview page rendering should render normally 1`] = `
   <main
     class="euiPageBody euiPageBody--borderRadiusNone"
   >
-    <div
-      class="euiText euiText--small"
+    <h1
+      class="euiTitle euiTitle--large"
     >
-      <h1>
-        <span>
-          Overview
-        </span>
-      </h1>
-    </div>
+      <span>
+        Overview
+      </span>
+    </h1>
     <div
       class="euiSpacer euiSpacer--l"
     />

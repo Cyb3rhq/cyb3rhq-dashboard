@@ -46,6 +46,8 @@ import {
   EuiSwitchEvent,
 } from '@elastic/eui';
 
+import { format as formatUrl, parse as parseUrl } from 'url';
+
 import { FormattedMessage, I18nProvider } from '@osd/i18n/react';
 import { HttpStart } from 'opensearch-dashboards/public';
 import { i18n } from '@osd/i18n';
@@ -185,21 +187,30 @@ export class UrlPanelContent extends Component<Props, State> {
 
     const url = this.getSnapshotUrl();
 
-    const parsedUrl = new URL(url);
+    const parsedUrl = parseUrl(url);
     if (!parsedUrl || !parsedUrl.hash) {
       return;
     }
 
     // Get the application route, after the hash, and remove the #.
-    const parsedAppUrl = new URL(parsedUrl.hash.slice(1), window.location.origin);
-    const formattedAppUrl = new URL(parsedAppUrl.pathname, parsedAppUrl.origin);
-    const formattedUrl = new URL(parsedUrl.pathname, parsedUrl.origin);
-    formattedAppUrl.search = new URLSearchParams({
-      _g: parsedAppUrl.searchParams.get('_g') ?? '',
-    }).toString();
-    formattedUrl.hash = formattedAppUrl.toString().substring(formattedAppUrl.origin.length);
+    const parsedAppUrl = parseUrl(parsedUrl.hash.slice(1), true);
 
-    return this.updateUrlParams(formattedUrl.toString());
+    const formattedUrl = formatUrl({
+      protocol: parsedUrl.protocol,
+      auth: parsedUrl.auth,
+      host: parsedUrl.host,
+      pathname: parsedUrl.pathname,
+      hash: formatUrl({
+        pathname: parsedAppUrl.pathname,
+        query: {
+          // Add global state to the URL so that the iframe doesn't just show the time range
+          // default.
+          _g: parsedAppUrl.query._g,
+        },
+      }),
+    });
+
+    return this.updateUrlParams(formattedUrl);
   };
 
   private getSnapshotUrl = () => {

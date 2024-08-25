@@ -6,65 +6,45 @@ exports[`<HomeListCard /> should render static content normally 1`] = `
     <div
       class="euiPanel euiPanel--paddingSmall euiPanel--borderRadiusMedium euiPanel--plain euiPanel--noShadow euiPanel--noBorder"
     >
-      <div
-        class="euiFlexGroup euiFlexGroup--justifyContentSpaceBetween euiFlexGroup--directionColumn euiFlexGroup--responsive"
-        style="height: 100%;"
+      <h4
+        class="euiTitle euiTitle--medium"
       >
-        <div
-          class="euiFlexItem euiFlexItem--flexGrowZero"
+        What's New
+      </h4>
+      <div
+        class="euiSpacer euiSpacer--l"
+      />
+      <dl
+        class="euiDescriptionList euiDescriptionList--row"
+      >
+        <dt
+          class="euiDescriptionList__title"
         >
-          <h4
-            class="euiTitle euiTitle--medium"
+          <a
+            class="euiLink euiLink--primary"
+            href="https://opensearch.org/docs/latest/dashboards/quickstart/"
+            rel="noopener noreferrer"
+            target="_blank"
           >
-            What's New
-          </h4>
-        </div>
-        <div
-          class="euiSpacer euiSpacer--l"
-        />
-        <div
-          class="euiFlexItem"
-          style="overflow: auto;"
+            Quickstart guide
+            <span
+              aria-label="External link"
+              class="euiLink__externalIcon"
+              data-euiicon-type="popout"
+            />
+            <span
+              class="euiScreenReaderOnly"
+            >
+              (opens in a new tab or window)
+            </span>
+          </a>
+        </dt>
+        <dd
+          class="euiDescriptionList__description"
         >
-          <dl
-            class="euiDescriptionList euiDescriptionList--row"
-          >
-            <dt
-              class="euiDescriptionList__title"
-            >
-              <a
-                class="euiLink euiLink--primary"
-                href="https://opensearch.org/docs/latest/dashboards/quickstart/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Quickstart guide
-                <span
-                  aria-label="External link"
-                  class="euiLink__externalIcon"
-                  data-euiicon-type="popout"
-                />
-                <span
-                  class="euiScreenReaderOnly"
-                >
-                  (opens in a new tab or window)
-                </span>
-              </a>
-            </dt>
-            <dd
-              class="euiDescriptionList__description"
-            >
-              Get started in minutes with OpenSearch Dashboards
-            </dd>
-          </dl>
-        </div>
-        <div
-          class="euiSpacer euiSpacer--l"
-        />
-        <div
-          class="euiFlexItem euiFlexItem--flexGrowZero"
-        />
-      </div>
+          Get started in minutes with OpenSearch Dashboards
+        </dd>
+      </dl>
     </div>
   </div>
 </body>

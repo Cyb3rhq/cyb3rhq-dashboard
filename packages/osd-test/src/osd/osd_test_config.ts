@@ -28,6 +28,7 @@
  * under the License.
  */
 
+import url from 'url';
 import { opensearchDashboardsTestUser } from './users';
 
 interface UrlParts {
@@ -37,8 +38,6 @@ interface UrlParts {
   auth?: string;
   username?: string;
   password?: string;
-  fullURL: URL;
-  serverUrl: string;
 }
 
 export const osdTestConfig = new (class OsdTestConfig {
@@ -49,22 +48,16 @@ export const osdTestConfig = new (class OsdTestConfig {
   getUrlParts(): UrlParts {
     // allow setting one complete TEST_OPENSEARCH_DASHBOARDS_URL for opensearch like https://opensearch:changeme@example.com:9200
     if (process.env.TEST_OPENSEARCH_DASHBOARDS_URL) {
-      const testOpenSearchDashboardsUrl = new URL('', process.env.TEST_OPENSEARCH_DASHBOARDS_URL);
-      testOpenSearchDashboardsUrl.pathname = '';
+      const testOpenSearchDashboardsUrl = url.parse(process.env.TEST_OPENSEARCH_DASHBOARDS_URL);
       return {
         protocol: testOpenSearchDashboardsUrl.protocol?.slice(0, -1),
         hostname: testOpenSearchDashboardsUrl.hostname ?? undefined,
         port: testOpenSearchDashboardsUrl.port
           ? parseInt(testOpenSearchDashboardsUrl.port, 10)
           : undefined,
-        auth:
-          testOpenSearchDashboardsUrl.username && testOpenSearchDashboardsUrl.password
-            ? `${testOpenSearchDashboardsUrl.username}:${testOpenSearchDashboardsUrl.password}`
-            : undefined,
-        username: testOpenSearchDashboardsUrl.username ?? undefined,
-        password: testOpenSearchDashboardsUrl.password ?? undefined,
-        fullURL: testOpenSearchDashboardsUrl,
-        serverUrl: testOpenSearchDashboardsUrl.toString().slice(0, -1),
+        auth: testOpenSearchDashboardsUrl.auth ?? undefined,
+        username: testOpenSearchDashboardsUrl.auth?.split(':')[0],
+        password: testOpenSearchDashboardsUrl.auth?.split(':')[1],
       };
     }
 
@@ -72,22 +65,15 @@ export const osdTestConfig = new (class OsdTestConfig {
       process.env.TEST_OPENSEARCH_DASHBOARDS_USERNAME || opensearchDashboardsTestUser.username;
     const password =
       process.env.TEST_OPENSEARCH_DASHBOARDS_PASSWORD || opensearchDashboardsTestUser.password;
-    const protocol = process.env.TEST_OPENSEARCH_DASHBOARDS_PROTOCOL || 'http';
-    const hostname = process.env.TEST_OPENSEARCH_DASHBOARDS_HOSTNAME || 'localhost';
-    const port = process.env.TEST_OPENSEARCH_DASHBOARDS_PORT
-      ? parseInt(process.env.TEST_OPENSEARCH_DASHBOARDS_PORT, 10)
-      : 5620;
-    const fullURL = new URL(`${protocol}://${username}:${password}@${hostname}:${port}`);
-
     return {
-      protocol,
-      hostname,
-      port,
+      protocol: process.env.TEST_OPENSEARCH_DASHBOARDS_PROTOCOL || 'http',
+      hostname: process.env.TEST_OPENSEARCH_DASHBOARDS_HOSTNAME || 'localhost',
+      port: process.env.TEST_OPENSEARCH_DASHBOARDS_PORT
+        ? parseInt(process.env.TEST_OPENSEARCH_DASHBOARDS_PORT, 10)
+        : 5620,
       auth: `${username}:${password}`,
       username,
       password,
-      fullURL,
-      serverUrl: fullURL.toString().slice(0, -1),
     };
   }
 })();

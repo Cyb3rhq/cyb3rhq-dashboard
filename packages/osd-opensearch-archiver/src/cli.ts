@@ -35,6 +35,7 @@
  *************************************************************/
 
 import Path from 'path';
+import Url from 'url';
 import readline from 'readline';
 
 import { RunWithCommands, createFlagError } from '@osd/dev-utils';
@@ -71,7 +72,7 @@ export function runCli() {
         throw createFlagError('--opensearch-url must be a string');
       }
       if (!opensearchUrl && config) {
-        opensearchUrl = config.get('servers.opensearch.serverUrl');
+        opensearchUrl = Url.format(config.get('servers.opensearch'));
       }
       if (!opensearchUrl) {
         throw createFlagError('--opensearch-url or --config must be defined');
@@ -82,7 +83,7 @@ export function runCli() {
         throw createFlagError('--opensearch-dashboards-url must be a string');
       }
       if (!opensearchDashboardsUrl && config) {
-        opensearchDashboardsUrl = config.get('servers.opensearchDashboards.serverUrl') as string;
+        opensearchDashboardsUrl = Url.format(config.get('servers.opensearchDashboards'));
       }
       if (!opensearchDashboardsUrl) {
         throw createFlagError('---url or --config must be defined');
@@ -239,7 +240,7 @@ export function runCli() {
             output: process.stdout,
           });
 
-          await new Promise<void>((resolveInput) => {
+          await new Promise((resolveInput) => {
             rl.question(`Press enter when you're done`, () => {
               rl.close();
               resolveInput();

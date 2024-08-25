@@ -5,16 +5,15 @@
 
 import React from 'react';
 import { PublicAppInfo } from 'opensearch-dashboards/public';
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor, act } from '@testing-library/react';
 import { BehaviorSubject } from 'rxjs';
-import { coreMock } from '../../../../../core/public/mocks';
-import { createOpenSearchDashboardsReactContext } from '../../../../opensearch_dashboards_react/public';
-import { createMockedRegisteredUseCases$ } from '../../mocks';
-
 import {
   WorkspaceCreator as WorkspaceCreatorComponent,
   WorkspaceCreatorProps,
 } from './workspace_creator';
+import { coreMock } from '../../../../../core/public/mocks';
+import { createOpenSearchDashboardsReactContext } from '../../../../opensearch_dashboards_react/public';
+import { WORKSPACE_USE_CASES } from '../../../common/constants';
 
 const workspaceClientCreate = jest
   .fn()
@@ -92,12 +91,14 @@ const WorkspaceCreator = ({
         },
       },
       dataSourceManagement: {},
-      navigationUI: {
-        HeaderControl: () => null,
-      },
     },
   });
-  const registeredUseCases$ = createMockedRegisteredUseCases$();
+  const registeredUseCases$ = new BehaviorSubject([
+    WORKSPACE_USE_CASES.observability,
+    WORKSPACE_USE_CASES['security-analytics'],
+    WORKSPACE_USE_CASES.analytics,
+    WORKSPACE_USE_CASES.search,
+  ]);
 
   return (
     <Provider>
@@ -135,30 +136,12 @@ describe('WorkspaceCreator', () => {
 
   it('should not create workspace when name is empty', async () => {
     const { getByTestId } = render(<WorkspaceCreator />);
-
-    // Ensure workspace create form rendered
-    await waitFor(() => {
-      expect(getByTestId('workspaceForm-bottomBar-createButton')).toBeInTheDocument();
-    });
-
-    const nameInput = getByTestId('workspaceForm-workspaceDetails-nameInputText');
-    fireEvent.input(nameInput, {
-      target: {
-        value: '',
-      },
-    });
     fireEvent.click(getByTestId('workspaceForm-bottomBar-createButton'));
     expect(workspaceClientCreate).not.toHaveBeenCalled();
   });
 
   it('should not create workspace with invalid name', async () => {
     const { getByTestId } = render(<WorkspaceCreator />);
-
-    // Ensure workspace create form rendered
-    await waitFor(() => {
-      expect(getByTestId('workspaceForm-bottomBar-createButton')).toBeInTheDocument();
-    });
-
     const nameInput = getByTestId('workspaceForm-workspaceDetails-nameInputText');
     fireEvent.input(nameInput, {
       target: { value: '~' },
@@ -166,13 +149,20 @@ describe('WorkspaceCreator', () => {
     expect(workspaceClientCreate).not.toHaveBeenCalled();
   });
 
+  it('should not create workspace without use cases', async () => {
+    setHrefSpy.mockReset();
+    const { getByTestId } = render(<WorkspaceCreator />);
+    const nameInput = getByTestId('workspaceForm-workspaceDetails-nameInputText');
+    fireEvent.input(nameInput, {
+      target: { value: 'test workspace name' },
+    });
+    expect(setHrefSpy).not.toHaveBeenCalled();
+    fireEvent.click(getByTestId('workspaceForm-bottomBar-createButton'));
+    expect(workspaceClientCreate).not.toHaveBeenCalled();
+  });
+
   it('cancel create workspace', async () => {
     const { findByText, getByTestId } = render(<WorkspaceCreator />);
-
-    // Ensure workspace create form rendered
-    await waitFor(() => {
-      expect(getByTestId('workspaceForm-bottomBar-createButton')).toBeInTheDocument();
-    });
     fireEvent.click(getByTestId('workspaceForm-bottomBar-cancelButton'));
     await findByText('Discard changes?');
     fireEvent.click(getByTestId('confirmModalConfirmButton'));
@@ -181,11 +171,6 @@ describe('WorkspaceCreator', () => {
 
   it('create workspace with detailed information', async () => {
     const { getByTestId } = render(<WorkspaceCreator />);
-
-    // Ensure workspace create form rendered
-    await waitFor(() => {
-      expect(getByTestId('workspaceForm-bottomBar-createButton')).toBeInTheDocument();
-    });
     const nameInput = getByTestId('workspaceForm-workspaceDetails-nameInputText');
     fireEvent.input(nameInput, {
       target: { value: 'test workspace name' },
@@ -226,11 +211,6 @@ describe('WorkspaceCreator', () => {
   it('should show danger toasts after create workspace failed', async () => {
     workspaceClientCreate.mockReturnValueOnce({ result: { id: 'failResult' }, success: false });
     const { getByTestId } = render(<WorkspaceCreator />);
-
-    // Ensure workspace create form rendered
-    await waitFor(() => {
-      expect(getByTestId('workspaceForm-bottomBar-createButton')).toBeInTheDocument();
-    });
     const nameInput = getByTestId('workspaceForm-workspaceDetails-nameInputText');
     fireEvent.input(nameInput, {
       target: { value: 'test workspace name' },
@@ -249,11 +229,6 @@ describe('WorkspaceCreator', () => {
       throw new Error();
     });
     const { getByTestId } = render(<WorkspaceCreator />);
-
-    // Ensure workspace create form rendered
-    await waitFor(() => {
-      expect(getByTestId('workspaceForm-bottomBar-createButton')).toBeInTheDocument();
-    });
     const nameInput = getByTestId('workspaceForm-workspaceDetails-nameInputText');
     fireEvent.input(nameInput, {
       target: { value: 'test workspace name' },
@@ -269,17 +244,12 @@ describe('WorkspaceCreator', () => {
 
   it('create workspace with customized permissions', async () => {
     const { getByTestId } = render(<WorkspaceCreator />);
-
-    // Ensure workspace create form rendered
-    await waitFor(() => {
-      expect(getByTestId('workspaceForm-bottomBar-createButton')).toBeInTheDocument();
-    });
     const nameInput = getByTestId('workspaceForm-workspaceDetails-nameInputText');
     fireEvent.input(nameInput, {
       target: { value: 'test workspace name' },
     });
     fireEvent.click(getByTestId('workspaceUseCase-observability'));
-    fireEvent.click(getByTestId('workspaceForm-permissionSettingPanel-addNew'));
+    fireEvent.click(getByTestId('workspaceForm-permissionSettingPanel-user-addNew'));
     fireEvent.click(getByTestId('workspaceForm-bottomBar-createButton'));
     expect(workspaceClientCreate).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -307,11 +277,6 @@ describe('WorkspaceCreator', () => {
     const { getByTestId, getByTitle, getByText } = render(
       <WorkspaceCreator isDashboardAdmin={true} />
     );
-
-    // Ensure workspace create form rendered
-    await waitFor(() => {
-      expect(getByTestId('workspaceForm-bottomBar-createButton')).toBeInTheDocument();
-    });
     const nameInput = getByTestId('workspaceForm-workspaceDetails-nameInputText');
     fireEvent.input(nameInput, {
       target: { value: 'test workspace name' },
@@ -319,7 +284,9 @@ describe('WorkspaceCreator', () => {
     fireEvent.click(getByTestId('workspaceUseCase-observability'));
     fireEvent.click(getByTestId('workspaceForm-select-dataSource-addNew'));
     fireEvent.click(getByTestId('workspaceForm-select-dataSource-comboBox'));
-    fireEvent.click(getByText('Select'));
+    await act(() => {
+      fireEvent.click(getByText('Select'));
+    });
     fireEvent.click(getByTitle(dataSourcesList[0].title));
 
     fireEvent.click(getByTestId('workspaceForm-bottomBar-createButton'));

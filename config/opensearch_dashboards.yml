@@ -333,7 +333,7 @@
 # @experimental Set the value of this setting to display navigation updates, including dev tool top right navigation
 # opensearchDashboards.futureNavigation: false
 
-# Set the value of this setting to true to enable plugin augmentation on Dashboard
+# Set the value of this setting to true to enable plugin augmentation
 # vis_augmenter.pluginAugmentationEnabled: true
 
 # Set the value to true to enable permission control for saved objects

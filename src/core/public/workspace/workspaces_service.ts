@@ -10,10 +10,6 @@ import { CoreService, WorkspaceAttribute } from '../../types';
 
 export type WorkspaceObject = WorkspaceAttribute & { readonly?: boolean };
 
-export interface IWorkspaceClient {
-  copy(objects: any[], targetWorkspace: string, includeReferencesDeep?: boolean): Promise<any>;
-}
-
 interface WorkspaceObservables {
   /**
    * Indicates the current activated workspace id, the value should be changed every time
@@ -47,20 +43,14 @@ enum WORKSPACE_ERROR {
   WORKSPACE_IS_STALE = 'WORKSPACE_IS_STALE',
 }
 
-export type WorkspacesSetup = WorkspaceObservables & {
-  setClient: (client: IWorkspaceClient) => void;
-};
-
-export type WorkspacesStart = WorkspaceObservables & {
-  client$: BehaviorSubject<IWorkspaceClient | null>;
-};
+export type WorkspacesSetup = WorkspaceObservables;
+export type WorkspacesStart = WorkspaceObservables;
 
 export class WorkspacesService implements CoreService<WorkspacesSetup, WorkspacesStart> {
   private currentWorkspaceId$ = new BehaviorSubject<string>('');
   private workspaceList$ = new BehaviorSubject<WorkspaceObject[]>([]);
   private currentWorkspace$ = new BehaviorSubject<WorkspaceObject | null>(null);
   private initialized$ = new BehaviorSubject<boolean>(false);
-  private client$ = new BehaviorSubject<IWorkspaceClient | null>(null);
 
   constructor() {
     combineLatest([this.initialized$, this.workspaceList$, this.currentWorkspaceId$]).subscribe(
@@ -97,9 +87,6 @@ export class WorkspacesService implements CoreService<WorkspacesSetup, Workspace
       currentWorkspace$: this.currentWorkspace$,
       workspaceList$: this.workspaceList$,
       initialized$: this.initialized$,
-      setClient: (client: IWorkspaceClient) => {
-        this.client$.next(client);
-      },
     };
   }
 
@@ -109,7 +96,6 @@ export class WorkspacesService implements CoreService<WorkspacesSetup, Workspace
       currentWorkspace$: this.currentWorkspace$,
       workspaceList$: this.workspaceList$,
       initialized$: this.initialized$,
-      client$: this.client$,
     };
   }
 
@@ -118,6 +104,5 @@ export class WorkspacesService implements CoreService<WorkspacesSetup, Workspace
     this.currentWorkspaceId$.unsubscribe();
     this.workspaceList$.unsubscribe();
     this.initialized$.unsubscribe();
-    this.client$.unsubscribe();
   }
 }

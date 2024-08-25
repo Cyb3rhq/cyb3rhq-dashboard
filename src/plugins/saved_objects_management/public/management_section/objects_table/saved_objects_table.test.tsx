@@ -33,6 +33,7 @@ import {
   fetchExportByTypeAndSearchMock,
   fetchExportObjectsMock,
   findObjectsMock,
+  getDuplicateSavedObjectsMock,
   getRelationshipsMock,
   getSavedObjectCountsMock,
   saveAsMock,
@@ -914,9 +915,7 @@ describe('SavedObjectsTable', () => {
     });
 
     it('should duplicate selected objects', async () => {
-      const mockCopy = jest.fn().mockResolvedValue({ success: true });
-      workspaces.client$.next({ copy: mockCopy });
-      const client = workspaces.client$.getValue();
+      getDuplicateSavedObjectsMock.mockImplementation(() => ({ success: true }));
 
       const component = shallowRender({ applications, workspaces });
       component.setState({ isShowingDuplicateModal: true });
@@ -931,7 +930,8 @@ describe('SavedObjectsTable', () => {
 
       await component.instance().onDuplicate(mockSelectedSavedObjects, false, 'workspace2', 'bar');
 
-      expect(client?.copy).toHaveBeenCalledWith(
+      expect(getDuplicateSavedObjectsMock).toHaveBeenCalledWith(
+        http,
         [
           { id: '1', type: 'dashboard' },
           { id: '2', type: 'dashboard' },
@@ -946,9 +946,7 @@ describe('SavedObjectsTable', () => {
     });
 
     it('should duplicate single object', async () => {
-      const mockCopy = jest.fn().mockResolvedValue({ success: true });
-      workspaces.client$.next({ copy: mockCopy });
-      const client = workspaces.client$.getValue();
+      getDuplicateSavedObjectsMock.mockImplementation(() => ({ success: true }));
 
       const component = shallowRender({ applications, workspaces });
       component.setState({ isShowingDuplicateModal: true });
@@ -962,7 +960,8 @@ describe('SavedObjectsTable', () => {
         .instance()
         .onDuplicate([mockSelectedSavedObjects[0]], true, 'workspace2', 'bar');
 
-      expect(client?.copy).toHaveBeenCalledWith(
+      expect(getDuplicateSavedObjectsMock).toHaveBeenCalledWith(
+        http,
         [{ id: '1', type: 'dashboard' }],
         'workspace2',
         true
@@ -974,14 +973,6 @@ describe('SavedObjectsTable', () => {
     });
 
     it('should show result flyout when duplicating success and failure coexist', async () => {
-      const mockCopy = jest.fn().mockResolvedValue(() => ({
-        success: false,
-        successCount: 1,
-        successResults: [{ id: '1' }],
-        errors: [{ id: '2' }],
-      }));
-      workspaces.client$.next({ copy: mockCopy });
-      const client = workspaces.client$.getValue();
       const component = shallowRender({ applications, workspaces });
       component.setState({ isShowingDuplicateModal: true });
 
@@ -990,9 +981,17 @@ describe('SavedObjectsTable', () => {
       // Ensure the state changes are reflected
       component.update();
 
+      getDuplicateSavedObjectsMock.mockImplementationOnce(() => ({
+        success: false,
+        successCount: 1,
+        successResults: [{ id: '1' }],
+        errors: [{ id: '2' }],
+      }));
+
       await component.instance().onDuplicate(mockSelectedSavedObjects, false, 'workspace2', 'bar');
 
-      expect(client?.copy).toHaveBeenCalledWith(
+      expect(getDuplicateSavedObjectsMock).toHaveBeenCalledWith(
+        http,
         [
           { id: '1', type: 'dashboard' },
           { id: '2', type: 'dashboard' },
@@ -1006,30 +1005,11 @@ describe('SavedObjectsTable', () => {
       expect(component.find('DuplicateResultFlyout').length).toEqual(1);
     });
 
-    it('should catch error when workspace client is null', async () => {
-      const component = shallowRender({ applications, workspaces });
-      component.setState({ isShowingDuplicateModal: true });
-      workspaces.client$.next(null);
-
-      // Ensure all promises resolve
-      await new Promise((resolve) => process.nextTick(resolve));
-      // Ensure the state changes are reflected
-      component.update();
-      await component.instance().onDuplicate(mockSelectedSavedObjects, false, 'workspace2', 'bar');
-      component.update();
-
-      expect(notifications.toasts.addDanger).toHaveBeenCalledWith({
-        title: 'Unable to copy 2 saved objects.',
-      });
-    });
-
     it('should catch error when duplicating selected object is fail', async () => {
+      getDuplicateSavedObjectsMock.mockImplementationOnce(() => undefined);
+
       const component = shallowRender({ applications, workspaces });
       component.setState({ isShowingDuplicateModal: true });
-
-      const mockCopy = jest.fn().mockRejectedValue(() => new Error('Copy operation failed'));
-      workspaces.client$.next({ copy: mockCopy });
-      const client = workspaces.client$.getValue();
 
       // Ensure all promises resolve
       await new Promise((resolve) => process.nextTick(resolve));
@@ -1038,7 +1018,8 @@ describe('SavedObjectsTable', () => {
 
       await component.instance().onDuplicate(mockSelectedSavedObjects, false, 'workspace2', 'bar');
 
-      expect(client?.copy).toHaveBeenCalledWith(
+      expect(getDuplicateSavedObjectsMock).toHaveBeenCalledWith(
+        http,
         [
           { id: '1', type: 'dashboard' },
           { id: '2', type: 'dashboard' },

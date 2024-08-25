@@ -41,9 +41,7 @@ exports[`DataSourceHomePanel renders correctly 1`] = `
       <EuiSpacer
         size="s"
       />
-      <EuiTabs
-        size="s"
-      >
+      <EuiTabs>
         <EuiTab
           isSelected={true}
           key="manageOpensearchDataSources"

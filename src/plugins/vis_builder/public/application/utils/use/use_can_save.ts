@@ -10,9 +10,7 @@ export const useCanSave = () => {
   const isEmpty = useTypedSelector(
     (state) => state.visualization.activeVisualization?.aggConfigParams?.length === 0
   );
-  const hasNoChange = useTypedSelector((state) => {
-    return state.metadata.editor.state !== 'dirty' && state.metadata.isMigrated === false;
-  });
+  const hasNoChange = useTypedSelector((state) => state.metadata.editor.state !== 'dirty');
   const hasDraftAgg = useTypedSelector(
     (state) => !!state.visualization.activeVisualization?.draftAgg
   );

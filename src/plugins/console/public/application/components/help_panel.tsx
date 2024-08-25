@@ -30,7 +30,14 @@
 
 import React from 'react';
 import { FormattedMessage } from '@osd/i18n/react';
-import { EuiText, EuiFlyout, EuiFlyoutHeader, EuiFlyoutBody, EuiSpacer } from '@elastic/eui';
+import {
+  EuiText,
+  EuiFlyout,
+  EuiFlyoutHeader,
+  EuiFlyoutBody,
+  EuiTitle,
+  EuiSpacer,
+} from '@elastic/eui';
 import { EditorExample } from './editor_example';
 
 interface Props {
@@ -41,11 +48,11 @@ export function HelpPanel(props: Props) {
   return (
     <EuiFlyout onClose={props.onClose} data-test-subj="helpFlyout" size="s">
       <EuiFlyoutHeader hasBorder>
-        <EuiText size="s">
+        <EuiTitle size="m">
           <h2>
             <FormattedMessage id="console.helpPage.pageTitle" defaultMessage="Help" />
           </h2>
-        </EuiText>
+        </EuiTitle>
       </EuiFlyoutHeader>
       <EuiFlyoutBody>
         <EuiText>
@@ -55,14 +62,12 @@ export function HelpPanel(props: Props) {
               id="console.helpPage.requestFormatTitle"
             />
           </h3>
-          <EuiText size="s">
-            <p>
-              <FormattedMessage
-                id="console.helpPage.requestFormatDescription"
-                defaultMessage="You can type one or more requests in the white editor. Console understands requests in a compact format:"
-              />
-            </p>
-          </EuiText>
+          <p>
+            <FormattedMessage
+              id="console.helpPage.requestFormatDescription"
+              defaultMessage="You can type one or more requests in the white editor. Console understands requests in a compact format:"
+            />
+          </p>
           <EditorExample panel="help" />
           <h3>
             <FormattedMessage
@@ -71,80 +76,78 @@ export function HelpPanel(props: Props) {
             />
           </h3>
           <EuiSpacer />
-          <EuiText size="s">
-            <dl>
-              <dt>Ctrl/Cmd + I</dt>
-              <dd>
-                <FormattedMessage
-                  id="console.helpPage.keyboardCommands.autoIndentDescription"
-                  defaultMessage="Auto indent current request"
-                />
-              </dd>
-              <dt>Ctrl/Cmd + /</dt>
-              <dd>
-                <FormattedMessage
-                  id="console.helpPage.keyboardCommands.openDocumentationDescription"
-                  defaultMessage="Open documentation for current request"
-                />
-              </dd>
-              <dt>Ctrl + Space</dt>
-              <dd>
-                <FormattedMessage
-                  id="console.helpPage.keyboardCommands.openAutoCompleteDescription"
-                  defaultMessage="Open Auto complete (even if not typing)"
-                />
-              </dd>
-              <dt>Ctrl/Cmd + Enter</dt>
-              <dd>
-                <FormattedMessage
-                  id="console.helpPage.keyboardCommands.submitRequestDescription"
-                  defaultMessage="Submit request"
-                />
-              </dd>
-              <dt>Ctrl/Cmd + Up/Down</dt>
-              <dd>
-                <FormattedMessage
-                  id="console.helpPage.keyboardCommands.jumpToPreviousNextRequestDescription"
-                  defaultMessage="Jump to the previous/next request start or end."
-                />
-              </dd>
-              <dt>Ctrl/Cmd + Alt + L</dt>
-              <dd>
-                <FormattedMessage
-                  id="console.helpPage.keyboardCommands.collapseExpandCurrentScopeDescription"
-                  defaultMessage="Collapse/expand current scope."
-                />
-              </dd>
-              <dt>Ctrl/Cmd + Option + 0</dt>
-              <dd>
-                <FormattedMessage
-                  id="console.helpPage.keyboardCommands.collapseAllScopesDescription"
-                  defaultMessage="Collapse all scopes but the current one. Expand by adding a shift."
-                />
-              </dd>
-              <dt>Down arrow</dt>
-              <dd>
-                <FormattedMessage
-                  id="console.helpPage.keyboardCommands.switchFocusToAutoCompleteMenuDescription"
-                  defaultMessage="Switch focus to auto-complete menu. Use arrows to further select a term"
-                />
-              </dd>
-              <dt>Enter/Tab</dt>
-              <dd>
-                <FormattedMessage
-                  id="console.helpPage.keyboardCommands.selectCurrentlySelectedInAutoCompleteMenuDescription"
-                  defaultMessage="Select the currently selected or the top most term in auto-complete menu"
-                />
-              </dd>
-              <dt>Esc</dt>
-              <dd>
-                <FormattedMessage
-                  id="console.helpPage.keyboardCommands.closeAutoCompleteMenuDescription"
-                  defaultMessage="Close auto-complete menu"
-                />
-              </dd>
-            </dl>
-          </EuiText>
+          <dl>
+            <dt>Ctrl/Cmd + I</dt>
+            <dd>
+              <FormattedMessage
+                id="console.helpPage.keyboardCommands.autoIndentDescription"
+                defaultMessage="Auto indent current request"
+              />
+            </dd>
+            <dt>Ctrl/Cmd + /</dt>
+            <dd>
+              <FormattedMessage
+                id="console.helpPage.keyboardCommands.openDocumentationDescription"
+                defaultMessage="Open documentation for current request"
+              />
+            </dd>
+            <dt>Ctrl + Space</dt>
+            <dd>
+              <FormattedMessage
+                id="console.helpPage.keyboardCommands.openAutoCompleteDescription"
+                defaultMessage="Open Auto complete (even if not typing)"
+              />
+            </dd>
+            <dt>Ctrl/Cmd + Enter</dt>
+            <dd>
+              <FormattedMessage
+                id="console.helpPage.keyboardCommands.submitRequestDescription"
+                defaultMessage="Submit request"
+              />
+            </dd>
+            <dt>Ctrl/Cmd + Up/Down</dt>
+            <dd>
+              <FormattedMessage
+                id="console.helpPage.keyboardCommands.jumpToPreviousNextRequestDescription"
+                defaultMessage="Jump to the previous/next request start or end."
+              />
+            </dd>
+            <dt>Ctrl/Cmd + Alt + L</dt>
+            <dd>
+              <FormattedMessage
+                id="console.helpPage.keyboardCommands.collapseExpandCurrentScopeDescription"
+                defaultMessage="Collapse/expand current scope."
+              />
+            </dd>
+            <dt>Ctrl/Cmd + Option + 0</dt>
+            <dd>
+              <FormattedMessage
+                id="console.helpPage.keyboardCommands.collapseAllScopesDescription"
+                defaultMessage="Collapse all scopes but the current one. Expand by adding a shift."
+              />
+            </dd>
+            <dt>Down arrow</dt>
+            <dd>
+              <FormattedMessage
+                id="console.helpPage.keyboardCommands.switchFocusToAutoCompleteMenuDescription"
+                defaultMessage="Switch focus to auto-complete menu. Use arrows to further select a term"
+              />
+            </dd>
+            <dt>Enter/Tab</dt>
+            <dd>
+              <FormattedMessage
+                id="console.helpPage.keyboardCommands.selectCurrentlySelectedInAutoCompleteMenuDescription"
+                defaultMessage="Select the currently selected or the top most term in auto-complete menu"
+              />
+            </dd>
+            <dt>Esc</dt>
+            <dd>
+              <FormattedMessage
+                id="console.helpPage.keyboardCommands.closeAutoCompleteMenuDescription"
+                defaultMessage="Close auto-complete menu"
+              />
+            </dd>
+          </dl>
         </EuiText>
       </EuiFlyoutBody>
     </EuiFlyout>

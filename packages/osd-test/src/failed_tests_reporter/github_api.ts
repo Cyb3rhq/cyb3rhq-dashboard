@@ -28,7 +28,9 @@
  * under the License.
  */
 
-import Axios, { AxiosRequestConfig, AxiosInstance, AxiosHeaderValue } from 'axios';
+import Url from 'url';
+
+import Axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
 import parseLinkHeader from 'parse-link-header';
 import { ToolingLog, isAxiosResponseError, isAxiosRequestError } from '@osd/dev-utils';
 
@@ -96,7 +98,7 @@ export class GithubApi {
     nextRequest: {
       safeForDryRun: true,
       method: 'GET',
-      url: new URL('issues', BASE_URL).toString(),
+      url: Url.resolve(BASE_URL, 'issues'),
       params: {
         state: 'all',
         per_page: '100',
@@ -156,7 +158,7 @@ export class GithubApi {
     await this.request(
       {
         method: 'PATCH',
-        url: new URL(`issues/${encodeURIComponent(issueNumber)}`, BASE_URL).toString(),
+        url: Url.resolve(BASE_URL, `issues/${encodeURIComponent(issueNumber)}`),
         data: {
           state: 'open', // Reopen issue if it was closed.
           body: newBody,
@@ -170,7 +172,7 @@ export class GithubApi {
     await this.request(
       {
         method: 'POST',
-        url: new URL(`issues/${encodeURIComponent(issueNumber)}/comments`, BASE_URL).toString(),
+        url: Url.resolve(BASE_URL, `issues/${encodeURIComponent(issueNumber)}/comments`),
         data: {
           body: commentBody,
         },
@@ -183,7 +185,7 @@ export class GithubApi {
     const resp = await this.request<GithubIssueMini>(
       {
         method: 'POST',
-        url: new URL('issues', BASE_URL).toString(),
+        url: Url.resolve(BASE_URL, 'issues'),
         data: {
           title,
           body,
@@ -206,7 +208,7 @@ export class GithubApi {
   ): Promise<{
     status: number;
     statusText: string;
-    headers: Record<string, AxiosHeaderValue | undefined>;
+    headers: Record<string, string | string[] | undefined>;
     data: T;
   }> {
     const executeRequest = !this.dryRun || options.safeForDryRun;
@@ -231,7 +233,8 @@ export class GithubApi {
       const githubApiFailed = isAxiosResponseError(error) && error.response.status >= 500;
       const errorResponseLog =
         isAxiosResponseError(error) &&
-        `[${error.config?.method} ${error.config?.url}] ${error.response.status} ${error.response.statusText} Error`;
+        error.config &&
+        `[${error.config.method} ${error.config.url}] ${error.response.status} ${error.response.statusText} Error`;
 
       if ((unableToReachGithub || githubApiFailed) && attempt < maxAttempts) {
         const waitMs = 1000 * attempt;

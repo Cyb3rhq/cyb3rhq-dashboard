@@ -30,16 +30,16 @@
 
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
-import { ExpressionRenderDefinition } from '../../../expressions/public';
+// @ts-ignore
 import { ExprVis } from './vis';
 import { Visualization } from '../components';
-import { VisParams, VisRenderValue } from '../types';
+import { VisParams } from '../types';
 
-export const visualization = (): ExpressionRenderDefinition<VisRenderValue> => ({
+export const visualization = () => ({
   name: 'visualization',
   displayName: 'visualization',
   reuseDomNode: true,
-  render: async (domNode, config, handlers) => {
+  render: async (domNode: HTMLElement, config: any, handlers: any) => {
     const { visData, visConfig, params } = config;
     const visType = config.visType || visConfig.type;
 

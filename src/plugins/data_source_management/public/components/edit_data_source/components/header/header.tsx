@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 
 import {
   EuiSpacer,
+  EuiTitle,
   EuiFlexItem,
   EuiFlexGroup,
   EuiToolTip,
@@ -14,7 +15,6 @@ import {
   EuiConfirmModal,
   EuiSmallButton,
   EuiSmallButtonEmpty,
-  EuiText,
 } from '@elastic/eui';
 import { i18n } from '@osd/i18n';
 import { FormattedMessage } from '@osd/i18n/react';
@@ -121,24 +121,22 @@ export const Header = ({
             defaultFocusedButton="confirm"
             data-test-subj="editDatasourceDeleteConfirmModal"
           >
-            <EuiText size="s">
-              <p>
-                {
-                  <FormattedMessage
-                    id="dataSourcesManagement.editDataSource.deleteConfirmation"
-                    defaultMessage="Any objects created using data from these sources, including Index Patterns, Visualizations, and Observability Panels, will be impacted."
-                  />
-                }
-              </p>
-              <p>
-                {
-                  <FormattedMessage
-                    id="dataSourcesManagement.editDataSource.deleteWarning"
-                    defaultMessage="This action cannot be undone."
-                  />
-                }
-              </p>
-            </EuiText>
+            <p>
+              {
+                <FormattedMessage
+                  id="dataSourcesManagement.editDataSource.deleteConfirmation"
+                  defaultMessage="Any objects created using data from these sources, including Index Patterns, Visualizations, and Observability Panels, will be impacted."
+                />
+              }
+            </p>
+            <p>
+              {
+                <FormattedMessage
+                  id="dataSourcesManagement.editDataSource.deleteWarning"
+                  defaultMessage="This action cannot be undone."
+                />
+              }
+            </p>
           </EuiConfirmModal>
         ) : null}
       </>
@@ -168,9 +166,9 @@ export const Header = ({
       {/* Title */}
       <EuiFlexItem grow={false}>
         <div>
-          <EuiText size="s" data-test-subj="editDataSourceTitle">
+          <EuiTitle data-test-subj="editDataSourceTitle">
             <h1>{dataSourceName}</h1>
-          </EuiText>
+          </EuiTitle>
           <EuiSpacer size="s" />
         </div>
       </EuiFlexItem>

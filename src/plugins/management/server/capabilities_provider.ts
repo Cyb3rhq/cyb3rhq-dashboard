@@ -28,6 +28,17 @@
  * under the License.
  */
 
-import { DEFAULT_MANAGEMENT_CAPABILITIES } from '../common/contants';
-
-export const capabilitiesProvider = () => DEFAULT_MANAGEMENT_CAPABILITIES;
+export const capabilitiesProvider = () => ({
+  management: {
+    /*
+     * Management settings correspond to management section/link ids, and should not be changed
+     * without also updating those definitions.
+     */
+    opensearchDashboards: {
+      settings: true,
+      indexPatterns: true,
+      objects: true,
+      dataSources: true,
+    },
+  },
+});

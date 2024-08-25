@@ -141,7 +141,7 @@ export const AssociatedObjectsTab: React.FC<AssociatedObjectsTabProps> = (props)
     return (
       <EuiFlexGroup direction="row" alignItems="center">
         <EuiFlexItem>
-          <EuiText size="s">
+          <EuiText size="m">
             <h2 className="panel-title">{panelTitle}</h2>
             {panelDescription}
           </EuiText>

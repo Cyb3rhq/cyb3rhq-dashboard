@@ -32,7 +32,7 @@ import { PluginOpaqueId } from '../../server';
 import { IContextContainer, ContextContainer, HandlerFunction } from '../../utils/context';
 import { CoreContext } from '../core_system';
 
-export interface StartDeps {
+interface StartDeps {
   pluginDependencies: ReadonlyMap<PluginOpaqueId, PluginOpaqueId[]>;
 }
 

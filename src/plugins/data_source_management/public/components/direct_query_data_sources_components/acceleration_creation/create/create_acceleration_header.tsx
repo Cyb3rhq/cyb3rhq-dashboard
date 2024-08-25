@@ -3,7 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { EuiLink, EuiPageHeader, EuiPageHeaderSection, EuiSpacer, EuiText } from '@elastic/eui';
+import {
+  EuiLink,
+  EuiPageHeader,
+  EuiPageHeaderSection,
+  EuiSpacer,
+  EuiText,
+  EuiTitle,
+} from '@elastic/eui';
 import React from 'react';
 import { OPENSEARCH_ACC_DOCUMENTATION_URL } from '../../../constants';
 
@@ -12,9 +19,9 @@ export const CreateAccelerationHeader = () => {
     <div>
       <EuiPageHeader>
         <EuiPageHeaderSection>
-          <EuiText size="s" data-test-subj="acceleration-header">
+          <EuiTitle size="l" data-test-subj="acceleration-header">
             <h1>Accelerate data</h1>
-          </EuiText>
+          </EuiTitle>
         </EuiPageHeaderSection>
       </EuiPageHeader>
       <EuiSpacer size="s" />

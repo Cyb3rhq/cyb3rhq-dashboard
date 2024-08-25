@@ -45,7 +45,6 @@ import {
   EuiModalHeader,
   EuiModalHeaderTitle,
   EuiCompressedSwitch,
-  EuiText,
 } from '@elastic/eui';
 
 import { DevToolsSettings } from '../../services';
@@ -180,14 +179,7 @@ export function DevToolsSettingsModal(props: Props) {
     >
       <EuiModalHeader>
         <EuiModalHeaderTitle>
-          <EuiText size="s">
-            <h2>
-              <FormattedMessage
-                id="console.settingsPage.pageTitle"
-                defaultMessage="Console Settings"
-              />
-            </h2>
-          </EuiText>
+          <FormattedMessage id="console.settingsPage.pageTitle" defaultMessage="Console Settings" />
         </EuiModalHeaderTitle>
       </EuiModalHeader>
 

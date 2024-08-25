@@ -9,21 +9,21 @@ import { ColorScheme, ImageType } from './constants';
 import { Branding } from '../../types';
 
 // The logos are stored at `src/core/server/core_app/assets/logos` to have a pretty URL
-export const OPENSEARCH_DASHBOARDS_THEMED = 'ui/logos/opensearch_dashboards.svg';
-export const OPENSEARCH_DASHBOARDS_ON_LIGHT = 'ui/logos/opensearch_dashboards_on_light.svg';
-export const OPENSEARCH_DASHBOARDS_ON_DARK = 'ui/logos/opensearch_dashboards_on_dark.svg';
-export const OPENSEARCH_THEMED = 'ui/logos/opensearch.svg';
-export const OPENSEARCH_ON_LIGHT = 'ui/logos/opensearch_on_light.svg';
-export const OPENSEARCH_ON_DARK = 'ui/logos/opensearch_on_dark.svg';
-export const MARK_THEMED = 'ui/logos/opensearch_mark.svg';
-export const MARK_ON_LIGHT = 'ui/logos/opensearch_mark_on_light.svg';
-export const MARK_ON_DARK = 'ui/logos/opensearch_mark_on_dark.svg';
-export const CENTER_MARK_THEMED = 'ui/logos/opensearch_center_mark.svg';
-export const CENTER_MARK_ON_LIGHT = 'ui/logos/opensearch_center_mark_on_light.svg';
-export const CENTER_MARK_ON_DARK = 'ui/logos/opensearch_center_mark_on_dark.svg';
-export const ANIMATED_MARK_THEMED = 'ui/logos/opensearch_spinner.svg';
-export const ANIMATED_MARK_ON_LIGHT = 'ui/logos/opensearch_spinner_on_light.svg';
-export const ANIMATED_MARK_ON_DARK = 'ui/logos/opensearch_spinner_on_dark.svg';
+export const OPENSEARCH_DASHBOARDS_THEMED = 'ui/logos/cyb3rhq_dashboards.svg';
+export const OPENSEARCH_DASHBOARDS_ON_LIGHT = 'ui/logos/cyb3rhq_dashboards_on_light.svg';
+export const OPENSEARCH_DASHBOARDS_ON_DARK = 'ui/logos/cyb3rhq_dashboards_on_dark.svg';
+export const OPENSEARCH_THEMED = 'ui/logos/cyb3rhq.svg';
+export const OPENSEARCH_ON_LIGHT = 'ui/logos/cyb3rhq_on_light.svg';
+export const OPENSEARCH_ON_DARK = 'ui/logos/cyb3rhq_on_dark.svg';
+export const MARK_THEMED = 'ui/logos/cyb3rhq_mark.svg';
+export const MARK_ON_LIGHT = 'ui/logos/cyb3rhq_mark_on_light.svg';
+export const MARK_ON_DARK = 'ui/logos/cyb3rhq_mark_on_dark.svg';
+export const CENTER_MARK_THEMED = 'ui/logos/cyb3rhq_center_mark.svg';
+export const CENTER_MARK_ON_LIGHT = 'ui/logos/cyb3rhq_center_mark_on_light.svg';
+export const CENTER_MARK_ON_DARK = 'ui/logos/cyb3rhq_center_mark_on_dark.svg';
+export const ANIMATED_MARK_THEMED = 'ui/logos/spinner.svg';
+export const ANIMATED_MARK_ON_LIGHT = 'ui/logos/spinner_on_light.gif';
+export const ANIMATED_MARK_ON_DARK = 'ui/logos/spinner_on_dark.gif';
 
 interface AssetOption {
   url?: string;

@@ -80,10 +80,10 @@ export const config = {
         defaultValue: '/',
       }),
       applicationTitle: schema.string({
-        defaultValue: '',
+        defaultValue: 'Cyb3rhq',
       }),
       useExpandedHeader: schema.boolean({
-        defaultValue: true,
+        defaultValue: false,
       }),
     }),
     survey: schema.object({

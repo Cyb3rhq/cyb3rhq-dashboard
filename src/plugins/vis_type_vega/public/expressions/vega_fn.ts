@@ -40,7 +40,6 @@ import { VegaVisualizationDependencies } from '../plugin';
 import { createVegaRequestHandler } from '../vega_request_handler';
 import { VegaInspectorAdapters } from '../vega_inspector';
 import { TimeRange, Query } from '../../../data/public';
-import { VisRenderValue } from '../../../visualizations/public';
 import { VegaParser } from '../data_model/vega_parser';
 
 type Input = OpenSearchDashboardsContext | null;
@@ -62,7 +61,7 @@ export type VegaExpressionFunctionDefinition = ExpressionFunctionDefinition<
   ExecutionContext<unknown, VegaInspectorAdapters>
 >;
 
-interface RenderValue extends VisRenderValue {
+interface RenderValue {
   visData: VegaParser;
   visType: 'vega';
   visConfig: VisParams;

@@ -221,7 +221,7 @@ export function getWebpackConfig(bundle: Bundle, bundleRefs: BundleRefs, worker:
             /* vega-lite and some of its dependencies don't have es5 builds
              * so we need to build from source and transpile for webpack v4
              */
-            /[\/\\]node_modules[\/\\](?!vega-(lite|label|functions)[\/\\])/,
+            /[\/\\]node_modules[\/\\](?!vega-(lite-next|label|functions)[\/\\])/,
 
             // Don't attempt to look into release artifacts of the plugins
             /[\/\\]plugins[\/\\][^\/\\]+[\/\\]build[\/\\]/,
@@ -273,6 +273,7 @@ export function getWebpackConfig(bundle: Bundle, bundleRefs: BundleRefs, worker:
       extensions: ['.js', '.ts', '.tsx', '.json'],
       mainFields: ['browser', 'main'],
       alias: {
+        tinymath: require.resolve('tinymath/lib/tinymath.es5.js'),
         core_app_image_assets: Path.resolve(worker.repoRoot, 'src/core/public/core_app/images'),
       },
     },

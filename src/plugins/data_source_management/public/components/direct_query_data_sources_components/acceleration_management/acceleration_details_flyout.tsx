@@ -351,9 +351,7 @@ export const AccelerationDetailsFlyout = (props: AccelerationDetailsFlyoutProps)
           )}
         </EuiFlexGroup>
         <EuiSpacer size="m" />
-        <EuiTabs style={{ marginBottom: '-25px' }} size="s">
-          {renderTabs()}
-        </EuiTabs>
+        <EuiTabs style={{ marginBottom: '-25px' }}>{renderTabs()}</EuiTabs>
       </EuiFlyoutHeader>
       <EuiFlyoutBody>{renderTabContent(selectedTab)}</EuiFlyoutBody>
       {showConfirmationOverlay && operationType && (

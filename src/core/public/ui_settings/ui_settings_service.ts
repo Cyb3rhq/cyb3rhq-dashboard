@@ -37,7 +37,7 @@ import { UiSettingsApi } from './ui_settings_api';
 import { UiSettingsClient } from './ui_settings_client';
 import { IUiSettingsClient } from './types';
 
-export interface UiSettingsServiceDeps {
+interface UiSettingsServiceDeps {
   http: HttpSetup;
   injectedMetadata: InjectedMetadataSetup;
 }

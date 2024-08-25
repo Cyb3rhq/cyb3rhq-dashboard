@@ -48,19 +48,6 @@ describe('WorkspaceFormErrorCallout', () => {
     expect(renderResult.getByText('Name: Enter a valid name.')).toBeInTheDocument();
   });
 
-  it('should render color suggestion', () => {
-    const { renderResult } = setup({
-      errors: {
-        color: {
-          code: WorkspaceFormErrorCode.InvalidColor,
-          message: '',
-        },
-      },
-    });
-
-    expect(renderResult.getByText('Color: Enter a valid color.')).toBeInTheDocument();
-  });
-
   it('should render use case suggestion', () => {
     const { renderResult } = setup({
       errors: {

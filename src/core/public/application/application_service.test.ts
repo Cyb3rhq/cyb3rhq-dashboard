@@ -35,7 +35,7 @@ import {
 } from './application_service.test.mocks';
 
 import { createElement } from 'react';
-import { BehaviorSubject, Subject, Observable } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { bufferCount, take, takeUntil } from 'rxjs/operators';
 import { shallow, mount } from 'enzyme';
 
@@ -51,9 +51,7 @@ import {
   AppStatus,
   AppUpdater,
   WorkspaceAvailability,
-  InternalApplicationStart,
 } from './types';
-import { MountPoint } from '../types';
 import { act } from 'react-dom/test-utils';
 import { workspacesServiceMock } from '../mocks';
 
@@ -754,7 +752,7 @@ describe('#start()', () => {
       // Create an app and a promise that allows us to control when the app completes mounting
       const createWaitingApp = (props: Partial<App>): [App, () => void] => {
         let finishMount: () => void;
-        const mountPromise = new Promise<void>((resolve) => (finishMount = resolve));
+        const mountPromise = new Promise((resolve) => (finishMount = resolve));
         const app = {
           id: 'some-id',
           title: 'some-title',
@@ -938,34 +936,6 @@ describe('#start()', () => {
       expect(MockHistory.push).toHaveBeenCalledWith('/app/foo/some-path', undefined);
       expect(setupDeps.redirectTo).not.toHaveBeenCalled();
     });
-  });
-
-  describe('AppControls', () => {
-    test.each(['Left', 'Center', 'Right', 'Badge', 'Description', 'Bottom'])(
-      'records the App%sControls',
-      async (container) => {
-        const { register } = service.setup(setupDeps);
-
-        register(Symbol(), createApp({ id: `app${container}` }));
-        const appStart = await service.start(startDeps);
-        const setControls = appStart[
-          `setApp${container}Controls` as keyof InternalApplicationStart
-        ] as (mount: MountPoint | undefined) => void;
-        const currentControls$ = appStart[
-          `current${container}Controls$` as keyof InternalApplicationStart
-        ] as Observable<MountPoint | undefined>;
-
-        const oldMountPoint = jest.fn();
-        const expectedMountPoint = jest.fn();
-
-        await appStart.navigateToApp(`app${container}`);
-        setControls(oldMountPoint);
-        setControls(expectedMountPoint);
-
-        const mountPoint = await currentControls$.pipe(take(1)).toPromise();
-        expect(mountPoint).toBe(expectedMountPoint);
-      }
-    );
   });
 });
 

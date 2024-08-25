@@ -70,12 +70,6 @@ describe('AppRouter', () => {
         appStatuses$={mountersToAppStatus$()}
         setAppLeaveHandler={noop}
         setAppActionMenu={noop}
-        setAppLeftControls={noop}
-        setAppCenterControls={noop}
-        setAppRightControls={noop}
-        setAppBadgeControls={noop}
-        setAppDescriptionControls={noop}
-        setAppBottomControls={noop}
         setIsMounting={noop}
       />
     );

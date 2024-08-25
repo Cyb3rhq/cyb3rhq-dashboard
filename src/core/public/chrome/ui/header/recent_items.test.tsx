@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { BehaviorSubject } from 'rxjs';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { RecentItems, Props } from './recent_items';
 import { applicationServiceMock, httpServiceMock } from '../../../mocks';
-import { Props, RecentItems } from './recent_items';
+import { BehaviorSubject } from 'rxjs';
 
 jest.mock('./nav_link', () => ({
   createRecentNavLink: jest.fn().mockImplementation(() => {
@@ -23,7 +23,6 @@ const defaultMockProps = {
   recentlyAccessed$: new BehaviorSubject([]),
   navLinks$: new BehaviorSubject([]),
   basePath: httpServiceMock.createStartContract().basePath,
-  renderBreadcrumbs: <></>,
 };
 const setup = (props: Props) => {
   return render(<RecentItems {...props} />);
@@ -71,13 +70,11 @@ describe('Recent items', () => {
       },
     ]);
     const navigateToUrl = jest.fn();
-    const renderBreadcrumbs = <></>;
     setup({
       ...defaultMockProps,
       workspaceList$,
       recentlyAccessed$,
       navigateToUrl,
-      renderBreadcrumbs,
     });
     const button = screen.getByTestId('recentItemsSectionButton');
     fireEvent.click(button);

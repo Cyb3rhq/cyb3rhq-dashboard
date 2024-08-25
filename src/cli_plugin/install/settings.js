@@ -36,9 +36,12 @@ import { fromRoot } from '../../core/server/utils';
 
 const LATEST_PLUGIN_BASE_URL =
   'https://ci.opensearch.org/ci/dbc/distribution-build-opensearch-dashboards';
+const LATEST_CYB3RHQ_PLUGIN_BASE_URL = 'https://packages-dev.wazuh.com/pre-release/ui/dashboard';
 
-function generateUrls({ version, plugin }) {
-  return [plugin, generatePluginUrl(version, plugin)];
+function generateUrls({ version, plugin, cyb3rhqVersion }) {
+  return plugin.includes('cyb3rhq')
+    ? [plugin, generateCyb3rhqPluginUrl(cyb3rhqVersion, plugin)]
+    : [plugin, generatePluginUrl(version, plugin)];
 }
 
 function generatePluginUrl(version, plugin) {
@@ -47,6 +50,10 @@ function generatePluginUrl(version, plugin) {
   const arch = process.arch === 'arm64' ? 'arm64' : 'x64';
 
   return `${LATEST_PLUGIN_BASE_URL}/${version}/latest/${platform}/${arch}/${type}/builds/opensearch-dashboards/plugins/${plugin}-${version}.zip`;
+}
+
+function generateCyb3rhqPluginUrl(version, plugin) {
+  return `${LATEST_CYB3RHQ_PLUGIN_BASE_URL}/${plugin}-${version}-1.zip`;
 }
 
 export function parseMilliseconds(val) {
@@ -70,12 +77,16 @@ export function parse(command, options, osdPackage) {
     config: options.config || '',
     plugin: command,
     version: osdPackage.version,
+    cyb3rhqVersion: osdPackage.cyb3rhq.version,
     pluginDir: fromRoot('plugins'),
   };
 
   settings.urls = generateUrls(settings);
   settings.workingPath = resolve(settings.pluginDir, '.plugin.installing');
   settings.tempArchiveFile = resolve(settings.workingPath, 'archive.part');
+
+  // Clean up.
+  delete settings.cyb3rhqVersion;
 
   return settings;
 }

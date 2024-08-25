@@ -29,6 +29,7 @@
  */
 
 //import path from 'path';
+import { format as formatUrl } from 'url';
 import { opensearchTestConfig, osdTestConfig, opensearchDashboardsServerTestUser } from '@osd/test';
 import { services } from './services';
 
@@ -54,7 +55,7 @@ export default function () {
         '--logging.json=false',
         `--server.port=${osdTestConfig.getPort()}`,
         '--status.allowAnonymous=true',
-        `--opensearch.hosts=${servers.opensearch.serverUrl}`,
+        `--opensearch.hosts=${formatUrl(servers.opensearch)}`,
         `--opensearch.username=${opensearchDashboardsServerTestUser.username}`,
         `--opensearch.password=${opensearchDashboardsServerTestUser.password}`,
         `--home.disableWelcomeScreen=false`,
@@ -79,6 +80,7 @@ export default function () {
         `--opensearchDashboards.branding.mark.darkModeUrl=https://opensearch.org/assets/brand/SVG/Mark/opensearch_mark_darkmode.svg`,
         `--opensearchDashboards.branding.applicationTitle=OpenSearch`,
         `--uiSettings.overrides['query:enhancements:enabled']=false`,
+        `--opensearchDashboards.branding.useExpandedHeader=true`,
       ],
     },
     services,

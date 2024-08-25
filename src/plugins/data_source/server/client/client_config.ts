@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ClientOptions } from '@opensearch-project/opensearch';
+import { ClientOptions } from '@opensearch-project/opensearch-next';
 import { checkServerIdentity } from 'tls';
 import { DataSourcePluginConfigType } from '../../config';
 import { readCertificateAuthorities } from '../util/tls_settings_provider';

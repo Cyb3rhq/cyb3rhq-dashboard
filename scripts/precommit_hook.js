@@ -29,5 +29,4 @@
  */
 
 require('@osd/optimizer').registerNodeAutoTranspilation();
-require('./generate_docs_sidebar');
 require('../src/dev/run_precommit_hook');

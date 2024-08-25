@@ -16,7 +16,8 @@
     ],
     "patterns": [
       "_mget",
-      "{indices}/_mget"
+      "{indices}/_mget",
+      "{indices}/{type}/_mget"
     ],
     "documentation": "https://opensearch.org/docs/latest/api-reference/document-apis/multi-get/"
   }

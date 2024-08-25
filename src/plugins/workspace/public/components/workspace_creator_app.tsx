@@ -12,28 +12,21 @@ import { WorkspaceCreatorProps } from './workspace_creator/workspace_creator';
 
 export const WorkspaceCreatorApp = (props: WorkspaceCreatorProps) => {
   const {
-    services: { chrome, application },
+    services: { chrome },
   } = useOpenSearchDashboards();
 
   /**
    * set breadcrumbs to chrome
    */
   useEffect(() => {
-    const homeBreadcrumb = {
-      text: i18n.translate('core.breadcrumbs.homeTitle', { defaultMessage: 'Home' }),
-      onClick: () => {
-        application?.navigateToApp('home');
-      },
-    };
     chrome?.setBreadcrumbs([
-      homeBreadcrumb,
       {
         text: i18n.translate('workspace.workspaceCreateTitle', {
           defaultMessage: 'Create a workspace',
         }),
       },
     ]);
-  }, [chrome, application]);
+  }, [chrome]);
 
   return (
     <I18nProvider>

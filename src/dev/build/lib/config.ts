@@ -55,6 +55,7 @@ interface Package {
   workspaces: {
     packages: string[];
   };
+  cyb3rhq: { version: string };
   [key: string]: unknown;
 }
 

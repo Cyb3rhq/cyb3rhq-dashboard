@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { Client } from '@opensearch-project/opensearch-next';
 import { Client as LegacyClient, ConfigOptions } from 'elasticsearch';
 import { Config } from 'aws-sdk';
 import { get } from 'lodash';

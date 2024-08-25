@@ -18,10 +18,9 @@ import {
 } from '@elastic/eui';
 import { i18n } from '@osd/i18n';
 import { FormattedMessage } from '@osd/i18n/react';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ReactExpressionRenderer } from '../../../../src/plugins/expressions/public';
 import { useOpenSearchDashboards } from '../../../../src/plugins/opensearch_dashboards_react/public';
-import { PersistedState } from '../../../../src/plugins/visualizations/public';
 import { ExpressionsExampleServices } from '../types';
 
 interface Props {
@@ -44,8 +43,6 @@ export function PlaygroundSection({
   const [input, setInput] = useState(defaultInput);
   const [expression, setExpression] = useState(defaultExpression);
   const [result, setResult] = useState('');
-  // Visualizations require the uiState to persist even when the expression changes
-  const uiState = useMemo(() => new PersistedState(), []);
 
   useEffect(() => {
     let isMounted = true;
@@ -129,11 +126,7 @@ export function PlaygroundSection({
               iconType="help"
             />
             <EuiSpacer />
-            <ReactExpressionRenderer
-              expression={expression}
-              uiState={uiState}
-              className="playgroundRenderer"
-            />
+            <ReactExpressionRenderer expression={expression} className="playgroundRenderer" />
           </>
         ) : (
           <EuiCodeBlock>

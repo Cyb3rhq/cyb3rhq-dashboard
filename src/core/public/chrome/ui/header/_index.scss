@@ -1,4 +1,4 @@
-:not(.headerIsExpanded):not(.headerIsDense) {
+:not(.headerIsExpanded) {
   @include euiHeaderAffordForFixed($osdHeaderOffset);
 }
 

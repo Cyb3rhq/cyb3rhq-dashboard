@@ -30,6 +30,7 @@
 
 import { Server } from '@hapi/hapi';
 import HapiStaticFiles from '@hapi/inert';
+import url from 'url';
 import uuid from 'uuid';
 
 import { Logger, LoggerFactory } from '../logging';
@@ -293,7 +294,7 @@ export class HttpServer {
       this.server.ext('onRequest', (request, h) => {
         const { referrer } = request.info;
         if (referrer !== '') {
-          const { hostname } = new URL('', referrer);
+          const { hostname } = url.parse(referrer);
           if (!hostname || !list.includes(hostname)) {
             request.info.acceptEncoding = '';
           }

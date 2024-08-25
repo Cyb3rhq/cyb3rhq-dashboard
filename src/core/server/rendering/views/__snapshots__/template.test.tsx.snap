@@ -50,6 +50,10 @@ Array [
     content="[object Object]/ui/favicons/browserconfig.xml"
     name="msapplication-config"
   />,
+  <meta
+    content="#ffffff"
+    name="theme-color"
+  />,
   null,
   <meta
     name="add-styles-here"
@@ -58,17 +62,11 @@ Array [
     name="add-scripts-here"
   />,
   null,
-  <meta
-    name="add-fonts-here"
-  />,
-  <script
-    src="[object Object]/startup.js"
-  />,
   <osd-csp
     data="{\\"strictCsp\\":true}"
   />,
   <osd-injected-metadata
-    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{\\"defaultUrl\\":\\"/defaultModeMark\\",\\"darkModeUrl\\":\\"/darkModeMark\\"},\\"loadingLogo\\":{\\"defaultUrl\\":\\"/defaultModeLoadingLogo\\",\\"darkModeUrl\\":\\"/darkModeLoadingLogo\\"},\\"title\\":\\"custom title\\"}}"
+    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"cyb3rhqVersion\\":\\"4.x.x\\",\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true,\\"cyb3rhqVersion\\":\\"\\"},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{\\"defaultUrl\\":\\"/defaultModeMark\\",\\"darkModeUrl\\":\\"/darkModeMark\\"},\\"loadingLogo\\":{\\"defaultUrl\\":\\"/defaultModeLoadingLogo\\",\\"darkModeUrl\\":\\"/darkModeLoadingLogo\\"},\\"title\\":\\"custom title\\"}}"
   />,
   <div
     class="osdWelcomeView"
@@ -85,15 +83,7 @@ Array [
       >
         <img
           alt="OpenSearch Dashboards logo"
-          class="loadingLogo darkOnly"
-          data-test-image-url="/darkModeLoadingLogo"
-          data-test-subj="customLogo"
-          loading="eager"
-          src="/darkModeLoadingLogo"
-        />
-        <img
-          alt="OpenSearch Dashboards logo"
-          class="loadingLogo lightOnly"
+          class="loadingLogo"
           data-test-image-url="/defaultModeLoadingLogo"
           data-test-subj="customLogo"
           loading="eager"
@@ -113,14 +103,7 @@ Array [
   >
     <img
       alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo darkOnly"
-      data-test-image-url="/darkModeMark"
-      data-test-subj="custom logo"
-      src="/darkModeMark"
-    />
-    <img
-      alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo lightOnly"
+      class="legacyBrowserErrorLogo"
       data-test-image-url="/defaultModeMark"
       data-test-subj="custom logo"
       src="/defaultModeMark"
@@ -197,6 +180,10 @@ Array [
     content="[object Object]/ui/favicons/browserconfig.xml"
     name="msapplication-config"
   />,
+  <meta
+    content="#ffffff"
+    name="theme-color"
+  />,
   null,
   <meta
     name="add-styles-here"
@@ -205,17 +192,11 @@ Array [
     name="add-scripts-here"
   />,
   null,
-  <meta
-    name="add-fonts-here"
-  />,
-  <script
-    src="[object Object]/startup.js"
-  />,
   <osd-csp
     data="{\\"strictCsp\\":true}"
   />,
   <osd-injected-metadata
-    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{\\"defaultUrl\\":\\"/defaultModeMark\\",\\"darkModeUrl\\":\\"/darkModeMark\\"},\\"loadingLogo\\":{\\"defaultUrl\\":\\"/defaultModeLoadingLogo\\"},\\"title\\":\\"custom title\\"}}"
+    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"cyb3rhqVersion\\":\\"4.x.x\\",\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true,\\"cyb3rhqVersion\\":\\"\\"},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{\\"defaultUrl\\":\\"/defaultModeMark\\",\\"darkModeUrl\\":\\"/darkModeMark\\"},\\"loadingLogo\\":{\\"defaultUrl\\":\\"/defaultModeLoadingLogo\\"},\\"title\\":\\"custom title\\"}}"
   />,
   <div
     class="osdWelcomeView"
@@ -232,15 +213,7 @@ Array [
       >
         <img
           alt="OpenSearch Dashboards logo"
-          class="loadingLogo darkOnly"
-          data-test-image-url="/defaultModeLoadingLogo"
-          data-test-subj="customLogo"
-          loading="eager"
-          src="/defaultModeLoadingLogo"
-        />
-        <img
-          alt="OpenSearch Dashboards logo"
-          class="loadingLogo lightOnly"
+          class="loadingLogo"
           data-test-image-url="/defaultModeLoadingLogo"
           data-test-subj="customLogo"
           loading="eager"
@@ -260,14 +233,7 @@ Array [
   >
     <img
       alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo darkOnly"
-      data-test-image-url="/darkModeMark"
-      data-test-subj="custom logo"
-      src="/darkModeMark"
-    />
-    <img
-      alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo lightOnly"
+      class="legacyBrowserErrorLogo"
       data-test-image-url="/defaultModeMark"
       data-test-subj="custom logo"
       src="/defaultModeMark"
@@ -344,6 +310,10 @@ Array [
     content="[object Object]/ui/favicons/browserconfig.xml"
     name="msapplication-config"
   />,
+  <meta
+    content="#ffffff"
+    name="theme-color"
+  />,
   null,
   <meta
     name="add-styles-here"
@@ -352,17 +322,11 @@ Array [
     name="add-scripts-here"
   />,
   null,
-  <meta
-    name="add-fonts-here"
-  />,
-  <script
-    src="[object Object]/startup.js"
-  />,
   <osd-csp
     data="{\\"strictCsp\\":true}"
   />,
   <osd-injected-metadata
-    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{\\"defaultUrl\\":\\"/defaultModeMark\\",\\"darkModeUrl\\":\\"/darkModeMark\\"},\\"loadingLogo\\":{},\\"title\\":\\"custom title\\"}}"
+    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"cyb3rhqVersion\\":\\"4.x.x\\",\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true,\\"cyb3rhqVersion\\":\\"\\"},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{\\"defaultUrl\\":\\"/defaultModeMark\\",\\"darkModeUrl\\":\\"/darkModeMark\\"},\\"loadingLogo\\":{},\\"title\\":\\"custom title\\"}}"
   />,
   <div
     class="osdWelcomeView"
@@ -379,15 +343,7 @@ Array [
       >
         <img
           alt="OpenSearch Dashboards logo"
-          class="loadingLogo darkOnly"
-          data-test-image-url="/darkModeMark"
-          data-test-subj="alternativeLogo"
-          loading="eager"
-          src="/darkModeMark"
-        />
-        <img
-          alt="OpenSearch Dashboards logo"
-          class="loadingLogo lightOnly"
+          class="loadingLogo"
           data-test-image-url="/defaultModeMark"
           data-test-subj="alternativeLogo"
           loading="eager"
@@ -399,10 +355,7 @@ Array [
         data-error-message=""
       />
       <div
-        class="osdProgress darkOnly"
-      />
-      <div
-        class="osdProgress lightOnly"
+        class="osdProgress"
       />
     </div>
   </div>,
@@ -413,14 +366,7 @@ Array [
   >
     <img
       alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo darkOnly"
-      data-test-image-url="/darkModeMark"
-      data-test-subj="custom logo"
-      src="/darkModeMark"
-    />
-    <img
-      alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo lightOnly"
+      class="legacyBrowserErrorLogo"
       data-test-image-url="/defaultModeMark"
       data-test-subj="custom logo"
       src="/defaultModeMark"
@@ -497,6 +443,10 @@ Array [
     content="[object Object]/ui/favicons/browserconfig.xml"
     name="msapplication-config"
   />,
+  <meta
+    content="#ffffff"
+    name="theme-color"
+  />,
   null,
   <meta
     name="add-styles-here"
@@ -505,17 +455,11 @@ Array [
     name="add-scripts-here"
   />,
   null,
-  <meta
-    name="add-fonts-here"
-  />,
-  <script
-    src="[object Object]/startup.js"
-  />,
   <osd-csp
     data="{\\"strictCsp\\":true}"
   />,
   <osd-injected-metadata
-    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{\\"defaultUrl\\":\\"/defaultModeMark\\"},\\"loadingLogo\\":{},\\"title\\":\\"custom title\\"}}"
+    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"cyb3rhqVersion\\":\\"4.x.x\\",\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true,\\"cyb3rhqVersion\\":\\"\\"},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{\\"defaultUrl\\":\\"/defaultModeMark\\"},\\"loadingLogo\\":{},\\"title\\":\\"custom title\\"}}"
   />,
   <div
     class="osdWelcomeView"
@@ -532,15 +476,7 @@ Array [
       >
         <img
           alt="OpenSearch Dashboards logo"
-          class="loadingLogo darkOnly"
-          data-test-image-url="/defaultModeMark"
-          data-test-subj="alternativeLogo"
-          loading="eager"
-          src="/defaultModeMark"
-        />
-        <img
-          alt="OpenSearch Dashboards logo"
-          class="loadingLogo lightOnly"
+          class="loadingLogo"
           data-test-image-url="/defaultModeMark"
           data-test-subj="alternativeLogo"
           loading="eager"
@@ -552,10 +488,7 @@ Array [
         data-error-message=""
       />
       <div
-        class="osdProgress darkOnly"
-      />
-      <div
-        class="osdProgress lightOnly"
+        class="osdProgress"
       />
     </div>
   </div>,
@@ -566,14 +499,7 @@ Array [
   >
     <img
       alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo darkOnly"
-      data-test-image-url="/defaultModeMark"
-      data-test-subj="custom logo"
-      src="/defaultModeMark"
-    />
-    <img
-      alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo lightOnly"
+      class="legacyBrowserErrorLogo"
       data-test-image-url="/defaultModeMark"
       data-test-subj="custom logo"
       src="/defaultModeMark"
@@ -650,6 +576,10 @@ Array [
     content="[object Object]/ui/favicons/browserconfig.xml"
     name="msapplication-config"
   />,
+  <meta
+    content="#ffffff"
+    name="theme-color"
+  />,
   null,
   <meta
     name="add-styles-here"
@@ -658,17 +588,11 @@ Array [
     name="add-scripts-here"
   />,
   null,
-  <meta
-    name="add-fonts-here"
-  />,
-  <script
-    src="[object Object]/startup.js"
-  />,
   <osd-csp
     data="{\\"strictCsp\\":true}"
   />,
   <osd-injected-metadata
-    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{},\\"loadingLogo\\":{},\\"title\\":\\"custom title\\"}}"
+    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"cyb3rhqVersion\\":\\"4.x.x\\",\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true,\\"cyb3rhqVersion\\":\\"\\"},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{},\\"loadingLogo\\":{},\\"title\\":\\"custom title\\"}}"
   />,
   <div
     class="osdWelcomeView"
@@ -685,19 +609,11 @@ Array [
       >
         <img
           alt="OpenSearch Dashboards logo"
-          class="loadingLogo darkOnly"
-          data-test-image-url="/ui/logos/opensearch_spinner_on_dark.svg"
+          class="loadingLogo"
+          data-test-image-url="/ui/logos/spinner_on_light.gif"
           data-test-subj="defaultLogo"
           loading="eager"
-          src="/ui/logos/opensearch_spinner_on_dark.svg"
-        />
-        <img
-          alt="OpenSearch Dashboards logo"
-          class="loadingLogo lightOnly"
-          data-test-image-url="/ui/logos/opensearch_spinner_on_light.svg"
-          data-test-subj="defaultLogo"
-          loading="eager"
-          src="/ui/logos/opensearch_spinner_on_light.svg"
+          src="/ui/logos/spinner_on_light.gif"
         />
       </div>
       <div
@@ -713,17 +629,10 @@ Array [
   >
     <img
       alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo darkOnly"
-      data-test-image-url="/ui/logos/opensearch_mark_on_dark.svg"
+      class="legacyBrowserErrorLogo"
+      data-test-image-url="/ui/logos/cyb3rhq_mark_on_light.svg"
       data-test-subj="default logo"
-      src="/ui/logos/opensearch_mark_on_dark.svg"
-    />
-    <img
-      alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo lightOnly"
-      data-test-image-url="/ui/logos/opensearch_mark_on_light.svg"
-      data-test-subj="default logo"
-      src="/ui/logos/opensearch_mark_on_light.svg"
+      src="/ui/logos/cyb3rhq_mark_on_light.svg"
     />
     <h2
       class="osdWelcomeTitle"
@@ -797,6 +706,10 @@ Array [
     content="[object Object]/ui/favicons/browserconfig.xml"
     name="msapplication-config"
   />,
+  <meta
+    content="#ffffff"
+    name="theme-color"
+  />,
   null,
   <meta
     name="add-styles-here"
@@ -805,17 +718,11 @@ Array [
     name="add-scripts-here"
   />,
   null,
-  <meta
-    name="add-fonts-here"
-  />,
-  <script
-    src="[object Object]/startup.js"
-  />,
   <osd-csp
     data="{\\"strictCsp\\":true}"
   />,
   <osd-injected-metadata
-    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{\\"defaultUrl\\":\\"/defaultModeMark\\"},\\"loadingLogo\\":{\\"defaultUrl\\":\\"defaultModeLoadingLogo/\\"},\\"applicationTitle\\":\\"custom title\\"}}"
+    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"cyb3rhqVersion\\":\\"4.x.x\\",\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true,\\"cyb3rhqVersion\\":\\"\\"},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{\\"defaultUrl\\":\\"/defaultModeMark\\"},\\"loadingLogo\\":{\\"defaultUrl\\":\\"defaultModeLoadingLogo/\\"},\\"applicationTitle\\":\\"custom title\\"}}"
   />,
   <div
     class="osdWelcomeView"
@@ -832,15 +739,7 @@ Array [
       >
         <img
           alt="custom title logo"
-          class="loadingLogo darkOnly"
-          data-test-image-url="defaultModeLoadingLogo/"
-          data-test-subj="customLogo"
-          loading="eager"
-          src="defaultModeLoadingLogo/"
-        />
-        <img
-          alt="custom title logo"
-          class="loadingLogo lightOnly"
+          class="loadingLogo"
           data-test-image-url="defaultModeLoadingLogo/"
           data-test-subj="customLogo"
           loading="eager"
@@ -860,14 +759,7 @@ Array [
   >
     <img
       alt="custom title logo"
-      class="legacyBrowserErrorLogo darkOnly"
-      data-test-image-url="/defaultModeMark"
-      data-test-subj="custom logo"
-      src="/defaultModeMark"
-    />
-    <img
-      alt="custom title logo"
-      class="legacyBrowserErrorLogo lightOnly"
+      class="legacyBrowserErrorLogo"
       data-test-image-url="/defaultModeMark"
       data-test-subj="custom logo"
       src="/defaultModeMark"
@@ -944,6 +836,10 @@ Array [
     content="[object Object]/ui/favicons/browserconfig.xml"
     name="msapplication-config"
   />,
+  <meta
+    content="#ffffff"
+    name="theme-color"
+  />,
   null,
   <meta
     name="add-styles-here"
@@ -952,17 +848,11 @@ Array [
     name="add-scripts-here"
   />,
   null,
-  <meta
-    name="add-fonts-here"
-  />,
-  <script
-    src="[object Object]/startup.js"
-  />,
   <osd-csp
     data="{\\"strictCsp\\":true}"
   />,
   <osd-injected-metadata
-    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{\\"defaultUrl\\":\\"/defaultModeMark\\"},\\"loadingLogo\\":{},\\"applicationTitle\\":\\"custom title\\"}}"
+    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"cyb3rhqVersion\\":\\"4.x.x\\",\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true,\\"cyb3rhqVersion\\":\\"\\"},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{\\"defaultUrl\\":\\"/defaultModeMark\\"},\\"loadingLogo\\":{},\\"applicationTitle\\":\\"custom title\\"}}"
   />,
   <div
     class="osdWelcomeView"
@@ -979,15 +869,7 @@ Array [
       >
         <img
           alt="custom title logo"
-          class="loadingLogo darkOnly"
-          data-test-image-url="/defaultModeMark"
-          data-test-subj="alternativeLogo"
-          loading="eager"
-          src="/defaultModeMark"
-        />
-        <img
-          alt="custom title logo"
-          class="loadingLogo lightOnly"
+          class="loadingLogo"
           data-test-image-url="/defaultModeMark"
           data-test-subj="alternativeLogo"
           loading="eager"
@@ -999,10 +881,7 @@ Array [
         data-error-message=""
       />
       <div
-        class="osdProgress darkOnly"
-      />
-      <div
-        class="osdProgress lightOnly"
+        class="osdProgress"
       />
     </div>
   </div>,
@@ -1013,14 +892,7 @@ Array [
   >
     <img
       alt="custom title logo"
-      class="legacyBrowserErrorLogo darkOnly"
-      data-test-image-url="/defaultModeMark"
-      data-test-subj="custom logo"
-      src="/defaultModeMark"
-    />
-    <img
-      alt="custom title logo"
-      class="legacyBrowserErrorLogo lightOnly"
+      class="legacyBrowserErrorLogo"
       data-test-image-url="/defaultModeMark"
       data-test-subj="custom logo"
       src="/defaultModeMark"
@@ -1097,6 +969,10 @@ Array [
     content="[object Object]/ui/favicons/browserconfig.xml"
     name="msapplication-config"
   />,
+  <meta
+    content="#ffffff"
+    name="theme-color"
+  />,
   null,
   <meta
     name="add-styles-here"
@@ -1105,17 +981,11 @@ Array [
     name="add-scripts-here"
   />,
   null,
-  <meta
-    name="add-fonts-here"
-  />,
-  <script
-    src="[object Object]/startup.js"
-  />,
   <osd-csp
     data="{\\"strictCsp\\":true}"
   />,
   <osd-injected-metadata
-    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{},\\"loadingLogo\\":{},\\"applicationTitle\\":\\"custom title\\"}}"
+    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"cyb3rhqVersion\\":\\"4.x.x\\",\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true,\\"cyb3rhqVersion\\":\\"\\"},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{},\\"loadingLogo\\":{},\\"applicationTitle\\":\\"custom title\\"}}"
   />,
   <div
     class="osdWelcomeView"
@@ -1132,19 +1002,11 @@ Array [
       >
         <img
           alt="custom title logo"
-          class="loadingLogo darkOnly"
-          data-test-image-url="/ui/logos/opensearch_spinner_on_dark.svg"
+          class="loadingLogo"
+          data-test-image-url="/ui/logos/spinner_on_light.gif"
           data-test-subj="defaultLogo"
           loading="eager"
-          src="/ui/logos/opensearch_spinner_on_dark.svg"
-        />
-        <img
-          alt="custom title logo"
-          class="loadingLogo lightOnly"
-          data-test-image-url="/ui/logos/opensearch_spinner_on_light.svg"
-          data-test-subj="defaultLogo"
-          loading="eager"
-          src="/ui/logos/opensearch_spinner_on_light.svg"
+          src="/ui/logos/spinner_on_light.gif"
         />
       </div>
       <div
@@ -1160,17 +1022,10 @@ Array [
   >
     <img
       alt="custom title logo"
-      class="legacyBrowserErrorLogo darkOnly"
-      data-test-image-url="/ui/logos/opensearch_mark_on_dark.svg"
+      class="legacyBrowserErrorLogo"
+      data-test-image-url="/ui/logos/cyb3rhq_mark_on_light.svg"
       data-test-subj="default logo"
-      src="/ui/logos/opensearch_mark_on_dark.svg"
-    />
-    <img
-      alt="custom title logo"
-      class="legacyBrowserErrorLogo lightOnly"
-      data-test-image-url="/ui/logos/opensearch_mark_on_light.svg"
-      data-test-subj="default logo"
-      src="/ui/logos/opensearch_mark_on_light.svg"
+      src="/ui/logos/cyb3rhq_mark_on_light.svg"
     />
     <h2
       class="osdWelcomeTitle"
@@ -1244,6 +1099,10 @@ Array [
     content=""
     name="msapplication-config"
   />,
+  <meta
+    content="#ffffff"
+    name="theme-color"
+  />,
   null,
   <meta
     name="add-styles-here"
@@ -1252,17 +1111,11 @@ Array [
     name="add-scripts-here"
   />,
   null,
-  <meta
-    name="add-fonts-here"
-  />,
-  <script
-    src="[object Object]/startup.js"
-  />,
   <osd-csp
     data="{\\"strictCsp\\":true}"
   />,
   <osd-injected-metadata
-    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{},\\"loadingLogo\\":{},\\"faviconUrl\\":\\"/customFavicon\\",\\"title\\":\\"custom title\\"}}"
+    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"cyb3rhqVersion\\":\\"4.x.x\\",\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true,\\"cyb3rhqVersion\\":\\"\\"},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{},\\"loadingLogo\\":{},\\"faviconUrl\\":\\"/customFavicon\\",\\"title\\":\\"custom title\\"}}"
   />,
   <div
     class="osdWelcomeView"
@@ -1279,19 +1132,11 @@ Array [
       >
         <img
           alt="OpenSearch Dashboards logo"
-          class="loadingLogo darkOnly"
-          data-test-image-url="/ui/logos/opensearch_spinner_on_dark.svg"
+          class="loadingLogo"
+          data-test-image-url="/ui/logos/spinner_on_light.gif"
           data-test-subj="defaultLogo"
           loading="eager"
-          src="/ui/logos/opensearch_spinner_on_dark.svg"
-        />
-        <img
-          alt="OpenSearch Dashboards logo"
-          class="loadingLogo lightOnly"
-          data-test-image-url="/ui/logos/opensearch_spinner_on_light.svg"
-          data-test-subj="defaultLogo"
-          loading="eager"
-          src="/ui/logos/opensearch_spinner_on_light.svg"
+          src="/ui/logos/spinner_on_light.gif"
         />
       </div>
       <div
@@ -1307,17 +1152,10 @@ Array [
   >
     <img
       alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo darkOnly"
-      data-test-image-url="/ui/logos/opensearch_mark_on_dark.svg"
+      class="legacyBrowserErrorLogo"
+      data-test-image-url="/ui/logos/cyb3rhq_mark_on_light.svg"
       data-test-subj="default logo"
-      src="/ui/logos/opensearch_mark_on_dark.svg"
-    />
-    <img
-      alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo lightOnly"
-      data-test-image-url="/ui/logos/opensearch_mark_on_light.svg"
-      data-test-subj="default logo"
-      src="/ui/logos/opensearch_mark_on_light.svg"
+      src="/ui/logos/cyb3rhq_mark_on_light.svg"
     />
     <h2
       class="osdWelcomeTitle"
@@ -1391,6 +1229,10 @@ Array [
     content="[object Object]/ui/favicons/browserconfig.xml"
     name="msapplication-config"
   />,
+  <meta
+    content="#ffffff"
+    name="theme-color"
+  />,
   null,
   <meta
     name="add-styles-here"
@@ -1399,17 +1241,11 @@ Array [
     name="add-scripts-here"
   />,
   null,
-  <meta
-    name="add-fonts-here"
-  />,
-  <script
-    src="[object Object]/startup.js"
-  />,
   <osd-csp
     data="{\\"strictCsp\\":true}"
   />,
   <osd-injected-metadata
-    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{},\\"loadingLogo\\":{},\\"title\\":\\"custom title\\"}}"
+    data="{\\"version\\":\\"opensearchDashboardsVersion\\",\\"buildNumber\\":1,\\"cyb3rhqVersion\\":\\"4.x.x\\",\\"basePath\\":\\"\\",\\"serverBasePath\\":\\"\\",\\"env\\":{\\"packageInfo\\":{\\"version\\":\\"\\",\\"branch\\":\\"\\",\\"buildNum\\":1,\\"buildSha\\":\\"\\",\\"dist\\":true,\\"cyb3rhqVersion\\":\\"\\"},\\"mode\\":{\\"name\\":\\"production\\",\\"dev\\":true,\\"prod\\":false}},\\"anonymousStatusPage\\":false,\\"i18n\\":{\\"translationsUrl\\":\\"\\"},\\"csp\\":{\\"warnLegacyBrowsers\\":true},\\"uiPlugins\\":[],\\"legacyMetadata\\":{\\"uiSettings\\":{\\"defaults\\":{\\"legacyInjectedUiSettingDefaults\\":true},\\"user\\":{}}},\\"branding\\":{\\"darkMode\\":false,\\"logo\\":{},\\"mark\\":{},\\"loadingLogo\\":{},\\"title\\":\\"custom title\\"}}"
   />,
   <div
     class="osdWelcomeView"
@@ -1426,19 +1262,11 @@ Array [
       >
         <img
           alt="OpenSearch Dashboards logo"
-          class="loadingLogo darkOnly"
-          data-test-image-url="/ui/logos/opensearch_spinner_on_dark.svg"
+          class="loadingLogo"
+          data-test-image-url="/ui/logos/spinner_on_light.gif"
           data-test-subj="defaultLogo"
           loading="eager"
-          src="/ui/logos/opensearch_spinner_on_dark.svg"
-        />
-        <img
-          alt="OpenSearch Dashboards logo"
-          class="loadingLogo lightOnly"
-          data-test-image-url="/ui/logos/opensearch_spinner_on_light.svg"
-          data-test-subj="defaultLogo"
-          loading="eager"
-          src="/ui/logos/opensearch_spinner_on_light.svg"
+          src="/ui/logos/spinner_on_light.gif"
         />
       </div>
       <div
@@ -1454,17 +1282,10 @@ Array [
   >
     <img
       alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo darkOnly"
-      data-test-image-url="/ui/logos/opensearch_mark_on_dark.svg"
+      class="legacyBrowserErrorLogo"
+      data-test-image-url="/ui/logos/cyb3rhq_mark_on_light.svg"
       data-test-subj="default logo"
-      src="/ui/logos/opensearch_mark_on_dark.svg"
-    />
-    <img
-      alt="OpenSearch Dashboards logo"
-      class="legacyBrowserErrorLogo lightOnly"
-      data-test-image-url="/ui/logos/opensearch_mark_on_light.svg"
-      data-test-subj="default logo"
-      src="/ui/logos/opensearch_mark_on_light.svg"
+      src="/ui/logos/cyb3rhq_mark_on_light.svg"
     />
     <h2
       class="osdWelcomeTitle"

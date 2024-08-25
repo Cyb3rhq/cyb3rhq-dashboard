@@ -55,7 +55,6 @@ export enum WorkspaceFormErrorCode {
   PermissionSettingOwnerMissing,
   InvalidDataSource,
   DuplicateDataSource,
-  InvalidColor,
 }
 
 export interface WorkspaceFormError {
@@ -80,20 +79,10 @@ export interface WorkspaceFormProps {
   application: ApplicationStart;
   savedObjects: SavedObjectsStart;
   onSubmit?: (formData: WorkspaceFormSubmitData) => void;
-  defaultValues?: Partial<WorkspaceFormData>;
+  defaultValues?: WorkspaceFormData;
   operationType: WorkspaceOperationType;
   permissionEnabled?: boolean;
   detailTab?: DetailTab;
   dataSourceManagement?: DataSourceManagementPluginSetup;
   availableUseCases: WorkspaceUseCase[];
-  detailTitle?: string;
-}
-
-export interface WorkspaceDetailedFormProps extends WorkspaceFormProps {
-  defaultValues?: WorkspaceFormData;
-}
-
-export interface AvailableUseCaseItem
-  extends Pick<WorkspaceUseCase, 'id' | 'title' | 'features' | 'description' | 'systematic'> {
-  disabled?: boolean;
 }

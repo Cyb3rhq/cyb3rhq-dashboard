@@ -1721,7 +1721,6 @@ exports[`Header help menu hides survey link 1`] = `
                   >
                     <EuiButtonContent
                       className="euiButtonEmpty__content"
-                      iconGap="m"
                       iconSide="left"
                       iconSize="m"
                       textProps={
@@ -1810,7 +1809,7 @@ exports[`Header help menu hides survey link 1`] = `
                       >
                         <a
                           class="euiButtonEmpty euiButtonEmpty--primary euiButtonEmpty--xSmall euiButtonEmpty--flushLeft"
-                          href="/doclink"
+                          href="https://documentation.wazuh.com/4.10/"
                           rel="noopener noreferrer"
                           target="_blank"
                         >
@@ -1820,7 +1819,7 @@ exports[`Header help menu hides survey link 1`] = `
                             <span
                               class="euiButtonEmpty__text"
                             >
-                              Documentation
+                              Cyb3rhq documentation
                             </span>
                           </span>
                         </a>
@@ -1837,7 +1836,7 @@ exports[`Header help menu hides survey link 1`] = `
                             <span
                               class="euiButtonEmpty__text"
                             >
-                              Community
+                              Ask Cyb3rhq
                             </span>
                           </span>
                         </button>
@@ -1850,7 +1849,7 @@ exports[`Header help menu hides survey link 1`] = `
                         />
                         <a
                           class="euiButtonEmpty euiButtonEmpty--primary euiButtonEmpty--xSmall euiButtonEmpty--flushLeft"
-                          href="https://github.com/opensearch-project/OpenSearch-Dashboards/issues/new/choose"
+                          href="https://github.com/cyb3rhq/cyb3rhq/issues/new/choose"
                           rel="noopener noreferrer"
                           target="_blank"
                         >
@@ -2014,19 +2013,19 @@ exports[`Header help menu hides survey link 1`] = `
                         >
                           <EuiButtonEmpty
                             flush="left"
-                            href="/doclink"
+                            href="https://documentation.wazuh.com/4.10/"
+                            iconType="/ui/logos/icon_light.svg"
                             size="xs"
                             target="_blank"
                           >
                             <a
                               className="euiButtonEmpty euiButtonEmpty--primary euiButtonEmpty--xSmall euiButtonEmpty--flushLeft"
-                              href="/doclink"
+                              href="https://documentation.wazuh.com/4.10/"
                               rel="noopener noreferrer"
                               target="_blank"
                             >
                               <EuiButtonContent
                                 className="euiButtonEmpty__content"
-                                iconGap="m"
                                 iconSide="left"
                                 iconSize="s"
                                 textProps={
@@ -2042,11 +2041,11 @@ exports[`Header help menu hides survey link 1`] = `
                                     className="euiButtonEmpty__text"
                                   >
                                     <FormattedMessage
-                                      defaultMessage="Documentation"
+                                      defaultMessage="Cyb3rhq documentation"
                                       id="core.ui.chrome.headerGlobalNav.helpMenuOpenSearchDashboardsDocumentationTitle"
                                       values={Object {}}
                                     >
-                                      Documentation
+                                      Cyb3rhq documentation
                                     </FormattedMessage>
                                   </span>
                                 </span>
@@ -2073,7 +2072,6 @@ exports[`Header help menu hides survey link 1`] = `
                             >
                               <EuiButtonContent
                                 className="euiButtonEmpty__content"
-                                iconGap="m"
                                 iconSide="left"
                                 iconSize="s"
                                 textProps={
@@ -2089,11 +2087,11 @@ exports[`Header help menu hides survey link 1`] = `
                                     className="euiButtonEmpty__text"
                                   >
                                     <FormattedMessage
-                                      defaultMessage="Community"
+                                      defaultMessage="Ask Cyb3rhq"
                                       id="core.ui.chrome.headerGlobalNav.helpMenuAskOpenSearchTitle"
                                       values={Object {}}
                                     >
-                                      Community
+                                      Ask Cyb3rhq
                                     </FormattedMessage>
                                   </span>
                                 </span>
@@ -2116,20 +2114,19 @@ exports[`Header help menu hides survey link 1`] = `
                           </EuiSpacer>
                           <EuiButtonEmpty
                             flush="left"
-                            href="https://github.com/opensearch-project/OpenSearch-Dashboards/issues/new/choose"
+                            href="https://github.com/cyb3rhq/cyb3rhq/issues/new/choose"
                             iconType="logoGithub"
                             size="xs"
                             target="_blank"
                           >
                             <a
                               className="euiButtonEmpty euiButtonEmpty--primary euiButtonEmpty--xSmall euiButtonEmpty--flushLeft"
-                              href="https://github.com/opensearch-project/OpenSearch-Dashboards/issues/new/choose"
+                              href="https://github.com/cyb3rhq/cyb3rhq/issues/new/choose"
                               rel="noopener noreferrer"
                               target="_blank"
                             >
                               <EuiButtonContent
                                 className="euiButtonEmpty__content"
-                                iconGap="m"
                                 iconSide="left"
                                 iconSize="s"
                                 iconType="logoGithub"
@@ -3906,7 +3903,6 @@ exports[`Header help menu renders survey link 1`] = `
                   >
                     <EuiButtonContent
                       className="euiButtonEmpty__content"
-                      iconGap="m"
                       iconSide="left"
                       iconSize="m"
                       textProps={
@@ -3995,7 +3991,7 @@ exports[`Header help menu renders survey link 1`] = `
                       >
                         <a
                           class="euiButtonEmpty euiButtonEmpty--primary euiButtonEmpty--xSmall euiButtonEmpty--flushLeft"
-                          href="/doclink"
+                          href="https://documentation.wazuh.com/4.10/"
                           rel="noopener noreferrer"
                           target="_blank"
                         >
@@ -4005,7 +4001,7 @@ exports[`Header help menu renders survey link 1`] = `
                             <span
                               class="euiButtonEmpty__text"
                             >
-                              Documentation
+                              Cyb3rhq documentation
                             </span>
                           </span>
                         </a>
@@ -4022,7 +4018,7 @@ exports[`Header help menu renders survey link 1`] = `
                             <span
                               class="euiButtonEmpty__text"
                             >
-                              Community
+                              Ask Cyb3rhq
                             </span>
                           </span>
                         </button>
@@ -4055,7 +4051,7 @@ exports[`Header help menu renders survey link 1`] = `
                         />
                         <a
                           class="euiButtonEmpty euiButtonEmpty--primary euiButtonEmpty--xSmall euiButtonEmpty--flushLeft"
-                          href="https://github.com/opensearch-project/OpenSearch-Dashboards/issues/new/choose"
+                          href="https://github.com/cyb3rhq/cyb3rhq/issues/new/choose"
                           rel="noopener noreferrer"
                           target="_blank"
                         >
@@ -4219,19 +4215,19 @@ exports[`Header help menu renders survey link 1`] = `
                         >
                           <EuiButtonEmpty
                             flush="left"
-                            href="/doclink"
+                            href="https://documentation.wazuh.com/4.10/"
+                            iconType="/ui/logos/icon_light.svg"
                             size="xs"
                             target="_blank"
                           >
                             <a
                               className="euiButtonEmpty euiButtonEmpty--primary euiButtonEmpty--xSmall euiButtonEmpty--flushLeft"
-                              href="/doclink"
+                              href="https://documentation.wazuh.com/4.10/"
                               rel="noopener noreferrer"
                               target="_blank"
                             >
                               <EuiButtonContent
                                 className="euiButtonEmpty__content"
-                                iconGap="m"
                                 iconSide="left"
                                 iconSize="s"
                                 textProps={
@@ -4247,11 +4243,11 @@ exports[`Header help menu renders survey link 1`] = `
                                     className="euiButtonEmpty__text"
                                   >
                                     <FormattedMessage
-                                      defaultMessage="Documentation"
+                                      defaultMessage="Cyb3rhq documentation"
                                       id="core.ui.chrome.headerGlobalNav.helpMenuOpenSearchDashboardsDocumentationTitle"
                                       values={Object {}}
                                     >
-                                      Documentation
+                                      Cyb3rhq documentation
                                     </FormattedMessage>
                                   </span>
                                 </span>
@@ -4278,7 +4274,6 @@ exports[`Header help menu renders survey link 1`] = `
                             >
                               <EuiButtonContent
                                 className="euiButtonEmpty__content"
-                                iconGap="m"
                                 iconSide="left"
                                 iconSize="s"
                                 textProps={
@@ -4294,11 +4289,11 @@ exports[`Header help menu renders survey link 1`] = `
                                     className="euiButtonEmpty__text"
                                   >
                                     <FormattedMessage
-                                      defaultMessage="Community"
+                                      defaultMessage="Ask Cyb3rhq"
                                       id="core.ui.chrome.headerGlobalNav.helpMenuAskOpenSearchTitle"
                                       values={Object {}}
                                     >
-                                      Community
+                                      Ask Cyb3rhq
                                     </FormattedMessage>
                                   </span>
                                 </span>
@@ -4327,7 +4322,6 @@ exports[`Header help menu renders survey link 1`] = `
                               >
                                 <EuiButtonContent
                                   className="euiButtonEmpty__content"
-                                  iconGap="m"
                                   iconSide="left"
                                   iconSize="s"
                                   textProps={
@@ -4371,20 +4365,19 @@ exports[`Header help menu renders survey link 1`] = `
                           </EuiSpacer>
                           <EuiButtonEmpty
                             flush="left"
-                            href="https://github.com/opensearch-project/OpenSearch-Dashboards/issues/new/choose"
+                            href="https://github.com/cyb3rhq/cyb3rhq/issues/new/choose"
                             iconType="logoGithub"
                             size="xs"
                             target="_blank"
                           >
                             <a
                               className="euiButtonEmpty euiButtonEmpty--primary euiButtonEmpty--xSmall euiButtonEmpty--flushLeft"
-                              href="https://github.com/opensearch-project/OpenSearch-Dashboards/issues/new/choose"
+                              href="https://github.com/cyb3rhq/cyb3rhq/issues/new/choose"
                               rel="noopener noreferrer"
                               target="_blank"
                             >
                               <EuiButtonContent
                                 className="euiButtonEmpty__content"
-                                iconGap="m"
                                 iconSide="left"
                                 iconSize="s"
                                 iconType="logoGithub"

@@ -6,6 +6,7 @@
 import {
   EuiFlyout,
   EuiFlyoutHeader,
+  EuiTitle,
   EuiFlyoutBody,
   EuiFlyoutFooter,
   EuiCallOut,
@@ -275,14 +276,14 @@ export const ImportFlyout = ({ close, refresh }: ImportFlyoutProps) => {
   return (
     <EuiFlyout onClose={close} size="s">
       <EuiFlyoutHeader hasBorder>
-        <EuiText size="s">
+        <EuiTitle size="m">
           <h2>
             <FormattedMessage
               id="console.ImportFlyout.importQueriesTitle"
               defaultMessage="Import queries"
             />
           </h2>
-        </EuiText>
+        </EuiTitle>
       </EuiFlyoutHeader>
 
       <EuiFlyoutBody>

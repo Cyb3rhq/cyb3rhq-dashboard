@@ -21,7 +21,8 @@
       "GET"
     ],
     "patterns": [
-      "{indices}/_doc/{id}"
+      "{indices}/_doc/{id}",
+      "{indices}/{type}/{id}"
     ],
     "documentation": "https://opensearch.org/docs/latest/api-reference/document-apis/get-documents/"
   }

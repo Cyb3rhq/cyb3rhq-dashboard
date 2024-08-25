@@ -50,8 +50,6 @@ const urlPartsSchema = () =>
       pathname: Joi.string().regex(/^\//, 'start with a /'),
       hash: Joi.string().regex(/^\//, 'start with a /'),
       certificateAuthorities: Joi.array().items(Joi.binary()).optional(),
-      fullURL: Joi.object().type(URL),
-      serverUrl: Joi.string(),
     })
     .default();
 

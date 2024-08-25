@@ -29,8 +29,6 @@ This guide applies to all development within the OpenSearch Dashboards project a
   - [Before submit pull request](#before-submit-a-pull-request)
   - [Best practices for pull request](#best-practices-for-pull-request)
 
-> To view these docs and all the readme's in this repository as webpages, visit https://opensearch-project.github.io/OpenSearch-Dashboards/docs/index.html#/
-
 ## Getting started guide
 
 This guide is for any developer who wants a running local development environment where you can make, see, and test changes. It's opinionated to get you running as quickly and easily as possible, but it's not the only way to set up a development environment.

@@ -158,7 +158,7 @@ export const AccelerationTable = ({
       <>
         <EuiFlexGroup direction="row" alignItems="center">
           <EuiFlexItem>
-            <EuiText size="s">
+            <EuiText>
               <h2 className="panel-title">{ACC_PANEL_TITLE}</h2>
               {ACC_PANEL_DESC}
             </EuiText>

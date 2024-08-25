@@ -209,36 +209,27 @@ Object {
         <div
           class="euiPopover__anchor"
         >
-          <div
-            class="dataSourceMenuPopoverButton"
-            data-label="Data source"
+          <button
+            aria-label="dataSourceSelectableButton"
+            class="euiButtonEmpty euiButtonEmpty--primary euiButtonEmpty--small dataSourceComponentButtonTitle"
+            data-test-subj="dataSourceSelectableButton"
+            type="button"
           >
-            <button
-              aria-label="dataSourceSelectableButton"
-              class="euiButton euiButton--text euiButton--small dataSourceMenuPopoverButtonLabel"
-              data-test-subj="dataSourceSelectableButton"
-              type="button"
+            <span
+              class="euiButtonContent euiButtonEmpty__content"
             >
               <span
-                class="euiButtonContent euiButton__content"
+                class="euiButtonContent__icon"
+                color="inherit"
+                data-euiicon-type="database"
+              />
+              <span
+                class="euiButtonEmpty__text"
               >
-                <span
-                  class="euiButtonContent__icon"
-                  color="inherit"
-                  data-euiicon-type="database"
-                />
-                <span
-                  class="euiButton__text"
-                >
-                  Local cluster
-                </span>
+                Local cluster
               </span>
-            </button>
-            <span
-              color="text"
-              data-euiicon-type="arrowDown"
-            />
-          </div>
+            </span>
+          </button>
         </div>
       </div>
     </div>
@@ -389,36 +380,27 @@ Object {
       <div
         class="euiPopover__anchor"
       >
-        <div
-          class="dataSourceMenuPopoverButton"
-          data-label="Data source"
+        <button
+          aria-label="dataSourceSelectableButton"
+          class="euiButtonEmpty euiButtonEmpty--primary euiButtonEmpty--small dataSourceComponentButtonTitle"
+          data-test-subj="dataSourceSelectableButton"
+          type="button"
         >
-          <button
-            aria-label="dataSourceSelectableButton"
-            class="euiButton euiButton--text euiButton--small dataSourceMenuPopoverButtonLabel"
-            data-test-subj="dataSourceSelectableButton"
-            type="button"
+          <span
+            class="euiButtonContent euiButtonEmpty__content"
           >
             <span
-              class="euiButtonContent euiButton__content"
+              class="euiButtonContent__icon"
+              color="inherit"
+              data-euiicon-type="database"
+            />
+            <span
+              class="euiButtonEmpty__text"
             >
-              <span
-                class="euiButtonContent__icon"
-                color="inherit"
-                data-euiicon-type="database"
-              />
-              <span
-                class="euiButton__text"
-              >
-                Local cluster
-              </span>
+              Local cluster
             </span>
-          </button>
-          <span
-            color="text"
-            data-euiicon-type="arrowDown"
-          />
-        </div>
+          </span>
+        </button>
       </div>
     </div>
   </div>,

@@ -49,7 +49,6 @@ export interface PanelHeaderProps {
   title?: string;
   isViewMode: boolean;
   hidePanelTitle: boolean;
-  hidePanelAction: boolean;
   getActionContextMenuPanel: () => Promise<EuiContextMenuPanelDescriptor[]>;
   closeContextMenu: boolean;
   badges: Array<Action<EmbeddableContext>>;
@@ -130,7 +129,6 @@ export function PanelHeader({
   title,
   isViewMode,
   hidePanelTitle,
-  hidePanelAction,
   getActionContextMenuPanel,
   closeContextMenu,
   badges,
@@ -168,14 +166,12 @@ export function PanelHeader({
   if (!showPanelBar) {
     return (
       <div className={classes}>
-        {!hidePanelAction && (
-          <PanelOptionsMenu
-            getActionContextMenuPanel={getActionContextMenuPanel}
-            isViewMode={isViewMode}
-            closeContextMenu={closeContextMenu}
-            title={title}
-          />
-        )}
+        <PanelOptionsMenu
+          getActionContextMenuPanel={getActionContextMenuPanel}
+          isViewMode={isViewMode}
+          closeContextMenu={closeContextMenu}
+          title={title}
+        />
         <EuiScreenReaderOnly>{getAriaLabel()}</EuiScreenReaderOnly>
       </div>
     );
@@ -214,14 +210,12 @@ export function PanelHeader({
         {renderBadges(badges, embeddable)}
       </h2>
       {renderNotifications(notifications, embeddable)}
-      {!hidePanelAction && (
-        <PanelOptionsMenu
-          isViewMode={isViewMode}
-          getActionContextMenuPanel={getActionContextMenuPanel}
-          closeContextMenu={closeContextMenu}
-          title={title}
-        />
-      )}
+      <PanelOptionsMenu
+        isViewMode={isViewMode}
+        getActionContextMenuPanel={getActionContextMenuPanel}
+        closeContextMenu={closeContextMenu}
+        title={title}
+      />
     </figcaption>
   );
 }

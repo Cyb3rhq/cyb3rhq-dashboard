@@ -28,6 +28,7 @@
  * under the License.
  */
 
+import Url from 'url';
 import Https from 'https';
 import Axios, { AxiosResponse } from 'axios';
 
@@ -92,7 +93,7 @@ export class OsdClientRequester {
   constructor(private readonly log: ToolingLog, options: Options) {
     this.url = options.url;
     this.httpsAgent =
-      new URL(options.url).protocol === 'https:'
+      Url.parse(options.url).protocol === 'https:'
         ? new Https.Agent({
             ca: options.certificateAuthorities,
           })
@@ -104,11 +105,11 @@ export class OsdClientRequester {
   }
 
   public resolveUrl(relativeUrl: string = '/') {
-    return new URL(relativeUrl, this.pickUrl()).toString();
+    return Url.resolve(this.pickUrl(), relativeUrl);
   }
 
   async request<T>(options: ReqOptions): Promise<AxiosResponse<T>> {
-    const url = new URL(options.path, this.pickUrl()).toString();
+    const url = Url.resolve(this.pickUrl(), options.path);
     const description = options.description || `${options.method} ${url}`;
     let attempt = 0;
     const maxAttempts = options.retries ?? DEFAULT_MAX_ATTEMPTS;

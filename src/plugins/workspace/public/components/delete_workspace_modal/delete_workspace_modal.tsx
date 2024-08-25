@@ -23,53 +23,49 @@ import { WorkspaceClient } from '../../workspace_client';
 
 export interface DeleteWorkspaceModalProps {
   onClose: () => void;
-  selectedWorkspaces?: WorkspaceAttribute[];
+  selectedWorkspace?: WorkspaceAttribute | null;
   onDeleteSuccess?: () => void;
 }
 
 export function DeleteWorkspaceModal(props: DeleteWorkspaceModalProps) {
   const [value, setValue] = useState('');
-  const { onClose, selectedWorkspaces, onDeleteSuccess } = props;
+  const { onClose, selectedWorkspace, onDeleteSuccess } = props;
   const {
     services: { notifications, workspaceClient },
   } = useOpenSearchDashboards<{ workspaceClient: WorkspaceClient }>();
 
-  const deleteWorkspaces = async () => {
-    if (selectedWorkspaces && selectedWorkspaces.length > 0) {
-      selectedWorkspaces.forEach(async (selectedWorkspace) => {
-        if (selectedWorkspace?.id) {
-          let result;
-          try {
-            result = await workspaceClient.delete(selectedWorkspace?.id);
-          } catch (error) {
-            notifications?.toasts.addDanger({
-              title: i18n.translate('workspace.delete.failed', {
-                defaultMessage: 'Failed to delete workspace',
-              }),
-              text: error instanceof Error ? error.message : JSON.stringify(error),
-            });
-            return onClose();
-          }
-          if (result?.success) {
-            notifications?.toasts.addSuccess({
-              title: i18n.translate('workspace.delete.success', {
-                defaultMessage: 'Delete workspace successfully',
-              }),
-            });
-            onClose();
-            if (onDeleteSuccess) {
-              onDeleteSuccess();
-            }
-          } else {
-            notifications?.toasts.addDanger({
-              title: i18n.translate('workspace.delete.failed', {
-                defaultMessage: 'Failed to delete workspace',
-              }),
-              text: result?.error,
-            });
-          }
+  const deleteWorkspace = async () => {
+    if (selectedWorkspace?.id) {
+      let result;
+      try {
+        result = await workspaceClient.delete(selectedWorkspace?.id);
+      } catch (error) {
+        notifications?.toasts.addDanger({
+          title: i18n.translate('workspace.delete.failed', {
+            defaultMessage: 'Failed to delete workspace',
+          }),
+          text: error instanceof Error ? error.message : JSON.stringify(error),
+        });
+        return onClose();
+      }
+      if (result?.success) {
+        notifications?.toasts.addSuccess({
+          title: i18n.translate('workspace.delete.success', {
+            defaultMessage: 'Delete workspace successfully',
+          }),
+        });
+        onClose();
+        if (onDeleteSuccess) {
+          onDeleteSuccess();
         }
-      });
+      } else {
+        notifications?.toasts.addDanger({
+          title: i18n.translate('workspace.delete.failed', {
+            defaultMessage: 'Failed to delete workspace',
+          }),
+          text: result?.error,
+        });
+      }
     }
   };
 
@@ -80,31 +76,23 @@ export function DeleteWorkspaceModal(props: DeleteWorkspaceModalProps) {
       </EuiModalHeader>
 
       <EuiModalBody data-test-subj="delete-workspace-modal-body">
-        {selectedWorkspaces && selectedWorkspaces.length > 0 ? (
-          <div style={{ lineHeight: 1.5 }}>
-            <p>
-              The following workspace will be permanently deleted. This action cannot be undone.
-            </p>
-            <ul style={{ listStyleType: 'disc', listStylePosition: 'inside' }}>
-              {selectedWorkspaces.map((selectedWorkspace) => {
-                return selectedWorkspace?.name ? (
-                  <li key={selectedWorkspace.id}>{selectedWorkspace.name}</li>
-                ) : null;
-              })}
-            </ul>
-            <EuiSpacer />
-            <EuiText color="subdued">
-              To confirm your action, type <b>delete</b>.
-            </EuiText>
-            <EuiCompressedFieldText
-              placeholder="delete"
-              fullWidth
-              value={value}
-              data-test-subj="delete-workspace-modal-input"
-              onChange={(e) => setValue(e.target.value)}
-            />
-          </div>
-        ) : null}
+        <div style={{ lineHeight: 1.5 }}>
+          <p>The following workspace will be permanently deleted. This action cannot be undone.</p>
+          <ul style={{ listStyleType: 'disc', listStylePosition: 'inside' }}>
+            {selectedWorkspace?.name ? <li>{selectedWorkspace.name}</li> : null}
+          </ul>
+          <EuiSpacer />
+          <EuiText color="subdued">
+            To confirm your action, type <b>delete</b>.
+          </EuiText>
+          <EuiCompressedFieldText
+            placeholder="delete"
+            fullWidth
+            value={value}
+            data-test-subj="delete-workspace-modal-input"
+            onChange={(e) => setValue(e.target.value)}
+          />
+        </div>
       </EuiModalBody>
 
       <EuiModalFooter>
@@ -116,7 +104,7 @@ export function DeleteWorkspaceModal(props: DeleteWorkspaceModalProps) {
         </EuiSmallButtonEmpty>
         <EuiSmallButton
           data-test-subj="delete-workspace-modal-confirm"
-          onClick={deleteWorkspaces}
+          onClick={deleteWorkspace}
           fill
           color="danger"
           disabled={value !== 'delete'}

@@ -38,7 +38,7 @@ import { InjectedMetadataSetup } from '../injected_metadata';
 import { FatalErrorsScreen } from './fatal_errors_screen';
 import { FatalErrorInfo, getErrorInfo } from './get_error_info';
 
-export interface Deps {
+interface Deps {
   i18n: I18nStart;
   injectedMetadata: InjectedMetadataSetup;
 }

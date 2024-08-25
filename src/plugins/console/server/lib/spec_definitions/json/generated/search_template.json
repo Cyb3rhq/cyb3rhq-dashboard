@@ -32,7 +32,8 @@
     ],
     "patterns": [
       "_search/template",
-      "{indices}/_search/template"
+      "{indices}/_search/template",
+      "{indices}/{type}/_search/template"
     ],
     "documentation": "https://opensearch.org/docs/latest/search-plugins/search-template/"
   }

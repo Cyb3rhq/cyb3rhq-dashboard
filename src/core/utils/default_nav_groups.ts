@@ -12,7 +12,7 @@ const defaultNavGroups = {
   dataAdministration: {
     id: 'dataAdministration',
     title: i18n.translate('core.ui.group.dataAdministration.title', {
-      defaultMessage: 'Data administration',
+      defaultMessage: 'data administration',
     }),
     description: i18n.translate('core.ui.group.dataAdministration.description', {
       defaultMessage: 'Apply policies or security on your data.',
@@ -23,7 +23,7 @@ const defaultNavGroups = {
   settingsAndSetup: {
     id: 'settingsAndSetup',
     title: i18n.translate('core.ui.group.settingsAndSetup.title', {
-      defaultMessage: 'Settings and setup',
+      defaultMessage: 'settings and setup',
     }),
     description: i18n.translate('core.ui.group.settingsAndSetup.description', {
       defaultMessage: 'Set up your cluster with index patterns.',
@@ -34,12 +34,13 @@ const defaultNavGroups = {
   all: {
     id: ALL_USE_CASE_ID,
     title: i18n.translate('core.ui.group.all.title', {
-      defaultMessage: 'Analytics (All)',
+      defaultMessage: 'All use case',
     }),
     description: i18n.translate('core.ui.group.all.description', {
       defaultMessage: 'This is a use case contains all the features.',
     }),
     order: 3000,
+    type: NavGroupType.SYSTEM,
   },
   observability: {
     id: 'observability',
@@ -63,16 +64,16 @@ const defaultNavGroups = {
     }),
     order: 5000,
   },
-  essentials: {
+  analytics: {
     id: 'analytics',
-    title: i18n.translate('core.ui.group.essential.title', {
-      defaultMessage: 'Essentials',
+    title: i18n.translate('core.ui.group.analytics.title', {
+      defaultMessage: 'Analytics',
     }),
-    description: i18n.translate('core.ui.group.essential.description', {
+    description: i18n.translate('core.ui.group.analytics.description', {
       defaultMessage:
         'Analyze data to derive insights, identify patterns and trends, and make data-driven decisions.',
     }),
-    order: 7000,
+    order: 6000,
   },
   search: {
     id: 'search',
@@ -83,7 +84,7 @@ const defaultNavGroups = {
       defaultMessage:
         "Quickly find and explore relevant information across your organization's data sources.",
     }),
-    order: 6000,
+    order: 7000,
   },
 } as const;
 

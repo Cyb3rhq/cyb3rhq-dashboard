@@ -1,0 +1,230 @@
+run-name: Build ${{ inputs.system }} cyb3rhq-dashboard on ${{ inputs.architecture }} ${{ inputs.is_stage && '- is stage' || '' }} ${{ inputs.checksum && '- checksum' || '' }} ${{ inputs.debug && '- debug' || '' }} ${{ inputs.id }}
+name: Build Cyb3rhq dashboard with plugins
+
+on:
+  workflow_dispatch:
+    inputs:
+      system:
+        type: choice
+        description: 'Package OS'
+        required: true
+        options:
+          - deb
+          - rpm
+        default: 'deb'
+      architecture:
+        type: choice
+        description: 'Package architecture'
+        required: true
+        options:
+          - amd64
+          - x86_64
+        default: amd64
+      revision:
+        type: string
+        description: 'Package revision'
+        required: true
+        default: '0'
+      reference_security_plugins:
+        type: string
+        description: 'Branch/tag/commit of the cyb3rhq-security-dashboards-plugin repository to build the security plugin'
+        required: true
+        default: 'master'
+      reference_cyb3rhq_plugins:
+        type: string
+        description: 'Branch/tag/commit of the cyb3rhq-dashboard-plugins repository to build the main plugins'
+        required: true
+        default: 'master'
+      is_stage:
+        type: boolean
+        description: 'Set production nomenclature'
+        required: true
+        default: false
+      checksum:
+        type: boolean
+        description: 'Generate package checksum'
+        required: true
+        default: false
+      id:
+        description: 'ID used to identify the workflow uniquely.'
+        type: string
+        required: false
+
+  workflow_call:
+    inputs:
+      system:
+        type: string
+        required: true
+        default: 'deb'
+      architecture:
+        type: string
+        required: true
+        default: amd64
+      revision:
+        type: string
+        required: true
+        default: '0'
+      reference_security_plugins:
+        type: string
+        required: true
+        default: 'master'
+      reference_cyb3rhq_plugins:
+        type: string
+        required: true
+        default: 'master'
+      is_stage:
+        type: boolean
+        required: true
+        default: false
+      checksum:
+        type: boolean
+        required: true
+        default: false
+      id:
+        type: string
+        required: false
+
+jobs:
+  validate-inputs:
+    runs-on: ubuntu-latest
+    name: Validate inputs
+    steps:
+      - name: Validate inputs
+        run: |
+          if [ "${{ inputs.architecture }}" = "amd64" ] && [ "${{ inputs.system }}" = "rpm" ]; then
+            echo "Invalid combination of architecture and system"
+            exit 1
+          fi
+          if [ "${{ inputs.architecture }}" = "x86_64" ] && [ "${{ inputs.system }}" = "deb" ]; then
+            echo "Invalid combination of architecture and system"
+            exit 1
+          fi
+
+  build-base:
+    needs: [validate-inputs]
+    name: Build dashboard
+    uses: cyb3rhq/cyb3rhq-dashboard/.github/workflows/build_base.yml@4.10.0
+    with:
+      CHECKOUT_TO: ${{ github.head_ref || github.ref_name }}
+
+  build-main-plugins:
+    needs: [validate-inputs]
+    name: Build plugins
+    uses: cyb3rhq/cyb3rhq-dashboard-plugins/.github/workflows/manual-build.yml@4.10.0
+    with:
+      reference: ${{ inputs.reference_cyb3rhq_plugins }}
+
+  build-security-plugin:
+    needs: [validate-inputs]
+    name: Build security plugin
+    uses: cyb3rhq/cyb3rhq-security-dashboards-plugin/.github/workflows/manual-build.yml@4.10.0
+    with:
+      reference: ${{ inputs.reference_security_plugins }}
+
+  build-and-test-package:
+    needs: [build-main-plugins, build-base, build-security-plugin]
+    runs-on: ubuntu-latest
+    name: Generate packages
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Setup variables
+        run: |
+          echo "CURRENT_DIR=$(pwd -P)" >> $GITHUB_ENV
+          echo "VERSION=$(tail -c +2 VERSION)" >> $GITHUB_ENV
+          echo "REVISION=$(yarn --silent wzd-revision)" >> $GITHUB_ENV
+          echo "COMMIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          if [ "${{ inputs.is_stage }}" = "true" ]; then
+            echo "PRODUCTION=--production" >> $GITHUB_ENV
+          fi
+
+      - name: Setup packages names
+        run: |
+          echo "CYB3RHQ_DASHBOARD_SLIM=cyb3rhq-dashboard_${{ env.VERSION }}-${{ env.REVISION }}_x64.tar.gz" >> $GITHUB_ENV
+          echo "CYB3RHQ_SECURITY_PLUGIN=cyb3rhq-security-dashboards-plugin_${{ env.VERSION }}-${{ env.REVISION }}_${{ inputs.reference_security_plugins }}.zip" >> $GITHUB_ENV
+          echo "CYB3RHQ_PLUGINS=cyb3rhq-dashboard-plugins_${{ env.VERSION }}-${{ env.REVISION }}_${{ inputs.reference_cyb3rhq_plugins }}.zip" >> $GITHUB_ENV
+          if [ "${{ inputs.system }}" = "deb" ]; then
+            if [ "${{ inputs.is_stage }}" = "true" ]; then
+              echo "PACKAGE_NAME=cyb3rhq-dashboard_${{ env.VERSION }}-${{ inputs.revision }}_${{ inputs.architecture }}.deb" >> $GITHUB_ENV
+            else
+              echo "PACKAGE_NAME=cyb3rhq-dashboard_${{ env.VERSION }}-${{ inputs.revision }}_${{ inputs.architecture }}_${{ env.COMMIT_SHA}}.deb" >> $GITHUB_ENV
+            fi
+          else
+            if [ "${{ inputs.is_stage }}" = "true" ]; then
+              echo "PACKAGE_NAME=cyb3rhq-dashboard-${{ env.VERSION }}-${{ inputs.revision }}.${{ inputs.architecture }}.rpm" >> $GITHUB_ENV
+            else
+              echo "PACKAGE_NAME=cyb3rhq-dashboard_${{ env.VERSION }}-${{ inputs.revision }}_${{ inputs.architecture }}_${{ env.COMMIT_SHA}}.rpm" >> $GITHUB_ENV
+            fi
+          fi
+
+      - name: Download dashboard artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.CYB3RHQ_DASHBOARD_SLIM }}
+          path: ${{ env.CURRENT_DIR }}/artifacts/dashboard
+
+      - name: Download security plugin artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.CYB3RHQ_SECURITY_PLUGIN }}
+          path: ${{ env.CURRENT_DIR }}/artifacts/security-plugin
+
+      - name: Download plugins artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ env.CYB3RHQ_PLUGINS }}
+          path: ${{ env.CURRENT_DIR }}/artifacts/plugins
+
+      - name: Zip plugins
+        run: |
+          zip -r -j ${{ env.CURRENT_DIR }}/artifacts/cyb3rhq-package.zip ${{ env.CURRENT_DIR }}/artifacts/plugins
+          zip -r -j ${{ env.CURRENT_DIR }}/artifacts/security-package.zip ${{ env.CURRENT_DIR }}/artifacts/security-plugin
+          zip -r -j ${{ env.CURRENT_DIR }}/artifacts/dashboard-package.zip ${{ env.CURRENT_DIR }}/artifacts/dashboard/${{ env.CYB3RHQ_DASHBOARD_SLIM }}
+
+      - name: Build package
+        run: |
+          cd ${{ env.CURRENT_DIR }}/dev-tools/build-packages
+          bash ./build-packages.sh \
+            -v ${{ env.VERSION }} \
+            -r ${{ inputs.revision }} \
+            -a file://${{env.CURRENT_DIR}}/artifacts/cyb3rhq-package.zip \
+            -s file://${{env.CURRENT_DIR}}/artifacts/security-package.zip \
+            -b file://${{env.CURRENT_DIR}}/artifacts/dashboard-package.zip \
+            --${{ inputs.system }} ${{ env.PRODUCTION }}
+
+      - name: Test package
+        run: |
+          cd ${{ env.CURRENT_DIR }}/dev-tools/test-packages
+          ls -la ${{ env.CURRENT_DIR }}/dev-tools/build-packages/output/${{ inputs.system }}
+          cp ${{ env.CURRENT_DIR }}/dev-tools/build-packages/output/${{ inputs.system }}/${{env.PACKAGE_NAME}}  ${{ env.CURRENT_DIR }}/dev-tools/test-packages/${{ inputs.system }}
+          bash ./test-packages.sh \
+            -p ${{env.PACKAGE_NAME}}
+
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.CI_INTERNAL_DEVELOPMENT_BUCKET_USER_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.CI_INTERNAL_DEVELOPMENT_BUCKET_USER_SECRET_KEY }}
+          aws-region: ${{ secrets.CI_AWS_REGION }}
+
+      - name: Upload package
+        run: |
+          echo "Uploading package"
+          aws s3 cp  ${{ env.CURRENT_DIR }}/dev-tools/build-packages/output/${{ inputs.system }}/${{env.PACKAGE_NAME}} s3://packages-dev.internal.wazuh.com/development/cyb3rhq/4.x/main/packages/
+          s3uri="s3://packages-dev.internal.wazuh.com/development/cyb3rhq/4.x/main/packages/${{env.PACKAGE_NAME}}"
+          echo "S3 URI: ${s3uri}"
+
+      - name: Upload SHA512
+        if: ${{ inputs.checksum }}
+        run: |
+          echo "Uploading checksum"
+          aws s3 cp ${{ env.CURRENT_DIR }}/dev-tools/build-packages/output/${{ inputs.system }}/${{env.PACKAGE_NAME}}.sha512 s3://packages-dev.internal.wazuh.com/development/cyb3rhq/4.x/main/packages/
+          s3uri="s3://packages-dev.internal.wazuh.com/development/cyb3rhq/4.x/main/packages/${{env.PACKAGE_NAME}}.sha512"
+          echo "S3 sha512 URI: ${s3uri}"

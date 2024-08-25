@@ -51,6 +51,9 @@ export const CreatePackageJson: Task = {
         distributable: true,
         release: config.isRelease,
       },
+      cyb3rhq: {
+        version: pkg.cyb3rhq.version,
+      },
       repository: pkg.repository,
       engines: {
         node: pkg.engines.node,

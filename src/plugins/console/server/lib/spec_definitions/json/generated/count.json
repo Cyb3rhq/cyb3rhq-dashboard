@@ -31,7 +31,8 @@
     ],
     "patterns": [
       "_count",
-      "{indices}/_count"
+      "{indices}/_count",
+      "{indices}/{type}/_count"
     ],
     "documentation": "https://opensearch.org/docs/latest/api-reference/count/"
   }

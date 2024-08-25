@@ -53,7 +53,7 @@ export const Header = withRouter(({ indexPatternId, history }: HeaderProps) => (
           />
         </h3>
       </EuiTitle>
-      <EuiText size="s">
+      <EuiText>
         <p>
           <FormattedMessage
             id="indexPatternManagement.editIndexPattern.scriptedLabel"

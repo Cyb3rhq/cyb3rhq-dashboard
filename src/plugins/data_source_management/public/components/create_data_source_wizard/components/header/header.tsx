@@ -5,7 +5,7 @@
 
 import React from 'react';
 
-import { EuiSpacer, EuiText, EuiFlexItem, EuiFlexGroup } from '@elastic/eui';
+import { EuiSpacer, EuiTitle, EuiText, EuiFlexItem, EuiFlexGroup } from '@elastic/eui';
 import { i18n } from '@osd/i18n';
 import { FormattedMessage } from '@osd/i18n/react';
 import { useOpenSearchDashboards } from '../../../../../../opensearch_dashboards_react/public';
@@ -25,7 +25,7 @@ export const Header = () => {
     <EuiFlexGroup justifyContent="spaceBetween">
       <EuiFlexItem grow={false}>
         <div>
-          <EuiText size="s">
+          <EuiTitle>
             <h1 data-test-subj="createDataSourceHeader">
               {
                 <FormattedMessage
@@ -34,9 +34,9 @@ export const Header = () => {
                 />
               }
             </h1>
-          </EuiText>
+          </EuiTitle>
           <EuiSpacer size="s" />
-          <EuiText size="s">
+          <EuiText>
             <p>
               <FormattedMessage
                 id="dataSourcesManagement.createDataSource.description"

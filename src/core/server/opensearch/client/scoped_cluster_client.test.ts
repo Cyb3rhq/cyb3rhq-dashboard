@@ -36,8 +36,12 @@ describe('ScopedClusterClient', () => {
     const internalClient = opensearchClientMock.createOpenSearchClient();
     const scopedClient = opensearchClientMock.createOpenSearchClient();
 
-    const internalClientWithLongNumeralsSupport = opensearchClientMock.createOpenSearchClient(true);
-    const scopedClientWithLongNumeralsSupport = opensearchClientMock.createOpenSearchClient(true);
+    const internalClientWithLongNumeralsSupport = opensearchClientMock.createOpenSearchClient({
+      withLongNumeralsSupport: true,
+    });
+    const scopedClientWithLongNumeralsSupport = opensearchClientMock.createOpenSearchClient({
+      withLongNumeralsSupport: true,
+    });
 
     const scopedClusterClient = new ScopedClusterClient(
       internalClient,
@@ -56,8 +60,12 @@ describe('ScopedClusterClient', () => {
     const internalClient = opensearchClientMock.createOpenSearchClient();
     const scopedClient = opensearchClientMock.createOpenSearchClient();
 
-    const internalClientWithLongNumeralsSupport = opensearchClientMock.createOpenSearchClient(true);
-    const scopedClientWithLongNumeralsSupport = opensearchClientMock.createOpenSearchClient(true);
+    const internalClientWithLongNumeralsSupport = opensearchClientMock.createOpenSearchClient({
+      withLongNumeralsSupport: true,
+    });
+    const scopedClientWithLongNumeralsSupport = opensearchClientMock.createOpenSearchClient({
+      withLongNumeralsSupport: true,
+    });
 
     const scopedClusterClient = new ScopedClusterClient(
       internalClient,

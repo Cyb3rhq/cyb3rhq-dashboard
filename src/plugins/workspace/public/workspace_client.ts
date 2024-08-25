@@ -10,7 +10,6 @@ import {
   HttpSetup,
   WorkspaceAttribute,
   WorkspacesSetup,
-  IWorkspaceClient,
 } from '../../../core/public';
 import { WorkspacePermissionMode } from '../common/constants';
 import { SavedObjectPermissions, WorkspaceAttributeWithPermission } from '../../../core/types';
@@ -49,7 +48,7 @@ interface WorkspaceFindOptions {
  *
  * @public
  */
-export class WorkspaceClient implements IWorkspaceClient {
+export class WorkspaceClient {
   private http: HttpSetup;
   private workspaces: WorkspacesSetup;
 
@@ -233,9 +232,6 @@ export class WorkspaceClient implements IWorkspaceClient {
     const result = await this.safeFetch<null>(this.getPath(id), { method: 'DELETE' });
 
     if (result.success) {
-      // After deleting workspace, need to reset current workspace ID.
-      this.workspaces.currentWorkspaceId$.next('');
-
       await this.updateWorkspaceList();
     }
 
@@ -314,34 +310,6 @@ export class WorkspaceClient implements IWorkspaceClient {
     if (result.success) {
       await this.updateWorkspaceList();
     }
-
-    return result;
-  }
-
-  /**
-   * copy saved objects to target workspace
-   *
-   * @param {Array<{ id: string; type: string }>} objects
-   * @param {string} targetWorkspace
-   * @param {boolean} includeReferencesDeep
-   * @returns {Promise<IResponse<any>>} result for this operation
-   */
-  public async copy(
-    objects: Array<{ id: string; type: string }>,
-    targetWorkspace: string,
-    includeReferencesDeep: boolean = true
-  ): Promise<IResponse<any>> {
-    const path = this.getPath('_duplicate_saved_objects');
-    const body = {
-      objects,
-      targetWorkspace,
-      includeReferencesDeep,
-    };
-
-    const result = await this.safeFetch(path, {
-      method: 'POST',
-      body: JSON.stringify(body),
-    });
 
     return result;
   }

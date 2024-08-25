@@ -79,6 +79,7 @@ describe('GET /api/status', () => {
           buildSha: 'xsha',
           dist: true,
           version: '9.9.9-SNAPSHOT',
+          cyb3rhqVersion: '4.2.0',
         },
         serverName: 'xopensearchDashboards',
         uuid: 'xxxx-xxxxx',

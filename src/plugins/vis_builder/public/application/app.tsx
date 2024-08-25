@@ -15,7 +15,6 @@ import { RightNav } from './components/right_nav';
 import { useOpenSearchDashboards } from '../../../opensearch_dashboards_react/public';
 import { VisBuilderServices } from '../types';
 import { syncQueryStateWithUrl } from '../../../data/public';
-import { HeaderVariant } from '../../../../core/public/index';
 
 import './app.scss';
 
@@ -24,21 +23,9 @@ export const VisBuilderApp = () => {
     services: {
       data: { query },
       osdUrlStateStorage,
-      chrome,
-      uiSettings,
     },
   } = useOpenSearchDashboards<VisBuilderServices>();
   const { pathname } = useLocation();
-  const { setHeaderVariant } = chrome;
-  const showActionsInGroup = uiSettings.get('home:useNewHomePage');
-
-  useEffect(() => {
-    if (showActionsInGroup) setHeaderVariant?.(HeaderVariant.APPLICATION);
-
-    return () => {
-      setHeaderVariant?.();
-    };
-  }, [setHeaderVariant, showActionsInGroup]);
 
   useEffect(() => {
     // syncs `_g` portion of url with query services

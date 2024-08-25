@@ -29,6 +29,7 @@
  */
 
 import { values } from 'lodash';
+import { format as formatUrl } from 'url';
 import { Agent as HttpsAgent, AgentOptions } from 'https';
 
 import { WildcardMatcher } from './wildcard_matcher';
@@ -61,14 +62,13 @@ export class ProxyConfig {
     const rawMatches = {
       ...config.match,
     };
-    try {
-      this.id = new URL(
-        rawMatches.path,
-        `${rawMatches.protocol}://${rawMatches.host}:${rawMatches.port}`
-      ).toString();
-    } catch (e) {
-      this.id = '*';
-    }
+    this.id =
+      formatUrl({
+        protocol: rawMatches.protocol,
+        hostname: rawMatches.host,
+        port: rawMatches.port,
+        pathname: rawMatches.path,
+      }) || '*';
 
     this.matchers = {
       protocol: new WildcardMatcher(rawMatches.protocol),

@@ -82,7 +82,7 @@ describe('ApplicationService', () => {
         const { register } = service.setup(setupDeps);
 
         let resolveMount: () => void;
-        const promise = new Promise<void>((resolve) => {
+        const promise = new Promise((resolve) => {
           resolveMount = resolve;
         });
 
@@ -116,7 +116,7 @@ describe('ApplicationService', () => {
         const { register } = service.setup(setupDeps);
 
         let resolveMount: () => void;
-        const promise = new Promise<void>((resolve) => {
+        const promise = new Promise((resolve) => {
           resolveMount = resolve;
         });
 
@@ -458,7 +458,7 @@ describe('ApplicationService', () => {
       const { register } = service.setup(setupDeps);
 
       let resolveMount: () => void;
-      const promise = new Promise<void>((resolve) => {
+      const promise = new Promise((resolve) => {
         resolveMount = resolve;
       });
 
@@ -496,7 +496,7 @@ describe('ApplicationService', () => {
       const { register } = service.setup(setupDeps);
 
       let resolveMount: () => void;
-      const promise = new Promise<void>((resolve) => {
+      const promise = new Promise((resolve) => {
         resolveMount = resolve;
       });
 

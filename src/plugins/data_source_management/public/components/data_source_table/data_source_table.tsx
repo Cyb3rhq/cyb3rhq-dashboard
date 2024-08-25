@@ -318,7 +318,7 @@ export const DataSourceTable = ({ history }: RouteComponentProps) => {
           style={{ textAlign: 'center' }}
           data-test-subj="datasourceTableEmptyState"
         >
-          <EuiText size="s">
+          <EuiText>
             <FormattedMessage
               id="dataSourcesManagement.dataSourcesTable.noData"
               defaultMessage="No Data Source Connections have been created yet."

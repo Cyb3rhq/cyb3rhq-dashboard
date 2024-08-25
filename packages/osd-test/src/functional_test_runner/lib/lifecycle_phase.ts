@@ -44,17 +44,16 @@ export class LifecyclePhase<Args extends readonly any[]> {
   private readonly beforeSubj = new Rx.Subject<void>();
   public readonly before$ = this.beforeSubj.asObservable();
 
-  private readonly afterSubj: Rx.Subject<void>;
-  public readonly after$: Rx.Observable<void>;
+  private readonly afterSubj = this.options.singular
+    ? new Rx.ReplaySubject<void>(1)
+    : new Rx.Subject<void>();
+  public readonly after$ = this.afterSubj.asObservable();
 
   constructor(
     private readonly options: {
       singular?: boolean;
     } = {}
-  ) {
-    this.afterSubj = this.options.singular ? new Rx.ReplaySubject<void>(1) : new Rx.Subject<void>();
-    this.after$ = this.afterSubj.asObservable();
-  }
+  ) {}
 
   public add(fn: (...args: Args) => Promise<void> | void) {
     this.handlers.push(fn);

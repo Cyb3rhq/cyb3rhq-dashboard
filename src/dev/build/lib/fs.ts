@@ -114,17 +114,13 @@ export async function deleteAll(patterns: string[], log: ToolingLog) {
     assertAbsolute(pattern.startsWith('!') ? pattern.slice(1) : pattern);
   }
 
-  // Doing a dry run to get a list but `rm` will do the actual deleting
-  const filesToDelete = await del(patterns, {
+  const files = await del(patterns, {
     concurrency: 4,
-    dryRun: true,
   });
 
-  await Promise.all(filesToDelete.map((folder) => rm(folder, { force: true, recursive: true })));
-
   if (log) {
-    log.debug('Deleted %d files/directories', filesToDelete.length);
-    log.verbose('Deleted:', longInspect(filesToDelete));
+    log.debug('Deleted %d files/directories', files.length);
+    log.verbose('Deleted:', longInspect(files));
   }
 }
 
@@ -149,11 +145,9 @@ export async function deleteEmptyFolders(
     dryRun: true,
   });
 
-  const foldersToDelete = Array.isArray(emptyFoldersList)
-    ? emptyFoldersList.filter((folderToDelete: string[]) => {
-        return !foldersToKeep.some((folderToKeep) => folderToDelete.includes(folderToKeep));
-      })
-    : [];
+  const foldersToDelete = emptyFoldersList.filter((folderToDelete) => {
+    return !foldersToKeep.some((folderToKeep) => folderToDelete.includes(folderToKeep));
+  });
 
   await Promise.all(foldersToDelete.map((folder) => rm(folder, { force: true, recursive: true })));
 

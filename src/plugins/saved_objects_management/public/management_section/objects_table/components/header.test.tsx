@@ -31,24 +31,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Header } from './header';
-import { applicationServiceMock } from '../../../../../../core/public/mocks';
-
-const defaultProps = {
-  onExportAll: () => {},
-  onImport: () => {},
-  onRefresh: () => {},
-  onDuplicate: () => {},
-  objectCount: 4,
-  filteredCount: 2,
-  useUpdatedUX: false,
-  navigationUI: { HeaderControl: () => null, TopNavMenu: () => null },
-  applications: applicationServiceMock.createStartContract(),
-};
 
 describe('Header', () => {
   it('should render normally', () => {
     const props = {
-      ...defaultProps,
+      onExportAll: () => {},
+      onImport: () => {},
+      onRefresh: () => {},
+      onDuplicate: () => {},
+      objectCount: 4,
+      filteredCount: 2,
       showDuplicateAll: false,
     };
 
@@ -59,20 +51,13 @@ describe('Header', () => {
 
   it('should render normally when showDuplicateAll is undefined', () => {
     const props = {
-      ...defaultProps,
+      onExportAll: () => {},
+      onImport: () => {},
+      onRefresh: () => {},
+      onDuplicate: () => {},
+      objectCount: 4,
+      filteredCount: 2,
       showDuplicateAll: undefined,
-    };
-
-    const component = shallow(<Header {...props} />);
-
-    expect(component).toMatchSnapshot();
-  });
-
-  it('should render normally when useUpdatedUX is true', () => {
-    const props = {
-      ...defaultProps,
-      showDuplicateAll: true,
-      useUpdatedUX: true,
     };
 
     const component = shallow(<Header {...props} />);
@@ -84,7 +69,12 @@ describe('Header', () => {
 describe('Header - workspace enabled', () => {
   it('should render `Duplicate All` button when workspace enabled', () => {
     const props = {
-      ...defaultProps,
+      onExportAll: () => {},
+      onImport: () => {},
+      onRefresh: () => {},
+      onDuplicate: () => {},
+      objectCount: 4,
+      filteredCount: 2,
       showDuplicateAll: true,
     };
 

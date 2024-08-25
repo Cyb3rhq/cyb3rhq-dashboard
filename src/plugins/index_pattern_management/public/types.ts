@@ -40,7 +40,6 @@ import {
   SavedObjectReference,
 } from 'src/core/public';
 import { DataPublicPluginStart } from 'src/plugins/data/public';
-import { NavigationPublicPluginStart } from 'src/plugins/navigation/public';
 import { EuiTableFieldDataColumnType } from '@elastic/eui';
 import { ManagementAppMountParams } from '../../management/public';
 import { IndexPatternManagementStart } from './index';
@@ -51,7 +50,6 @@ export interface IndexPatternManagmentContext {
   application: ApplicationStart;
   savedObjects: SavedObjectsStart;
   uiSettings: IUiSettingsClient;
-  navigationUI: NavigationPublicPluginStart['ui'];
   notifications: NotificationsStart;
   overlays: OverlayStart;
   http: HttpSetup;

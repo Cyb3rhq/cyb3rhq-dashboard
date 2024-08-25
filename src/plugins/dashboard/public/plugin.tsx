@@ -366,11 +366,11 @@ export class DashboardPlugin
     const app: App = {
       id: DashboardConstants.DASHBOARDS_ID,
       title: 'Dashboards',
-      order: 2500,
+      order: 101,
       euiIconType: 'inputOutput',
       defaultPath: `#${DashboardConstants.LANDING_PAGE_PATH}`,
       updater$: this.appStateUpdater,
-      category: DEFAULT_APP_CATEGORIES.opensearchDashboards,
+      category: DEFAULT_APP_CATEGORIES.explore,
       mount: async (params: AppMountParameters) => {
         const [coreStart, pluginsStart, dashboardStart] = await core.getStartServices();
         this.currentHistory = params.history;
@@ -467,7 +467,7 @@ export class DashboardPlugin
         category: undefined,
       },
     ]);
-    core.chrome.navGroup.addNavLinksToGroup(DEFAULT_NAV_GROUPS.essentials, [
+    core.chrome.navGroup.addNavLinksToGroup(DEFAULT_NAV_GROUPS.analytics, [
       {
         id: app.id,
         order: 300,

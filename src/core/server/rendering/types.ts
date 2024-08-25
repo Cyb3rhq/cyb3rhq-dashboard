@@ -43,13 +43,15 @@ export interface RenderingMetadata {
   strictCsp: ICspConfig['strict'];
   uiPublicUrl: string;
   bootstrapScriptUrl: string;
-  startupScriptUrl: string;
   i18n: typeof i18n.translate;
   locale: string;
+  darkMode: boolean;
+  themeVersion: string;
   injectedMetadata: {
     version: string;
     buildNumber: number;
     branch: string;
+    cyb3rhqVersion: string;
     basePath: string;
     serverBasePath: string;
     env: {

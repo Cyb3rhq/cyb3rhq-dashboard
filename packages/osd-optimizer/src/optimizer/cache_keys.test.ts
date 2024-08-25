@@ -103,8 +103,6 @@ describe('getOptimizerCacheKey()', () => {
                   "v7light",
                   "v8dark",
                   "v8light",
-                  "v9dark",
-                  "v9light",
                 ],
               },
             }

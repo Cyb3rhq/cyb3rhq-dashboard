@@ -22,28 +22,19 @@ describe('workspace utils', () => {
 
   describe('navigateToWorkspaceDetail', () => {
     it('should redirect if newUrl is returned', () => {
+      Object.defineProperty(window, 'location', {
+        value: {
+          href: defaultUrl,
+        },
+        writable: true,
+      });
       // @ts-ignore
-      formatUrlWithWorkspaceId.mockImplementation(() => 'localhost:5601/w/id/app/workspace_detail');
+      formatUrlWithWorkspaceId.mockImplementation(() => 'new_url');
       navigateToWorkspaceDetail(
         { application: coreStartMock.application, http: coreStartMock.http },
-        'id'
+        ''
       );
-      expect(mockNavigateToUrl).toHaveBeenCalledWith(
-        'localhost:5601/w/id/app/workspace_detail#/?tab=details'
-      );
-    });
-
-    it('should redirect to collaborators if newUrl is returned and tab id is collaborators', () => {
-      // @ts-ignore
-      formatUrlWithWorkspaceId.mockImplementation(() => 'localhost:5601/w/id/app/workspace_detail');
-      navigateToWorkspaceDetail(
-        { application: coreStartMock.application, http: coreStartMock.http },
-        'id',
-        'collaborators'
-      );
-      expect(mockNavigateToUrl).toHaveBeenCalledWith(
-        'localhost:5601/w/id/app/workspace_detail#/?tab=collaborators'
-      );
+      expect(mockNavigateToUrl).toHaveBeenCalledWith('new_url');
     });
 
     it('should not redirect if newUrl is not returned', () => {

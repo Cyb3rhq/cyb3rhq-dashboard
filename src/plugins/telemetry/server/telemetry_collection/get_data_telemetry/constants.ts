@@ -138,7 +138,7 @@ export const DATA_DATASETS_INDEX_PATTERNS = [
   { pattern: 'ecs-corelight*', patternName: 'ecs-corelight' },
   { pattern: '*suricata*', patternName: 'suricata' },
   // { pattern: '*fsf*', patternName: 'fsf' }, // Disabled because it's too vague
-  { pattern: '*wazuh*', patternName: 'wazuh' },
+  { pattern: '*cyb3rhq*', patternName: 'cyb3rhq' },
 
   // meow attacks
   { pattern: '*meow*', patternName: 'meow' },

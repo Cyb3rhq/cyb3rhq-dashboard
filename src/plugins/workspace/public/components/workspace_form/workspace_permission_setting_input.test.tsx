@@ -16,7 +16,6 @@ const setup = (options?: Partial<WorkspacePermissionSettingInputProps>) => {
   const onGroupOrUserIdChangeMock = jest.fn();
   const onPermissionModesChangeMock = jest.fn();
   const onDeleteMock = jest.fn();
-  const onTypeChangeMock = jest.fn();
   const renderResult = render(
     <WorkspacePermissionSettingInput
       index={0}
@@ -25,7 +24,6 @@ const setup = (options?: Partial<WorkspacePermissionSettingInputProps>) => {
       onGroupOrUserIdChange={onGroupOrUserIdChangeMock}
       onPermissionModesChange={onPermissionModesChangeMock}
       onDelete={onDeleteMock}
-      onTypeChange={onTypeChangeMock}
       {...options}
     />
   );
@@ -34,41 +32,10 @@ const setup = (options?: Partial<WorkspacePermissionSettingInputProps>) => {
     onGroupOrUserIdChangeMock,
     onPermissionModesChangeMock,
     onDeleteMock,
-    onTypeChangeMock,
   };
 };
 
 describe('WorkspacePermissionSettingInput', () => {
-  const originalOffsetHeight = Object.getOwnPropertyDescriptor(
-    HTMLElement.prototype,
-    'offsetHeight'
-  );
-  const originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth');
-
-  beforeEach(() => {
-    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
-      configurable: true,
-      value: 600,
-    });
-    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
-      configurable: true,
-      value: 600,
-    });
-  });
-
-  afterEach(() => {
-    Object.defineProperty(
-      HTMLElement.prototype,
-      'offsetHeight',
-      originalOffsetHeight as PropertyDescriptor
-    );
-    Object.defineProperty(
-      HTMLElement.prototype,
-      'offsetWidth',
-      originalOffsetWidth as PropertyDescriptor
-    );
-  });
-
   it('should render consistent user id and permission modes', () => {
     const { renderResult } = setup({
       userId: 'foo',
@@ -77,6 +44,9 @@ describe('WorkspacePermissionSettingInput', () => {
 
     expect(renderResult.getByText('foo')).toBeInTheDocument();
     expect(renderResult.getByText('Read')).toBeInTheDocument();
+    expect(
+      renderResult.getByText('Read').closest('.euiButtonGroupButton-isSelected')
+    ).toBeInTheDocument();
   });
   it('should render consistent group id and permission modes', () => {
     const { renderResult } = setup({
@@ -87,16 +57,19 @@ describe('WorkspacePermissionSettingInput', () => {
 
     expect(renderResult.getByText('bar')).toBeInTheDocument();
     expect(renderResult.getByText('Read & Write')).toBeInTheDocument();
+    expect(
+      renderResult.getByText('Read & Write').closest('.euiButtonGroupButton-isSelected')
+    ).toBeInTheDocument();
   });
   it('should call onGroupOrUserIdChange with user id', () => {
     const { renderResult, onGroupOrUserIdChangeMock } = setup();
 
     expect(onGroupOrUserIdChangeMock).not.toHaveBeenCalled();
     fireEvent.click(renderResult.getByText('Select a user'));
-    fireEvent.input(renderResult.getAllByTestId('comboBoxSearchInput')[0], {
+    fireEvent.input(renderResult.getByTestId('comboBoxSearchInput'), {
       target: { value: 'user1' },
     });
-    fireEvent.blur(renderResult.getAllByTestId('comboBoxSearchInput')[0]);
+    fireEvent.blur(renderResult.getByTestId('comboBoxSearchInput'));
     expect(onGroupOrUserIdChangeMock).toHaveBeenCalledWith({ type: 'user', userId: 'user1' }, 0);
   });
   it('should call onGroupOrUserIdChange with group', () => {
@@ -106,10 +79,10 @@ describe('WorkspacePermissionSettingInput', () => {
 
     expect(onGroupOrUserIdChangeMock).not.toHaveBeenCalled();
     fireEvent.click(renderResult.getByText('Select a user group'));
-    fireEvent.input(renderResult.getAllByTestId('comboBoxSearchInput')[0], {
+    fireEvent.input(renderResult.getByTestId('comboBoxSearchInput'), {
       target: { value: 'group' },
     });
-    fireEvent.blur(renderResult.getAllByTestId('comboBoxSearchInput')[0]);
+    fireEvent.blur(renderResult.getByTestId('comboBoxSearchInput'));
     expect(onGroupOrUserIdChangeMock).toHaveBeenCalledWith({ type: 'group', group: 'group' }, 0);
   });
 
@@ -127,7 +100,6 @@ describe('WorkspacePermissionSettingInput', () => {
     const { renderResult, onPermissionModesChangeMock } = setup({});
 
     expect(onPermissionModesChangeMock).not.toHaveBeenCalled();
-    fireEvent.click(renderResult.getAllByTestId('workspace-permissionModeOptions')[0]);
     fireEvent.click(renderResult.getByText('Owner'));
     expect(onPermissionModesChangeMock).toHaveBeenCalledWith(['library_write', 'write'], 0);
   });
@@ -138,14 +110,5 @@ describe('WorkspacePermissionSettingInput', () => {
     expect(onDeleteMock).not.toHaveBeenCalled();
     fireEvent.click(renderResult.getByLabelText('Delete permission setting'));
     expect(onDeleteMock).toHaveBeenCalledWith(0);
-  });
-
-  it('should call onTypeChange with types after types changed', () => {
-    const { renderResult, onTypeChangeMock } = setup({});
-    expect(onTypeChangeMock).not.toHaveBeenCalled();
-
-    fireEvent.click(renderResult.getByTestId('workspace-typeOptions'));
-    fireEvent.click(renderResult.getByText('User Group'));
-    expect(onTypeChangeMock).toHaveBeenCalledWith('group', 0);
   });
 });

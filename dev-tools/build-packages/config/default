@@ -1,0 +1,7 @@
+user="cyb3rhq-dashboard"
+group="cyb3rhq-dashboard"
+chroot="/"
+chdir="/"
+nice=""
+KILL_ON_STOP_TIMEOUT=0
+

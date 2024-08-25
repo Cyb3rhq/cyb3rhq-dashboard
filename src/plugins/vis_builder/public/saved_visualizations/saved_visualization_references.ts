@@ -13,7 +13,7 @@ export function injectReferences(
 ) {
   if (savedObject.searchSourceFields) {
     savedObject.searchSourceFields = injectSearchSourceReferences(
-      savedObject.searchSourceFields,
+      savedObject.searchSourceFields as any,
       references
     );
   }

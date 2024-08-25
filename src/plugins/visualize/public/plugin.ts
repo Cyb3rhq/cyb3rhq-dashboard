@@ -156,10 +156,10 @@ export class VisualizePlugin
     core.application.register({
       id: visualizeAppId,
       title: 'Visualize',
-      order: 8000,
+      order: 102,
       euiIconType: 'inputOutput',
       defaultPath: '#/',
-      category: DEFAULT_APP_CATEGORIES.opensearchDashboards,
+      category: DEFAULT_APP_CATEGORIES.explore,
       updater$: this.appStateUpdater.asObservable(),
       // remove all references to visualize
       mount: async (params: AppMountParameters) => {
@@ -228,32 +228,25 @@ export class VisualizePlugin
       },
     });
 
-    const titleInLeftNav = i18n.translate('visualize.leftNav.visualizeTitle', {
-      defaultMessage: 'Visualizations',
-    });
-
     core.chrome.navGroup.addNavLinksToGroup(DEFAULT_NAV_GROUPS.observability, [
       {
         id: visualizeAppId,
-        category: DEFAULT_APP_CATEGORIES.visualizeAndReport,
+        category: DEFAULT_APP_CATEGORIES.dashboardAndReport,
         order: 200,
-        title: titleInLeftNav,
       },
     ]);
     core.chrome.navGroup.addNavLinksToGroup(DEFAULT_NAV_GROUPS['security-analytics'], [
       {
         id: visualizeAppId,
-        category: DEFAULT_APP_CATEGORIES.visualizeAndReport,
+        category: DEFAULT_APP_CATEGORIES.dashboardAndReport,
         order: 200,
-        title: titleInLeftNav,
       },
     ]);
-    core.chrome.navGroup.addNavLinksToGroup(DEFAULT_NAV_GROUPS.essentials, [
+    core.chrome.navGroup.addNavLinksToGroup(DEFAULT_NAV_GROUPS.analytics, [
       {
         id: visualizeAppId,
-        category: undefined,
-        order: 400,
-        title: titleInLeftNav,
+        category: DEFAULT_APP_CATEGORIES.dashboardAndReport,
+        order: 200,
       },
     ]);
     core.chrome.navGroup.addNavLinksToGroup(DEFAULT_NAV_GROUPS.search, [
@@ -261,15 +254,6 @@ export class VisualizePlugin
         id: visualizeAppId,
         category: DEFAULT_APP_CATEGORIES.analyzeSearch,
         order: 400,
-        title: titleInLeftNav,
-      },
-    ]);
-    core.chrome.navGroup.addNavLinksToGroup(DEFAULT_NAV_GROUPS.all, [
-      {
-        id: visualizeAppId,
-        category: undefined,
-        order: 400,
-        title: titleInLeftNav,
       },
     ]);
 

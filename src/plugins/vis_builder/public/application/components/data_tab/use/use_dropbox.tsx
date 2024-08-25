@@ -26,7 +26,6 @@ export interface UseDropboxProps extends Pick<DropboxProps, 'id' | 'label'> {
   aggProps: AggProps;
   activeSchemaFields: SchemaDisplayStates;
   setActiveSchemaFields: React.Dispatch<React.SetStateAction<SchemaDisplayStates>>;
-  isDragging: boolean;
 }
 
 export const useDropbox = (props: UseDropboxProps): DropboxProps => {
@@ -37,7 +36,6 @@ export const useDropbox = (props: UseDropboxProps): DropboxProps => {
     aggProps,
     activeSchemaFields,
     setActiveSchemaFields,
-    isDragging,
   } = props;
   const [validAggTypes, setValidAggTypes] = useState<string[]>([]);
   const { aggConfigs, indexPattern, aggs, timeRange } = aggProps;
@@ -211,6 +209,5 @@ export const useDropbox = (props: UseDropboxProps): DropboxProps => {
     dragData,
     isValidDropTarget: canDrop,
     dropProps,
-    isDragging,
   };
 };

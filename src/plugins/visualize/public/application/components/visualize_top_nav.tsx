@@ -40,9 +40,8 @@ import {
   VisualizeEditorVisInstance,
 } from '../types';
 import { APP_NAME } from '../visualize_constants';
-import { getTopNavConfig, getNavActions, getLegacyTopNavConfig } from '../utils';
+import { getTopNavConfig } from '../utils';
 import type { IndexPattern } from '../../../../data/public';
-import { TopNavMenuItemRenderType } from '../../../../navigation/public';
 
 interface VisualizeTopNavProps {
   currentAppState: VisualizeAppState;
@@ -93,66 +92,26 @@ const TopNav = ({
     [visInstance.embeddableHandler]
   );
   const stateTransfer = services.embeddable.getStateTransfer();
-  const showActionsInGroup = services.uiSettings.get('home:useNewHomePage');
-  const navActions = getNavActions(
-    {
-      hasUnsavedChanges,
-      setHasUnsavedChanges,
-      hasUnappliedChanges,
-      openInspector,
-      originatingApp,
-      setOriginatingApp,
-      visInstance,
-      stateContainer,
-      visualizationIdFromUrl,
-      stateTransfer,
-      embeddableId,
-      onAppLeave,
-    },
-    services
-  );
 
   const config = useMemo(() => {
     if (isEmbeddableRendered) {
-      if (showActionsInGroup) {
-        return getTopNavConfig(
-          {
-            hasUnsavedChanges,
-            setHasUnsavedChanges,
-            hasUnappliedChanges,
-            openInspector,
-            originatingApp,
-            setOriginatingApp,
-            visInstance,
-            stateContainer,
-            visualizationIdFromUrl,
-            stateTransfer,
-            embeddableId,
-            onAppLeave,
-          },
-          services,
-          navActions
-        );
-      } else {
-        return getLegacyTopNavConfig(
-          {
-            hasUnsavedChanges,
-            setHasUnsavedChanges,
-            hasUnappliedChanges,
-            openInspector,
-            originatingApp,
-            setOriginatingApp,
-            visInstance,
-            stateContainer,
-            visualizationIdFromUrl,
-            stateTransfer,
-            embeddableId,
-            onAppLeave,
-          },
-          services,
-          navActions
-        );
-      }
+      return getTopNavConfig(
+        {
+          hasUnsavedChanges,
+          setHasUnsavedChanges,
+          hasUnappliedChanges,
+          openInspector,
+          originatingApp,
+          setOriginatingApp,
+          visInstance,
+          stateContainer,
+          visualizationIdFromUrl,
+          stateTransfer,
+          embeddableId,
+          onAppLeave,
+        },
+        services
+      );
     }
   }, [
     isEmbeddableRendered,
@@ -169,8 +128,6 @@ const TopNav = ({
     embeddableId,
     stateTransfer,
     onAppLeave,
-    showActionsInGroup,
-    navActions,
   ]);
   const [indexPatterns, setIndexPatterns] = useState<IndexPattern[]>(
     vis.data.indexPattern ? [vis.data.indexPattern] : []
@@ -259,15 +216,14 @@ const TopNav = ({
       savedQueryId={currentAppState.savedQuery}
       onSavedQueryIdChange={stateContainer.transitions.updateSavedQuery}
       indexPatterns={indexPatterns}
-      screenTitle={vis.title.length ?? '' ? vis.title : 'New visualization'}
+      screenTitle={vis.title}
       showAutoRefreshOnly={!showDatePicker()}
       showDatePicker={showDatePicker()}
       showFilterBar={showFilterBar}
       showQueryInput={showQueryInput}
       showSaveQuery={services.visualizeCapabilities.saveQuery}
-      showSearchBar={TopNavMenuItemRenderType.IN_PORTAL}
+      showSearchBar
       useDefaultBehaviors
-      groupActions={showActionsInGroup}
     />
   ) : showFilterBar ? (
     /**
@@ -278,7 +234,7 @@ const TopNav = ({
       appName={APP_NAME}
       setMenuMountPoint={setHeaderActionMenu}
       indexPatterns={indexPatterns}
-      showSearchBar={TopNavMenuItemRenderType.IN_PORTAL}
+      showSearchBar
       showSaveQuery={false}
       showDatePicker={false}
       showQueryInput={false}

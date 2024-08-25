@@ -46,11 +46,9 @@ import {
   EuiCallOut,
   EuiBasicTableColumn,
   EuiText,
-  EuiPageProps,
 } from '@elastic/eui';
 import { HttpFetchError, ToastsStart } from 'opensearch-dashboards/public';
 import { toMountPoint } from '../util';
-import { EditActionDropdown, VisualizationItem } from './edit_action_dropdown';
 
 interface Column {
   name: string;
@@ -58,15 +56,18 @@ interface Column {
   actions?: object[];
 }
 
+interface Item {
+  id?: string;
+}
+
 export interface TableListViewProps {
   createButton?: JSX.Element;
   createItem?(): void;
   deleteItems?(items: object[]): Promise<void>;
   editItem?(item: object): void;
-  visbuilderEditItem?(item: object): void;
   entityName: string;
   entityNamePlural: string;
-  findItems(query: string): Promise<{ total: number; hits: VisualizationItem[] }>;
+  findItems(query: string): Promise<{ total: number; hits: object[] }>;
   listingLimit: number;
   initialFilter: string;
   initialPageSize: number;
@@ -80,13 +81,10 @@ export interface TableListViewProps {
    * If the table is not empty, this component renders its own h1 element using the same id.
    */
   headingId?: string;
-  restrictWidth?: boolean;
-  paddingSize?: EuiPageProps['paddingSize'];
-  showUpdatedUx?: boolean;
 }
 
 export interface TableListViewState {
-  items: VisualizationItem[];
+  items: object[];
   hasInitialFetchReturned: boolean;
   isFetchingItems: boolean;
   isDeletingItems: boolean;
@@ -117,7 +115,7 @@ class TableListView extends React.Component<TableListViewProps, TableListViewSta
       pageSizeOptions: uniq([10, 20, 50, props.initialPageSize]).sort(),
     };
     this.state = {
-      items: [] as VisualizationItem[],
+      items: [],
       totalItems: 0,
       hasInitialFetchReturned: false,
       isFetchingItems: false,
@@ -415,7 +413,7 @@ class TableListView extends React.Component<TableListViewProps, TableListViewSta
   renderTable() {
     const selection = this.props.deleteItems
       ? {
-          onSelectionChange: (obj: VisualizationItem[]) => {
+          onSelectionChange: (obj: Item[]) => {
             this.setState({
               selectedIds: obj
                 .map((item) => item.id)
@@ -442,16 +440,10 @@ class TableListView extends React.Component<TableListViewProps, TableListViewSta
         icon: 'pencil',
         type: 'icon',
         enabled: ({ error }: { error: string }) => !error,
-        'data-test-subj': 'edit-dashboard-action',
-        render: (item: VisualizationItem) => (
-          <EditActionDropdown
-            item={item}
-            editItem={this.props.editItem}
-            visbuilderEditItem={this.props.visbuilderEditItem}
-          />
-        ),
+        onClick: this.props.editItem,
       },
     ];
+
     const search = {
       onChange: this.setFilter.bind(this),
       toolsLeft: this.renderToolsLeft(),
@@ -462,7 +454,7 @@ class TableListView extends React.Component<TableListViewProps, TableListViewSta
     };
 
     const columns = this.props.tableColumns.slice();
-    if (this.props.editItem || this.props.visbuilderEditItem) {
+    if (this.props.editItem) {
       columns.push({
         name: i18n.translate(
           'opensearch-dashboards-react.tableListView.listing.table.actionTitle',
@@ -483,10 +475,10 @@ class TableListView extends React.Component<TableListViewProps, TableListViewSta
       />
     );
     return (
-      <EuiInMemoryTable<VisualizationItem>
+      <EuiInMemoryTable
         itemId="id"
         items={this.state.items}
-        columns={(columns as unknown) as Array<EuiBasicTableColumn<VisualizationItem>>} // EuiBasicTableColumn is stricter than Column
+        columns={(columns as unknown) as Array<EuiBasicTableColumn<object>>} // EuiBasicTableColumn is stricter than Column
         pagination={this.pagination}
         loading={this.state.isFetchingItems}
         message={noItemsMessage}
@@ -530,17 +522,15 @@ class TableListView extends React.Component<TableListViewProps, TableListViewSta
       <div>
         {this.state.showDeleteModal && this.renderConfirmDeleteModal()}
 
-        {!this.props.showUpdatedUx && (
-          <EuiFlexGroup justifyContent="spaceBetween" alignItems="flexEnd" data-test-subj="top-nav">
-            <EuiFlexItem grow={false}>
-              <EuiText size="s">
-                <h1 id={this.props.headingId}>{this.props.tableListTitle}</h1>
-              </EuiText>
-            </EuiFlexItem>
+        <EuiFlexGroup justifyContent="spaceBetween" alignItems="flexEnd" data-test-subj="top-nav">
+          <EuiFlexItem grow={false}>
+            <EuiText size="s">
+              <h1 id={this.props.headingId}>{this.props.tableListTitle}</h1>
+            </EuiText>
+          </EuiFlexItem>
 
-            {this.props.createButton || defaultCreateButton}
-          </EuiFlexGroup>
-        )}
+          {this.props.createButton || defaultCreateButton}
+        </EuiFlexGroup>
 
         <EuiSpacer size="m" />
 
@@ -569,8 +559,7 @@ class TableListView extends React.Component<TableListViewProps, TableListViewSta
       <EuiPage
         data-test-subj={this.props.entityName + 'LandingPage'}
         className="itemListing__page"
-        restrictWidth={this.props.restrictWidth}
-        paddingSize={this.props.paddingSize}
+        restrictWidth
       >
         <EuiPageBody
           component="main"

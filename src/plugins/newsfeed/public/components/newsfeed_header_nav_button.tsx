@@ -30,12 +30,10 @@
 
 import React, { useState, Fragment, useEffect } from 'react';
 import * as Rx from 'rxjs';
-import { EuiButtonIcon, EuiHeaderSectionItemButton, EuiIcon, EuiToolTip } from '@elastic/eui';
+import { EuiHeaderSectionItemButton, EuiIcon } from '@elastic/eui';
 import { i18n } from '@osd/i18n';
 import { NewsfeedFlyout } from './flyout_list';
 import { FetchResult } from '../types';
-import { CoreStart } from '../../../../core/public';
-import './newsfeed_header_nav_button.scss';
 
 export interface INewsfeedContext {
   setFlyoutVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -46,11 +44,10 @@ export const NewsfeedContext = React.createContext({} as INewsfeedContext);
 export type NewsfeedApiFetchResult = Rx.Observable<void | FetchResult | null>;
 
 export interface Props {
-  coreStart: CoreStart;
   apiFetchResult: NewsfeedApiFetchResult;
 }
 
-export const NewsfeedNavButton = ({ coreStart, apiFetchResult }: Props) => {
+export const NewsfeedNavButton = ({ apiFetchResult }: Props) => {
   const [showBadge, setShowBadge] = useState<boolean>(false);
   const [flyoutVisible, setFlyoutVisible] = useState<boolean>(false);
   const [newsFetchResult, setNewsFetchResult] = useState<FetchResult | null | void>(null);
@@ -72,40 +69,11 @@ export const NewsfeedNavButton = ({ coreStart, apiFetchResult }: Props) => {
     setFlyoutVisible(!flyoutVisible);
   }
 
-  const useLegacyAppearance = !coreStart.uiSettings.get('home:useNewHomePage');
-  const innerElement = useLegacyAppearance ? (
-    <EuiHeaderSectionItemButton
-      data-test-subj="newsfeed"
-      aria-controls="keyPadMenu"
-      aria-expanded={flyoutVisible}
-      aria-haspopup="true"
-      aria-label={
-        showBadge
-          ? i18n.translate('newsfeed.headerButton.unreadAriaLabel', {
-              defaultMessage: 'Newsfeed menu - unread items available',
-            })
-          : i18n.translate('newsfeed.headerButton.readAriaLabel', {
-              defaultMessage: 'Newsfeed menu - all items read',
-            })
-      }
-      notification={showBadge ? true : null}
-      onClick={showFlyout}
-    >
-      <EuiIcon type="cheer" size="m" />
-    </EuiHeaderSectionItemButton>
-  ) : (
-    <EuiToolTip
-      content={i18n.translate('newsfeed.headerButton.menuButtonTooltip', {
-        defaultMessage: 'Newsfeed',
-      })}
-      delay="long"
-      position="bottom"
-    >
-      <div className="osdNewsfeedButtonWrapper">
-        <EuiButtonIcon
-          iconType="cheer"
-          color="primary"
-          size="xs"
+  return (
+    <NewsfeedContext.Provider value={{ setFlyoutVisible, newsFetchResult }}>
+      <Fragment>
+        <EuiHeaderSectionItemButton
+          data-test-subj="newsfeed"
           aria-controls="keyPadMenu"
           aria-expanded={flyoutVisible}
           aria-haspopup="true"
@@ -118,17 +86,11 @@ export const NewsfeedNavButton = ({ coreStart, apiFetchResult }: Props) => {
                   defaultMessage: 'Newsfeed menu - all items read',
                 })
           }
+          notification={showBadge ? true : null}
           onClick={showFlyout}
-        />
-        <EuiIcon className="osdNewsfeedButtonWrapper--dot" color="accent" type="dot" size="s" />
-      </div>
-    </EuiToolTip>
-  );
-
-  return (
-    <NewsfeedContext.Provider value={{ setFlyoutVisible, newsFetchResult }}>
-      <Fragment>
-        {innerElement}
+        >
+          <EuiIcon type="cheer" size="m" />
+        </EuiHeaderSectionItemButton>
         {flyoutVisible ? <NewsfeedFlyout /> : null}
       </Fragment>
     </NewsfeedContext.Provider>

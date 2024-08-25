@@ -45,6 +45,7 @@ const packageInfo = {
   buildSha: '',
   version: '7.0.0-alpha1',
   dist: false,
+  cyb3rhqVersion: '4.0.0',
 };
 
 afterEach(() => {

@@ -95,7 +95,7 @@ Array [
       className="euiSpacer euiSpacer--m"
     />
     <div
-      className="euiTabs euiTabs--small"
+      className="euiTabs"
       role="tablist"
       style={
         Object {

@@ -89,6 +89,7 @@ import {
   findObject,
   extractExportDetails,
   SavedObjectsExportResultDetails,
+  duplicateSavedObjects,
 } from '../../lib';
 import { SavedObjectWithMetadata } from '../../types';
 import {
@@ -108,7 +109,6 @@ import {
 import { DataPublicPluginStart } from '../../../../../plugins/data/public';
 import { DuplicateObject } from '../types';
 import { formatWorkspaceIdParams } from '../../utils';
-import { NavigationPublicPluginStart } from '../../../../navigation/public';
 
 interface ExportAllOption {
   id: string;
@@ -134,8 +134,6 @@ export interface SavedObjectsTableProps {
   dateFormat: string;
   dataSourceEnabled: boolean;
   dataSourceManagement?: DataSourceManagementPluginSetup;
-  navigationUI: NavigationPublicPluginStart['ui'];
-  useUpdatedUX: boolean;
 }
 
 export interface SavedObjectsTableState {
@@ -737,25 +735,12 @@ export class SavedObjectsTable extends Component<SavedObjectsTableProps, SavedOb
     targetWorkspace: string,
     targetWorkspaceName: string
   ) => {
-    const { notifications, workspaces } = this.props;
-    const workspaceClient = workspaces.client$.getValue();
-
-    const showErrorNotification = () => {
-      notifications.toasts.addDanger({
-        title: i18n.translate('savedObjectsManagement.objectsTable.duplicate.dangerNotification', {
-          defaultMessage:
-            'Unable to copy {errorCount, plural, one {# saved object} other {# saved objects}}.',
-          values: { errorCount: savedObjects.length },
-        }),
-      });
-    };
-    if (!workspaceClient) {
-      showErrorNotification();
-      return;
-    }
+    const { http, notifications } = this.props;
     const objectsToDuplicate = savedObjects.map((obj) => ({ id: obj.id, type: obj.type }));
+    let result;
     try {
-      const result = await workspaceClient.copy(
+      result = await duplicateSavedObjects(
+        http,
         objectsToDuplicate,
         targetWorkspace,
         includeReferencesDeep
@@ -768,7 +753,13 @@ export class SavedObjectsTable extends Component<SavedObjectsTableProps, SavedOb
         targetWorkspaceName,
       });
     } catch (e) {
-      showErrorNotification();
+      notifications.toasts.addDanger({
+        title: i18n.translate('savedObjectsManagement.objectsTable.duplicate.dangerNotification', {
+          defaultMessage:
+            'Unable to copy {errorCount, plural, one {# saved object} other {# saved objects}}.',
+          values: { errorCount: savedObjects.length },
+        }),
+      });
     }
     this.hideDuplicateModal();
     await this.refreshObjects();
@@ -832,7 +823,6 @@ export class SavedObjectsTable extends Component<SavedObjectsTableProps, SavedOb
         close={this.onHideRelationships}
         goInspectObject={this.props.goInspectObject}
         canGoInApp={this.props.canGoInApp}
-        useUpdatedUX={this.props.useUpdatedUX}
       />
     );
   }
@@ -970,17 +960,13 @@ export class SavedObjectsTable extends Component<SavedObjectsTableProps, SavedOb
       <EuiModal onClose={this.closeExportAllModal}>
         <EuiModalHeader>
           <EuiModalHeaderTitle>
-            <EuiText size="s">
-              <h2>
-                <FormattedMessage
-                  id="savedObjectsManagement.objectsTable.exportObjectsConfirmModalTitle"
-                  defaultMessage="Export {filteredItemCount, plural, one{# object} other {# objects}}"
-                  values={{
-                    filteredItemCount,
-                  }}
-                />
-              </h2>
-            </EuiText>
+            <FormattedMessage
+              id="savedObjectsManagement.objectsTable.exportObjectsConfirmModalTitle"
+              defaultMessage="Export {filteredItemCount, plural, one{# object} other {# objects}}"
+              values={{
+                filteredItemCount,
+              }}
+            />
           </EuiModalHeaderTitle>
         </EuiModalHeader>
         <EuiModalBody>
@@ -1064,14 +1050,7 @@ export class SavedObjectsTable extends Component<SavedObjectsTableProps, SavedOb
       workspaceEnabled,
       currentWorkspaceId,
     } = this.state;
-    const {
-      http,
-      allowedTypes,
-      applications,
-      namespaceRegistry,
-      useUpdatedUX,
-      navigationUI,
-    } = this.props;
+    const { http, allowedTypes, applications, namespaceRegistry } = this.props;
 
     const selectionConfig = {
       onSelectionChange: this.onSelectionChanged,
@@ -1161,9 +1140,6 @@ export class SavedObjectsTable extends Component<SavedObjectsTableProps, SavedOb
           onDuplicate={this.onDuplicateAll}
           onRefresh={this.refreshObjects}
           objectCount={savedObjects.length}
-          useUpdatedUX={useUpdatedUX}
-          navigationUI={navigationUI}
-          applications={applications}
         />
         <EuiSpacer size="xs" />
         <RedirectAppLinks application={applications}>
@@ -1205,8 +1181,6 @@ export class SavedObjectsTable extends Component<SavedObjectsTableProps, SavedOb
             availableWorkspaces={availableWorkspaces}
             currentWorkspaceId={currentWorkspaceId}
             showDuplicate={this.state.workspaceEnabled}
-            onRefresh={this.refreshObjects}
-            useUpdatedUX={useUpdatedUX}
           />
         </RedirectAppLinks>
       </EuiPageContent>

@@ -18,7 +18,8 @@
     ],
     "patterns": [
       "_msearch/template",
-      "{indices}/_msearch/template"
+      "{indices}/_msearch/template",
+      "{indices}/{type}/_msearch/template"
     ],
     "documentation": "https://opensearch.org/docs/latest/search-plugins/search-template/"
   }

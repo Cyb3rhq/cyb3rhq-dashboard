@@ -7,7 +7,6 @@ exports[`DataSourceAggregatedView empty state test due to filter out with local 
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -52,12 +51,6 @@ exports[`DataSourceAggregatedView empty state test due to filter out with local 
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -101,7 +94,6 @@ exports[`DataSourceAggregatedView empty state test due to filter out with local 
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -147,12 +139,6 @@ exports[`DataSourceAggregatedView empty state test due to filter out with local 
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -211,7 +197,6 @@ exports[`DataSourceAggregatedView empty state test with local cluster hiding sho
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -256,12 +241,6 @@ exports[`DataSourceAggregatedView empty state test with local cluster hiding sho
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -305,7 +284,6 @@ exports[`DataSourceAggregatedView empty state test with local cluster hiding sho
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -350,12 +328,6 @@ exports[`DataSourceAggregatedView empty state test with local cluster hiding sho
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -399,7 +371,6 @@ exports[`DataSourceAggregatedView empty state test with local cluster hiding sho
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -445,12 +416,6 @@ exports[`DataSourceAggregatedView empty state test with local cluster hiding sho
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -509,7 +474,6 @@ exports[`DataSourceAggregatedView empty state test with local cluster hiding sho
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -555,12 +519,6 @@ exports[`DataSourceAggregatedView empty state test with local cluster hiding sho
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -619,7 +577,6 @@ exports[`DataSourceAggregatedView error state test no matter hide local cluster 
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -664,12 +621,6 @@ exports[`DataSourceAggregatedView error state test no matter hide local cluster 
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -713,7 +664,6 @@ exports[`DataSourceAggregatedView error state test no matter hide local cluster 
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -758,12 +708,6 @@ exports[`DataSourceAggregatedView error state test no matter hide local cluster 
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -807,7 +751,6 @@ exports[`DataSourceAggregatedView error state test no matter hide local cluster 
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -853,12 +796,6 @@ exports[`DataSourceAggregatedView error state test no matter hide local cluster 
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -917,7 +854,6 @@ exports[`DataSourceAggregatedView error state test no matter hide local cluster 
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -963,12 +899,6 @@ exports[`DataSourceAggregatedView error state test no matter hide local cluster 
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -1027,7 +957,6 @@ exports[`DataSourceAggregatedView: dataSourceSelection) should render normally a
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -1073,12 +1002,6 @@ exports[`DataSourceAggregatedView: dataSourceSelection) should render normally a
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -1137,7 +1060,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -1183,12 +1105,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={3}
@@ -1268,7 +1184,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -1314,12 +1229,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={4}
@@ -1405,7 +1314,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -1451,12 +1359,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={2}
@@ -1530,7 +1432,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -1576,12 +1477,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={3}
@@ -1661,7 +1556,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -1707,12 +1601,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={3}
@@ -1792,7 +1680,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -1838,12 +1725,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={4}
@@ -1929,7 +1810,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -1975,12 +1855,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={2}
@@ -2054,7 +1928,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -2100,12 +1973,6 @@ exports[`DataSourceAggregatedView: read active view (displayAllCompatibleDataSou
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={3}
@@ -2185,7 +2052,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -2230,12 +2096,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -2279,7 +2139,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -2324,12 +2183,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -2373,7 +2226,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -2418,12 +2270,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -2467,7 +2313,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -2512,12 +2357,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -2561,7 +2400,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -2606,12 +2444,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -2655,7 +2487,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -2700,12 +2531,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -2749,7 +2574,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -2794,12 +2618,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -2843,7 +2661,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -2888,12 +2705,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -2937,7 +2748,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -2982,12 +2792,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}
@@ -3031,7 +2835,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
     button={
       <DataSourceMenuPopoverButton
         className="dataSourceAggregatedView"
-        isDisabled={true}
         onClick={[Function]}
       />
     }
@@ -3076,12 +2879,6 @@ exports[`DataSourceAggregatedView: read all view (displayAllCompatibleDataSource
           "navigateToApp": [MockFunction],
           "navigateToUrl": [MockFunction],
           "registerMountContext": [MockFunction],
-          "setAppBadgeControls": [MockFunction],
-          "setAppBottomControls": [MockFunction],
-          "setAppCenterControls": [MockFunction],
-          "setAppDescriptionControls": [MockFunction],
-          "setAppLeftControls": [MockFunction],
-          "setAppRightControls": [MockFunction],
         }
       }
       totalDataSourceCount={0}

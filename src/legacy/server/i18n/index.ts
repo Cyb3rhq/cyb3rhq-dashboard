@@ -62,11 +62,10 @@ export async function i18nMixin(
     }),
   ]);
 
-  // Flatten the array of arrays
-  const allTranslationPaths = ([] as string[]).concat(...translationPaths);
-
-  // Register all translation files, not just the ones for the current locale
-  i18nLoader.registerTranslationFiles(allTranslationPaths);
+  const currentTranslationPaths = ([] as string[])
+    .concat(...translationPaths)
+    .filter((translationPath) => basename(translationPath, '.json') === locale);
+  i18nLoader.registerTranslationFiles(currentTranslationPaths);
 
   const translations = await i18nLoader.getTranslationsByLocale(locale);
   i18n.init(
@@ -76,7 +75,7 @@ export async function i18nMixin(
     })
   );
 
-  const getTranslationsFilePaths = () => allTranslationPaths;
+  const getTranslationsFilePaths = () => currentTranslationPaths;
 
   server.decorate('server', 'getTranslationsFilePaths', getTranslationsFilePaths);
 

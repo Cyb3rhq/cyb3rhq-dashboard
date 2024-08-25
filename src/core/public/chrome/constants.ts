@@ -28,26 +28,12 @@
  * under the License.
  */
 
-export const OPENSEARCH_DASHBOARDS_ASK_OPENSEARCH_LINK = 'https://forum.opensearch.org/';
-export const GITHUB_CREATE_ISSUE_LINK =
-  'https://github.com/opensearch-project/OpenSearch-Dashboards/issues/new/choose';
+export const OPENSEARCH_DASHBOARDS_FEEDBACK_LINK = 'https://wazuh.com/community/join-us-on-slack';
+export const OPENSEARCH_DASHBOARDS_ASK_OPENSEARCH_LINK = OPENSEARCH_DASHBOARDS_FEEDBACK_LINK;
+export const GITHUB_CREATE_ISSUE_LINK = 'https://github.com/cyb3rhq/cyb3rhq/issues/new/choose';
 
 export enum RightNavigationOrder {
   // order of dev tool should be after advance settings
   Settings = 10,
   DevTool = 20,
-}
-
-export enum HeaderControlsContainer {
-  LEFT = 'left',
-  CENTER = 'center',
-  RIGHT = 'right',
-  BADGE = 'badge',
-  DESCRIPTION = 'description',
-  BOTTOM = 'bottom',
-}
-
-export enum HeaderVariant {
-  PAGE = 'page',
-  APPLICATION = 'application',
 }

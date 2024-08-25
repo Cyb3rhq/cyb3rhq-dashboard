@@ -45,8 +45,7 @@ main {
 
 .kuiButton {
   display: inline-block;
-    -webkit-appearance: none;
-            appearance: none;
+    appearance: none;
   cursor: pointer;
   padding: 4px 12px 5px;
   font-size: 16px;
@@ -63,11 +62,9 @@ main {
     cursor: not-allowed;
     opacity: 0.5; }
   .kuiButton:enabled:active {
-    -webkit-transform: translateY(1px);
-            transform: translateY(1px); }
+    transform: translateY(1px); }
   a.kuiButton:not(.kuiButton-isDisabled):active {
-        -webkit-transform: translateY(1px);
-                transform: translateY(1px); }
+        transform: translateY(1px); }
 
 .kuiButton__inner {
   display: flex;
@@ -289,8 +286,7 @@ main {
   display: inline-block; }
 
 .kuiCollapseButton {
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   background-color: transparent;
   padding: 4px;
   border: none;
@@ -310,22 +306,20 @@ main {
   position: absolute;
   right: 12px;
   top: 50%;
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
    }
 
 .kuiCheckBox {
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
     background-color: #fbfcfd;
   border: 1px solid rgba(15, 39, 118, 0.1);
   border-radius: 4px;
   width: 16px;
   height: 16px;
-  font: "var(--font-text)" !important;
+  font: var(--font-text) !important;
     line-height: 1.5 !important;
     margin: 0 !important;
-    font-family: "var(--font-text)" !important;
+    font-family: var(--font-text) !important;
     font-size: 10px !important;
     transition: background-color 0.1s linear; }
   .kuiCheckBox::before {
@@ -386,9 +380,8 @@ main {
   color: #98A2B3; }
 
 .kuiSearchInput__input {
-  -webkit-appearance: none;
-          appearance: none;
-  font-family: "var(--font-text)";
+  appearance: none;
+  font-family: var(--font-text);
   padding: 4px 12px 4px;
   font-size: 16px;
   font-weight: 400;
@@ -418,9 +411,8 @@ main {
   width: 400px; }
 
 .kuiSelect {
-  -webkit-appearance: none;
-          appearance: none;
-  font-family: "var(--font-text)";
+  appearance: none;
+  font-family: var(--font-text);
   padding: 4px 12px 4px;
   font-size: 16px;
   font-weight: 400;
@@ -466,9 +458,8 @@ main {
 
 .kuiStaticInput {
   width: 180px;
-  -webkit-appearance: none;
-          appearance: none;
-  font-family: "var(--font-text)";
+  appearance: none;
+  font-family: var(--font-text);
   padding: 4px 12px 4px;
   font-size: 16px;
   font-weight: 400;
@@ -479,9 +470,8 @@ main {
 
 .kuiTextArea {
   width: 180px;
-  -webkit-appearance: none;
-          appearance: none;
-  font-family: "var(--font-text)";
+  appearance: none;
+  font-family: var(--font-text);
   padding: 4px 12px 4px;
   font-size: 16px;
   font-weight: 400;
@@ -519,9 +509,8 @@ main {
 
 .kuiTextInput {
   width: 180px;
-  -webkit-appearance: none;
-          appearance: none;
-  font-family: "var(--font-text)";
+  appearance: none;
+  font-family: var(--font-text);
   padding: 4px 12px 4px;
   font-size: 16px;
   font-weight: 400;
@@ -644,8 +633,7 @@ main {
   color: #006BB4;
   text-decoration: none;
   cursor: pointer;
-    -webkit-appearance: none;
-            appearance: none;
+    appearance: none;
     background-color: transparent;
     border: none;
     font-size: inherit;
@@ -674,8 +662,7 @@ main {
     margin-left: 6px; }
     .kuiLocalBreadcrumb + .kuiLocalBreadcrumb::before {
       content: "/";
-      -webkit-user-select: none;
-              user-select: none;
+      user-select: none;
       margin-right: 4px;
       color: #D3DAE6; }
 
@@ -683,8 +670,7 @@ main {
   color: #006BB4;
   text-decoration: none;
   cursor: pointer;
-    -webkit-appearance: none;
-            appearance: none;
+    appearance: none;
     background-color: transparent;
     border: none;
     font-size: inherit;
@@ -716,8 +702,7 @@ main {
   margin-bottom: 4px; }
 
 .kuiDatePickerNavigationButton {
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   background-color: transparent;
   border: none;
   font-size: 14px;
@@ -753,8 +738,7 @@ main {
       pointer-events: none; }
 
 .kuiDatePickerRowCellContent {
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   background-color: transparent;
   width: 100%;
   border: 1px solid transparent;
@@ -793,8 +777,7 @@ main {
   line-height: 20px; }
 
 .kuiLocalDropdownCloseButton {
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   background-color: transparent;
   padding: 4px;
   border: none;
@@ -954,9 +937,8 @@ main {
   margin-bottom: 8px; }
 
 .kuiLocalSearchInput {
-  -webkit-appearance: none;
-          appearance: none;
-  font-family: "var(--font-text)";
+  appearance: none;
+  font-family: var(--font-text);
   padding: 4px 12px 4px;
   font-size: 16px;
   font-weight: 400;
@@ -1000,14 +982,12 @@ main {
   right: 6px;
   top: 50%;
     z-index: 2;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
    }
 
 .kuiLocalSearchSelect {
-  -webkit-appearance: none;
-          appearance: none;
-  font-family: "var(--font-text)";
+  appearance: none;
+  font-family: var(--font-text);
   padding: 4px 12px 4px;
   font-size: 16px;
   font-weight: 400;
@@ -1285,12 +1265,10 @@ main {
   padding: 7px 8px 8px; }
 
 .kuiTableHeaderCellButton {
-  -webkit-user-select: none;
-          user-select: none;
+  user-select: none;
     cursor: pointer;
   width: 100%;
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
     background-color: transparent;
     border: 0;
     padding: 0;
@@ -1385,8 +1363,7 @@ main {
   border-bottom: 1px solid #D3DAE6; }
 
 .kuiTab {
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
     cursor: pointer;
   padding: 10px 30px;
   font-size: 16px;
@@ -1551,7 +1528,7 @@ main {
   width: 100%;
   min-width: 200px;
   padding: 4px 12px 5px 28px;
-  font-family: "var(--font-text)";
+  font-family: var(--font-text);
     background-color: #FFF;
   color: #343741;
   border-radius: 4px;

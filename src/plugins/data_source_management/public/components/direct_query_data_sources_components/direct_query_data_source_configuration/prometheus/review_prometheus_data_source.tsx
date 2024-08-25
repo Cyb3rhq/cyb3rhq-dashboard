@@ -5,6 +5,7 @@
 
 import {
   EuiPanel,
+  EuiTitle,
   EuiSpacer,
   EuiText,
   EuiFlexGroup,
@@ -40,9 +41,9 @@ export const ReviewPrometheusDatasource = (props: ConfigurePrometheusDatasourceP
   return (
     <div>
       <EuiPanel>
-        <EuiText size="s">
+        <EuiTitle>
           <h1 data-test-subj="reviewTitle">{`Review Prometheus data source configuration`}</h1>
-        </EuiText>
+        </EuiTitle>
         <EuiSpacer size="s" />
         <EuiSpacer />
         <EuiFlexGroup justifyContent="spaceBetween">

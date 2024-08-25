@@ -1,6 +1,7 @@
 {
   "snapshot.verify_repository": {
     "url_params": {
+      "master_timeout": "",
       "cluster_manager_timeout": "",
       "timeout": ""
     },

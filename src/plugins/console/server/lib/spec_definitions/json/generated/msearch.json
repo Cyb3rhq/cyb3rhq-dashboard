@@ -20,7 +20,8 @@
     ],
     "patterns": [
       "_msearch",
-      "{indices}/_msearch"
+      "{indices}/_msearch",
+      "{indices}/{type}/_msearch"
     ],
     "documentation": "https://opensearch.org/docs/latest/api-reference/multi-search/"
   }

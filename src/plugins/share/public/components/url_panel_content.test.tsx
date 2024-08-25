@@ -84,7 +84,7 @@ describe('share url panel content', () => {
       );
     });
     expect(component.find(EuiCopy).prop('textToCopy')).toEqual(
-      'http://localhost:5601/app/myapp#/?_g=%28%29'
+      'http://localhost:5601/app/myapp#/?_g=()'
     );
   });
 
@@ -179,7 +179,7 @@ describe('share url panel content', () => {
         );
       });
       expect(component.find(EuiCopy).prop('textToCopy')).toEqual(
-        asIframe('http://localhost:5601/app/myapp#/?embed=true&_g=%28%29')
+        asIframe('http://localhost:5601/app/myapp#/?embed=true&_g=()')
       );
     });
 

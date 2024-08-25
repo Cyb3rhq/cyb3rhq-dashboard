@@ -153,62 +153,62 @@ exports[`dashboard listing hideWriteControls 1`] = `
                 "AnimatedMark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_spinner_on_dark.svg",
+                    "url": "/ui/logos/spinner_on_dark.gif",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_spinner_on_light.svg",
+                    "url": "/ui/logos/spinner_on_light.gif",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_spinner_on_light.svg",
+                  "url": "/ui/logos/spinner_on_light.gif",
                 },
                 "Application": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_dashboards_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_dashboards_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_dashboards_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_dashboards_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_dashboards_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_dashboards_on_light.svg",
                 },
                 "CenterMark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_center_mark_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_center_mark_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_center_mark_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_center_mark_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_center_mark_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_center_mark_on_light.svg",
                 },
                 "Mark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_mark_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_mark_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_mark_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_mark_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_mark_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_mark_on_light.svg",
                 },
                 "OpenSearch": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_on_light.svg",
                 },
                 "colorScheme": "light",
               },
@@ -519,6 +519,7 @@ exports[`dashboard listing hideWriteControls 1`] = `
             "docLinks": Object {
               "DOC_LINK_VERSION": "mocked-test-branch",
               "OPENSEARCH_WEBSITE_URL": "https://opensearch.org/",
+              "CYB3RHQ_DOC_VERSION": "4.x",
               "links": Object {
                 "noDocumentation": Object {
                   "addData": "https://opensearch.org/docs/mocked-test-branch",
@@ -869,6 +870,9 @@ exports[`dashboard listing hideWriteControls 1`] = `
                     "guide": "https://opensearch.org/docs/mocked-test-branchvisualize/viz-index/",
                   },
                 },
+                "cyb3rhq": Object {
+                  "index": "https://documentation.wazuh.com/4.x/index.html",
+                },
               },
             },
             "embeddable": Object {
@@ -1050,15 +1054,6 @@ exports[`dashboard listing hideWriteControls 1`] = `
               "reportUiStats": [MockFunction],
             },
             "workspaces": Object {
-              "client$": BehaviorSubject {
-                "_isScalar": false,
-                "_value": null,
-                "closed": false,
-                "hasError": false,
-                "isStopped": false,
-                "observers": Array [],
-                "thrownError": null,
-              },
               "currentWorkspace$": BehaviorSubject {
                 "_isScalar": false,
                 "_value": null,
@@ -1352,62 +1347,62 @@ exports[`dashboard listing render table listing with initial filters from URL 1`
                 "AnimatedMark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_spinner_on_dark.svg",
+                    "url": "/ui/logos/spinner_on_dark.gif",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_spinner_on_light.svg",
+                    "url": "/ui/logos/spinner_on_light.gif",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_spinner_on_light.svg",
+                  "url": "/ui/logos/spinner_on_light.gif",
                 },
                 "Application": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_dashboards_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_dashboards_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_dashboards_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_dashboards_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_dashboards_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_dashboards_on_light.svg",
                 },
                 "CenterMark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_center_mark_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_center_mark_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_center_mark_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_center_mark_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_center_mark_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_center_mark_on_light.svg",
                 },
                 "Mark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_mark_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_mark_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_mark_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_mark_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_mark_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_mark_on_light.svg",
                 },
                 "OpenSearch": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_on_light.svg",
                 },
                 "colorScheme": "light",
               },
@@ -1718,6 +1713,7 @@ exports[`dashboard listing render table listing with initial filters from URL 1`
             "docLinks": Object {
               "DOC_LINK_VERSION": "mocked-test-branch",
               "OPENSEARCH_WEBSITE_URL": "https://opensearch.org/",
+              "CYB3RHQ_DOC_VERSION": "4.x",
               "links": Object {
                 "noDocumentation": Object {
                   "addData": "https://opensearch.org/docs/mocked-test-branch",
@@ -2068,6 +2064,9 @@ exports[`dashboard listing render table listing with initial filters from URL 1`
                     "guide": "https://opensearch.org/docs/mocked-test-branchvisualize/viz-index/",
                   },
                 },
+                "cyb3rhq": Object {
+                  "index": "https://documentation.wazuh.com/4.x/index.html",
+                },
               },
             },
             "embeddable": Object {
@@ -2249,15 +2248,6 @@ exports[`dashboard listing render table listing with initial filters from URL 1`
               "reportUiStats": [MockFunction],
             },
             "workspaces": Object {
-              "client$": BehaviorSubject {
-                "_isScalar": false,
-                "_value": null,
-                "closed": false,
-                "hasError": false,
-                "isStopped": false,
-                "observers": Array [],
-                "thrownError": null,
-              },
               "currentWorkspace$": BehaviorSubject {
                 "_isScalar": false,
                 "_value": null,
@@ -2612,62 +2602,62 @@ exports[`dashboard listing renders call to action when no dashboards exist 1`] =
                 "AnimatedMark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_spinner_on_dark.svg",
+                    "url": "/ui/logos/spinner_on_dark.gif",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_spinner_on_light.svg",
+                    "url": "/ui/logos/spinner_on_light.gif",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_spinner_on_light.svg",
+                  "url": "/ui/logos/spinner_on_light.gif",
                 },
                 "Application": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_dashboards_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_dashboards_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_dashboards_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_dashboards_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_dashboards_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_dashboards_on_light.svg",
                 },
                 "CenterMark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_center_mark_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_center_mark_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_center_mark_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_center_mark_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_center_mark_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_center_mark_on_light.svg",
                 },
                 "Mark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_mark_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_mark_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_mark_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_mark_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_mark_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_mark_on_light.svg",
                 },
                 "OpenSearch": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_on_light.svg",
                 },
                 "colorScheme": "light",
               },
@@ -2978,6 +2968,7 @@ exports[`dashboard listing renders call to action when no dashboards exist 1`] =
             "docLinks": Object {
               "DOC_LINK_VERSION": "mocked-test-branch",
               "OPENSEARCH_WEBSITE_URL": "https://opensearch.org/",
+              "CYB3RHQ_DOC_VERSION": "4.x",
               "links": Object {
                 "noDocumentation": Object {
                   "addData": "https://opensearch.org/docs/mocked-test-branch",
@@ -3328,6 +3319,9 @@ exports[`dashboard listing renders call to action when no dashboards exist 1`] =
                     "guide": "https://opensearch.org/docs/mocked-test-branchvisualize/viz-index/",
                   },
                 },
+                "cyb3rhq": Object {
+                  "index": "https://documentation.wazuh.com/4.x/index.html",
+                },
               },
             },
             "embeddable": Object {
@@ -3509,15 +3503,6 @@ exports[`dashboard listing renders call to action when no dashboards exist 1`] =
               "reportUiStats": [MockFunction],
             },
             "workspaces": Object {
-              "client$": BehaviorSubject {
-                "_isScalar": false,
-                "_value": null,
-                "closed": false,
-                "hasError": false,
-                "isStopped": false,
-                "observers": Array [],
-                "thrownError": null,
-              },
               "currentWorkspace$": BehaviorSubject {
                 "_isScalar": false,
                 "_value": null,
@@ -3872,62 +3857,62 @@ exports[`dashboard listing renders table rows 1`] = `
                 "AnimatedMark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_spinner_on_dark.svg",
+                    "url": "/ui/logos/spinner_on_dark.gif",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_spinner_on_light.svg",
+                    "url": "/ui/logos/spinner_on_light.gif",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_spinner_on_light.svg",
+                  "url": "/ui/logos/spinner_on_light.gif",
                 },
                 "Application": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_dashboards_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_dashboards_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_dashboards_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_dashboards_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_dashboards_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_dashboards_on_light.svg",
                 },
                 "CenterMark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_center_mark_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_center_mark_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_center_mark_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_center_mark_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_center_mark_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_center_mark_on_light.svg",
                 },
                 "Mark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_mark_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_mark_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_mark_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_mark_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_mark_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_mark_on_light.svg",
                 },
                 "OpenSearch": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_on_light.svg",
                 },
                 "colorScheme": "light",
               },
@@ -4238,6 +4223,7 @@ exports[`dashboard listing renders table rows 1`] = `
             "docLinks": Object {
               "DOC_LINK_VERSION": "mocked-test-branch",
               "OPENSEARCH_WEBSITE_URL": "https://opensearch.org/",
+              "CYB3RHQ_DOC_VERSION": "4.x",
               "links": Object {
                 "noDocumentation": Object {
                   "addData": "https://opensearch.org/docs/mocked-test-branch",
@@ -4588,6 +4574,9 @@ exports[`dashboard listing renders table rows 1`] = `
                     "guide": "https://opensearch.org/docs/mocked-test-branchvisualize/viz-index/",
                   },
                 },
+                "cyb3rhq": Object {
+                  "index": "https://documentation.wazuh.com/4.x/index.html",
+                },
               },
             },
             "embeddable": Object {
@@ -4769,15 +4758,6 @@ exports[`dashboard listing renders table rows 1`] = `
               "reportUiStats": [MockFunction],
             },
             "workspaces": Object {
-              "client$": BehaviorSubject {
-                "_isScalar": false,
-                "_value": null,
-                "closed": false,
-                "hasError": false,
-                "isStopped": false,
-                "observers": Array [],
-                "thrownError": null,
-              },
               "currentWorkspace$": BehaviorSubject {
                 "_isScalar": false,
                 "_value": null,
@@ -5132,62 +5112,62 @@ exports[`dashboard listing renders warning when listingLimit is exceeded 1`] = `
                 "AnimatedMark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_spinner_on_dark.svg",
+                    "url": "/ui/logos/spinner_on_dark.gif",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_spinner_on_light.svg",
+                    "url": "/ui/logos/spinner_on_light.gif",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_spinner_on_light.svg",
+                  "url": "/ui/logos/spinner_on_light.gif",
                 },
                 "Application": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_dashboards_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_dashboards_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_dashboards_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_dashboards_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_dashboards_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_dashboards_on_light.svg",
                 },
                 "CenterMark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_center_mark_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_center_mark_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_center_mark_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_center_mark_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_center_mark_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_center_mark_on_light.svg",
                 },
                 "Mark": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_mark_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_mark_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_mark_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_mark_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_mark_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_mark_on_light.svg",
                 },
                 "OpenSearch": Object {
                   "dark": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_on_dark.svg",
+                    "url": "/ui/logos/cyb3rhq_on_dark.svg",
                   },
                   "light": Object {
                     "type": "default",
-                    "url": "/ui/logos/opensearch_on_light.svg",
+                    "url": "/ui/logos/cyb3rhq_on_light.svg",
                   },
                   "type": "default",
-                  "url": "/ui/logos/opensearch_on_light.svg",
+                  "url": "/ui/logos/cyb3rhq_on_light.svg",
                 },
                 "colorScheme": "light",
               },
@@ -5498,6 +5478,7 @@ exports[`dashboard listing renders warning when listingLimit is exceeded 1`] = `
             "docLinks": Object {
               "DOC_LINK_VERSION": "mocked-test-branch",
               "OPENSEARCH_WEBSITE_URL": "https://opensearch.org/",
+              "CYB3RHQ_DOC_VERSION": "4.x",
               "links": Object {
                 "noDocumentation": Object {
                   "addData": "https://opensearch.org/docs/mocked-test-branch",
@@ -5848,6 +5829,9 @@ exports[`dashboard listing renders warning when listingLimit is exceeded 1`] = `
                     "guide": "https://opensearch.org/docs/mocked-test-branchvisualize/viz-index/",
                   },
                 },
+                "cyb3rhq": Object {
+                  "index": "https://documentation.wazuh.com/4.x/index.html",
+                },
               },
             },
             "embeddable": Object {
@@ -6029,15 +6013,6 @@ exports[`dashboard listing renders warning when listingLimit is exceeded 1`] = `
               "reportUiStats": [MockFunction],
             },
             "workspaces": Object {
-              "client$": BehaviorSubject {
-                "_isScalar": false,
-                "_value": null,
-                "closed": false,
-                "hasError": false,
-                "isStopped": false,
-                "observers": Array [],
-                "thrownError": null,
-              },
               "currentWorkspace$": BehaviorSubject {
                 "_isScalar": false,
                 "_value": null,

@@ -3,32 +3,42 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { i18n } from '@osd/i18n';
 import {
   EuiCard,
+  EuiFlexGrid,
   EuiFlexGroup,
   EuiFlexItem,
   EuiPageContent,
+  EuiPageHeader,
+  EuiPageHeaderSection,
+  EuiPanel,
   EuiSpacer,
   EuiTitle,
 } from '@elastic/eui';
 import { AppCategory, ChromeNavLink, CoreStart } from 'opensearch-dashboards/public';
 import React, { useMemo } from 'react';
-import { NavigationPublicPluginStart } from '../../../../../../src/plugins/navigation/public';
 
 export interface FeatureCardsProps {
-  pageDescription: string;
+  pageTitle: string;
   navLinks: ChromeNavLink[];
   navigateToApp: CoreStart['application']['navigateToApp'];
-  setAppDescriptionControls: CoreStart['application']['setAppDescriptionControls'];
-  navigationUI: NavigationPublicPluginStart['ui'];
+  getStartedCards: Array<{
+    id: string;
+    title: string;
+    description: string;
+  }>;
 }
+
+const getStartedTitle = i18n.translate('management.gettingStarted.label', {
+  defaultMessage: 'Get started',
+});
 
 export const FeatureCards = ({
   navLinks,
   navigateToApp,
-  setAppDescriptionControls,
-  pageDescription,
-  navigationUI: { HeaderControl },
+  pageTitle,
+  getStartedCards,
 }: FeatureCardsProps) => {
   const itemsPerRow = 4;
   const groupedCardForDisplay = useMemo(() => {
@@ -55,14 +65,41 @@ export const FeatureCards = ({
   }
   return (
     <>
-      <HeaderControl
-        controls={[
-          {
-            description: pageDescription,
-          },
-        ]}
-        setMountPoint={setAppDescriptionControls}
-      />
+      <EuiPageContent borderRadius="none">
+        <EuiPageHeader>
+          <EuiPageHeaderSection>
+            <EuiTitle size="l">
+              <h1>{pageTitle}</h1>
+            </EuiTitle>
+          </EuiPageHeaderSection>
+        </EuiPageHeader>
+        {getStartedCards.length ? (
+          <>
+            <EuiSpacer size="s" />
+            <EuiTitle>
+              <h3>{getStartedTitle}</h3>
+            </EuiTitle>
+            <EuiFlexGrid columns={4}>
+              {getStartedCards.map((card) => {
+                return (
+                  <EuiFlexItem>
+                    <EuiPanel>
+                      <EuiCard
+                        title={card.title}
+                        description={card.description}
+                        data-test-subj={`getStartedCard_${card.id}`}
+                        textAlign="left"
+                        onClick={() => navigateToApp(card.id)}
+                        titleSize="xs"
+                      />
+                    </EuiPanel>
+                  </EuiFlexItem>
+                );
+              })}
+            </EuiFlexGrid>
+          </>
+        ) : null}
+      </EuiPageContent>
       <EuiPageContent hasShadow={false} hasBorder={false} color="transparent">
         {groupedCardForDisplay.map((group) => (
           <div key={group.category?.id}>

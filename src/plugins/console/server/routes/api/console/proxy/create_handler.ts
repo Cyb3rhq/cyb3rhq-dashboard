@@ -32,7 +32,7 @@ import { OpenSearchDashboardsRequest, RequestHandler } from 'opensearch-dashboar
 import { trimStart } from 'lodash';
 import { Readable } from 'stream';
 import { stringify } from '@osd/std';
-import { ApiResponse } from '@opensearch-project/opensearch';
+import { ApiResponse } from '@opensearch-project/opensearch-next';
 
 // eslint-disable-next-line @osd/eslint/no-restricted-paths
 import { ensureRawRequest } from '../../../../../../../core/server/http/router';

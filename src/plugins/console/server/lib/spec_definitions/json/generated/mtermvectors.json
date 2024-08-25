@@ -25,7 +25,8 @@
     ],
     "patterns": [
       "_mtermvectors",
-      "{indices}/_mtermvectors"
+      "{indices}/_mtermvectors",
+      "{indices}/{type}/_mtermvectors"
     ],
     "documentation": "https://opensearch.org/docs/"
   }

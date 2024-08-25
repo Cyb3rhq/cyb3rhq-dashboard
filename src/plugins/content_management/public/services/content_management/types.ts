@@ -3,9 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { CardContainerExplicitInput } from '../../components/card_container/types';
-import { DashboardContainerExplicitInput } from '../../components/types';
-
 export interface PageConfig {
   id: string;
   title?: string;
@@ -28,16 +25,12 @@ export type Section =
       order: number;
       title?: string;
       description?: string;
-      input?: DashboardContainerExplicitInput;
     }
   | {
       kind: 'card';
       id: string;
       order: number;
       title?: string;
-      input?: CardContainerExplicitInput;
-      columns?: number;
-      wrap?: boolean;
     };
 
 export type Content =
@@ -46,24 +39,18 @@ export type Content =
       id: string;
       order: number;
       input: SavedObjectInput;
-      width?: number;
-      height?: number;
     }
   | {
       kind: 'dashboard';
       id: string;
       order: number;
       input: SavedObjectInput;
-      width?: number;
-      height?: number;
     }
   | {
       kind: 'custom';
       id: string;
       order: number;
       render: () => JSX.Element;
-      width?: number;
-      height?: number;
     }
   | {
       kind: 'card';

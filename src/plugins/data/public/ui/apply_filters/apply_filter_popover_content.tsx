@@ -38,6 +38,7 @@ import {
   EuiModalHeader,
   EuiModalHeaderTitle,
   EuiCompressedSwitch,
+  EuiSwitch,
   EuiText,
 } from '@elastic/eui';
 import { FormattedMessage } from '@osd/i18n/react';

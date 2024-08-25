@@ -33,7 +33,6 @@ import {
   WORKSPACE_SAVED_OBJECTS_CLIENT_WRAPPER_ID,
   WorkspacePermissionMode,
 } from '../../common/constants';
-import { DATA_SOURCE_SAVED_OBJECT_TYPE } from '../../../data_source/common';
 
 // Can't throw unauthorized for now, the page will be refreshed if unauthorized
 const generateWorkspacePermissionError = () =>
@@ -54,15 +53,6 @@ const generateSavedObjectsPermissionError = () =>
     )
   );
 
-const generateDataSourcePermissionError = () =>
-  SavedObjectsErrorHelpers.decorateForbiddenError(
-    new Error(
-      i18n.translate('saved_objects.data_source.invalidate', {
-        defaultMessage: 'Invalid data source permission, please associate it to current workspace',
-      })
-    )
-  );
-
 const generateOSDAdminPermissionError = () =>
   SavedObjectsErrorHelpers.decorateForbiddenError(
     new Error(
@@ -71,18 +61,6 @@ const generateOSDAdminPermissionError = () =>
       })
     )
   );
-
-const getWorkspacesFromSavedObjects = (savedObjects: SavedObject[]) => {
-  return savedObjects
-    .reduce<string[]>(
-      (previous, { workspaces }) => Array.from(new Set([...previous, ...(workspaces ?? [])])),
-      []
-    )
-    .map((id) => ({
-      type: WORKSPACE_TYPE,
-      id,
-    }));
-};
 
 const getDefaultValuesForEmpty = <T>(values: T[] | undefined, defaultValues: T[]) => {
   return !values || values.length === 0 ? defaultValues : values;
@@ -138,12 +116,15 @@ export class WorkspaceSavedObjectsClientWrapper {
       return false;
     }
     for (const workspaceId of workspaces) {
-      const validateResult = await this.validateMultiWorkspacesPermissions(
-        [workspaceId],
+      const validateResult = await this.permissionControl.validate(
         request,
+        {
+          type: WORKSPACE_TYPE,
+          id: workspaceId,
+        },
         permissionModes
       );
-      if (validateResult) {
+      if (validateResult?.result) {
         return true;
       }
     }
@@ -197,15 +178,6 @@ export class WorkspaceSavedObjectsClientWrapper {
     }
     return hasPermission;
   }
-
-  // Data source is a workspace level object, validate if the request has access to the data source within the requested workspace.
-  private validateDataSourcePermissions = (
-    object: SavedObject,
-    request: OpenSearchDashboardsRequest
-  ) => {
-    const requestWorkspaceId = getWorkspaceState(request).requestWorkspaceId;
-    return !requestWorkspaceId || !!object.workspaces?.includes(requestWorkspaceId);
-  };
 
   private getWorkspaceTypeEnabledClient(request: OpenSearchDashboardsRequest) {
     return this.getScopedClient?.(request, {
@@ -274,10 +246,6 @@ export class WorkspaceSavedObjectsClientWrapper {
       options?: SavedObjectsBulkUpdateOptions
     ): Promise<SavedObjectsBulkUpdateResponse<T>> => {
       const objectsToUpdate = await wrapperOptions.client.bulkGet<T>(objects, options);
-      this.permissionControl.addToCacheAllowlist(
-        wrapperOptions.request,
-        getWorkspacesFromSavedObjects(objectsToUpdate.saved_objects)
-      );
 
       for (const object of objectsToUpdate.saved_objects) {
         const permitted = await validateUpdateWithWorkspacePermission(object);
@@ -335,10 +303,6 @@ export class WorkspaceSavedObjectsClientWrapper {
                 throw error;
               }
             }
-            this.permissionControl.addToCacheAllowlist(
-              wrapperOptions.request,
-              getWorkspacesFromSavedObjects([rawObject])
-            );
             if (
               !(await this.validateWorkspacesAndSavedObjectsPermissions(
                 rawObject,
@@ -414,16 +378,6 @@ export class WorkspaceSavedObjectsClientWrapper {
     ): Promise<SavedObject<T>> => {
       const objectToGet = await wrapperOptions.client.get<T>(type, id, options);
 
-      if (objectToGet.type === DATA_SOURCE_SAVED_OBJECT_TYPE) {
-        const hasPermission = this.validateDataSourcePermissions(
-          objectToGet,
-          wrapperOptions.request
-        );
-        if (!hasPermission) {
-          throw generateDataSourcePermissionError();
-        }
-      }
-
       if (
         !(await this.validateWorkspacesAndSavedObjectsPermissions(
           objectToGet,
@@ -443,19 +397,8 @@ export class WorkspaceSavedObjectsClientWrapper {
       options: SavedObjectsBaseOptions = {}
     ): Promise<SavedObjectsBulkResponse<T>> => {
       const objectToBulkGet = await wrapperOptions.client.bulkGet<T>(objects, options);
-      this.permissionControl.addToCacheAllowlist(
-        wrapperOptions.request,
-        getWorkspacesFromSavedObjects(objectToBulkGet.saved_objects)
-      );
 
       for (const object of objectToBulkGet.saved_objects) {
-        if (object.type === DATA_SOURCE_SAVED_OBJECT_TYPE) {
-          const hasPermission = this.validateDataSourcePermissions(object, wrapperOptions.request);
-          if (!hasPermission) {
-            throw generateDataSourcePermissionError();
-          }
-        }
-
         if (
           !(await this.validateWorkspacesAndSavedObjectsPermissions(
             object,

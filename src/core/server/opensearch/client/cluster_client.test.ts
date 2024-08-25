@@ -62,8 +62,12 @@ describe('ClusterClient', () => {
     logger = loggingSystemMock.createLogger();
     internalClient = opensearchClientMock.createInternalClient();
     scopedClient = opensearchClientMock.createInternalClient();
-    internalClientWithLongNumeralsSupport = opensearchClientMock.createInternalClient(true);
-    scopedClientWithLongNumeralsSupport = opensearchClientMock.createInternalClient(true);
+    internalClientWithLongNumeralsSupport = opensearchClientMock.createInternalClient({
+      withLongNumeralsSupport: true,
+    });
+    scopedClientWithLongNumeralsSupport = opensearchClientMock.createInternalClient({
+      withLongNumeralsSupport: true,
+    });
     getAuthHeaders = jest.fn().mockImplementation(() => ({
       authorization: 'auth',
       foo: 'bar',
@@ -530,7 +534,7 @@ describe('ClusterClient', () => {
       let closeScopedClientWithLongNumeralsSupport: () => void;
 
       internalClient.close.mockReturnValue(
-        new Promise<void>((resolve) => {
+        new Promise((resolve) => {
           closeInternalClient = resolve;
         }).then(() => {
           expect(clusterClientClosed).toBe(false);
@@ -538,7 +542,7 @@ describe('ClusterClient', () => {
         })
       );
       scopedClient.close.mockReturnValue(
-        new Promise<void>((resolve) => {
+        new Promise((resolve) => {
           closeScopedClient = resolve;
         }).then(() => {
           expect(clusterClientClosed).toBe(false);
@@ -546,7 +550,7 @@ describe('ClusterClient', () => {
         })
       );
       internalClientWithLongNumeralsSupport.close.mockReturnValue(
-        new Promise<void>((resolve) => {
+        new Promise((resolve) => {
           closeInternalClientWithLongNumeralsSupport = resolve;
         }).then(() => {
           expect(clusterClientClosed).toBe(false);
@@ -554,7 +558,7 @@ describe('ClusterClient', () => {
         })
       );
       scopedClientWithLongNumeralsSupport.close.mockReturnValue(
-        new Promise<void>((resolve) => {
+        new Promise((resolve) => {
           closeScopedClientWithLongNumeralsSupport = resolve;
         }).then(() => {
           expect(clusterClientClosed).toBe(false);

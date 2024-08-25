@@ -28,7 +28,10 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
   const expectedWelcomeMessage = 'Welcome to OpenSearch';
 
   describe('OpenSearch Dashboards branding configuration', function customHomeBranding() {
-    describe('should render overview page', async () => {
+    /**
+     * This test is skipped because the overview page is not available.
+     */
+    describe.skip('should render overview page', async () => {
       this.tags('includeFirefox');
 
       before(async function () {
@@ -45,24 +48,7 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
         expect(actualLabel.toUpperCase()).to.equal(expectedMarkLogo.toUpperCase());
       });
 
-      it('if enable user control, admin customized dark mode logo for opensearch overview header is not applied', async () => {
-        await PageObjects.common.navigateToApp('management/opensearch-dashboards/settings');
-        await PageObjects.settings.toggleAdvancedSettingCheckbox('theme:enableUserControl');
-        const button = await testSubjects.find('advancedSetting-editField-theme:darkMode');
-        const isDisabled = (await button.getAttribute('disabled')) !== null;
-        expect(isDisabled).equal(true);
-        await PageObjects.common.navigateToApp('opensearch_dashboards_overview');
-        await testSubjects.existOrFail('osdOverviewPageHeaderLogo');
-        const actualLabel = await testSubjects.getAttribute(
-          'osdOverviewPageHeaderLogo',
-          'data-test-logo'
-        );
-        expect(actualLabel.toUpperCase()).to.equal(expectedMarkLogo.toUpperCase());
-        await PageObjects.common.navigateToApp('management/opensearch-dashboards/settings');
-        await PageObjects.settings.clearAdvancedSettings('theme:enableUserControl');
-      });
-
-      it('admin customized dark mode logo for opensearch overview header is applied', async () => {
+      it('with customized logo for opensearch overview header in dark mode', async () => {
         await PageObjects.common.navigateToApp('management/opensearch-dashboards/settings');
         await PageObjects.settings.toggleAdvancedSettingCheckbox('theme:darkMode');
         await PageObjects.common.navigateToApp('opensearch_dashboards_overview');
@@ -72,8 +58,6 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
           'data-test-logo'
         );
         expect(actualLabel.toUpperCase()).to.equal(expectedMarkLogoDarkMode.toUpperCase());
-        await PageObjects.common.navigateToApp('management/opensearch-dashboards/settings');
-        await PageObjects.settings.clearAdvancedSettings('theme:darkMode');
       });
     });
 
@@ -100,7 +84,10 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
         });
       });
 
-      it('with customized logo', async () => {
+      /**
+       * This test is omitted because the welcome page has been removed.
+       */
+      it.skip('with customized logo', async () => {
         await testSubjects.existOrFail('welcomeCustomLogo');
         const actualLabel = await testSubjects.getAttribute(
           'welcomeCustomLogo',
@@ -109,7 +96,7 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
         expect(actualLabel.toUpperCase()).to.equal(expectedMarkLogo.toUpperCase());
       });
 
-      it('with customized title', async () => {
+      it.skip('with customized title', async () => {
         await testSubjects.existOrFail('welcomeCustomTitle');
         const actualLabel = await testSubjects.getAttribute(
           'welcomeCustomTitle',
@@ -118,7 +105,7 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
         expect(actualLabel.toUpperCase()).to.equal(expectedWelcomeMessage.toUpperCase());
       });
 
-      it('admin customized dark mode logo for home is applied', async () => {
+      it.skip('with customized logo in dark mode', async () => {
         await PageObjects.common.navigateToApp('management/opensearch-dashboards/settings');
         await PageObjects.settings.toggleAdvancedSettingCheckbox('theme:darkMode');
         await PageObjects.common.navigateToApp('home');
@@ -128,25 +115,6 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
           'data-test-image-url'
         );
         expect(actualLabel.toUpperCase()).to.equal(expectedMarkLogoDarkMode.toUpperCase());
-        await PageObjects.common.navigateToApp('management/opensearch-dashboards/settings');
-        await PageObjects.settings.clearAdvancedSettings('theme:darkMode');
-      });
-
-      it('if enable user control, admin customized dark mode logo for home is not applied', async () => {
-        await PageObjects.common.navigateToApp('management/opensearch-dashboards/settings');
-        await PageObjects.settings.toggleAdvancedSettingCheckbox('theme:enableUserControl');
-        const button = await testSubjects.find('advancedSetting-editField-theme:darkMode');
-        const isDisabled = (await button.getAttribute('disabled')) !== null;
-        expect(isDisabled).equal(true);
-        await PageObjects.common.navigateToApp('home');
-        await testSubjects.existOrFail('welcomeCustomLogo');
-        const actualLabel = await testSubjects.getAttribute(
-          'welcomeCustomLogo',
-          'data-test-image-url'
-        );
-        expect(actualLabel.toUpperCase()).to.equal(expectedMarkLogo.toUpperCase());
-        await PageObjects.common.navigateToApp('management/opensearch-dashboards/settings');
-        await PageObjects.settings.clearAdvancedSettings('theme:enableUserControl');
       });
     });
 
@@ -163,8 +131,7 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
 
       describe('in default mode', async () => {
         it('with customized logo in header bar', async () => {
-          //  The expanded header shows up with a dark background irrespective of the color scheme and because of that, we will always have a dark logo there.
-          await globalNav.logoExistsOrFail(expectedFullLogoDarkMode);
+          await globalNav.logoExistsOrFail(expectedFullLogo);
         });
 
         it('with customized mark logo button in header bar', async () => {
@@ -176,7 +143,7 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
           await globalNav.clickLogo();
           await PageObjects.header.waitUntilLoadingHasFinished();
           const url = await browser.getCurrentUrl();
-          expect(url.includes('/app/home')).to.be(true);
+          expect(url.includes('/app/wz-home')).to.be(true);
         });
 
         it('with customized mark logo button that navigates to home page', async () => {
@@ -184,10 +151,11 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
           await globalNav.clickHomeButton();
           await PageObjects.header.waitUntilLoadingHasFinished();
           const url = await browser.getCurrentUrl();
-          expect(url.includes('/app/home')).to.be(true);
+          expect(url.includes('/app/wz-home')).to.be(true);
         });
 
-        it('with customized mark logo in home dashboard card', async () => {
+        // Cyb3rhq: This test is omitted because OpenSearch Dashboards does not have a home dashboard card.
+        it.skip('with customized mark logo in home dashboard card', async () => {
           await testSubjects.existOrFail('dashboardCustomLogo');
           const actualLabel = await testSubjects.getAttribute(
             'dashboardCustomLogo',
@@ -196,7 +164,8 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
           expect(actualLabel.toUpperCase()).to.equal(expectedMarkLogo.toUpperCase());
         });
 
-        it('with customized title in home dashboard card', async () => {
+        // Cyb3rhq: This test is omitted because OpenSearch Dashboards does not have a home dashboard card.
+        it.skip('with customized title in home dashboard card', async () => {
           await testSubjects.existOrFail('dashboardCustomTitle');
           const actualLabel = await testSubjects.getAttribute(
             'dashboardCustomTitle',
@@ -205,7 +174,8 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
           expect(actualLabel.toUpperCase()).to.equal(applicationTitle.toUpperCase());
         });
 
-        it('with customized mark logo for opensearch in side menu', async () => {
+        // Cyb3rhq: This test is omitted because OpenSearch Dashboards does not appear in the side menu.
+        it.skip('with customized mark logo for opensearch in side menu', async () => {
           await appsMenu.openCollapsibleNav();
           await testSubjects.existOrFail('collapsibleNavGroup-opensearchDashboards');
           const actualLabel = await testSubjects.getAttribute(
@@ -216,7 +186,7 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
         });
       });
 
-      describe('OpenSearch Dashboards branding configuration in dark mode', async () => {
+      describe('in dark mode', async () => {
         before(async function () {
           await PageObjects.common.navigateToApp('management/opensearch-dashboards/settings');
           await PageObjects.settings.toggleAdvancedSettingCheckbox('theme:darkMode');
@@ -241,7 +211,7 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
           await globalNav.clickLogo();
           await PageObjects.header.waitUntilLoadingHasFinished();
           const url = await browser.getCurrentUrl();
-          expect(url.includes('/app/home')).to.be(true);
+          expect(url.includes('/app/wz-home')).to.be(true);
         });
 
         it('with customized mark logo button that navigates to home page', async () => {
@@ -249,10 +219,11 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
           await globalNav.clickHomeButton();
           await PageObjects.header.waitUntilLoadingHasFinished();
           const url = await browser.getCurrentUrl();
-          expect(url.includes('/app/home')).to.be(true);
+          expect(url.includes('/app/wz-home')).to.be(true);
         });
 
-        it('with customized mark logo in home dashboard card', async () => {
+        // Cyb3rhq: This test is omitted because OpenSearch Dashboards does not have a home dashboard card.
+        it.skip('with customized mark logo in home dashboard card', async () => {
           await testSubjects.existOrFail('dashboardCustomLogo');
           const actualLabel = await testSubjects.getAttribute(
             'dashboardCustomLogo',
@@ -261,7 +232,8 @@ export default function ({ getService, getPageObjects }: FtrProviderContext) {
           expect(actualLabel.toUpperCase()).to.equal(expectedMarkLogoDarkMode.toUpperCase());
         });
 
-        it('with customized mark logo for opensearch in side menu', async () => {
+        // Cyb3rhq: This test is omitted because OpenSearch Dashboards does not appear in the side menu.
+        it.skip('with customized mark logo for opensearch in side menu', async () => {
           await appsMenu.openCollapsibleNav();
           await testSubjects.existOrFail('collapsibleNavGroup-opensearchDashboards');
           const actualLabel = await testSubjects.getAttribute(

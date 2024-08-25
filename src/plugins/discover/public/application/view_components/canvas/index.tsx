@@ -34,18 +34,13 @@ import { OpenSearchSearchHit } from '../../../application/doc_views/doc_views_ty
 import { buildColumns } from '../../utils/columns';
 import './discover_canvas.scss';
 import { getNewDiscoverSetting, setNewDiscoverSetting } from '../../components/utils/local_storage';
-import { HeaderVariant } from '../../../../../../core/public';
 
 // eslint-disable-next-line import/no-default-export
 export default function DiscoverCanvas({ setHeaderActionMenu, history, optionalRef }: ViewProps) {
   const panelRef = useRef<HTMLDivElement>(null);
   const { data$, refetch$, indexPattern } = useDiscoverContext();
   const {
-    services: {
-      uiSettings,
-      capabilities,
-      chrome: { setHeaderVariant },
-    },
+    services: { uiSettings, storage, capabilities },
   } = useOpenSearchDashboards<DiscoverViewServices>();
   const { columns } = useSelector((state) => {
     const stateColumns = state.discover.columns;
@@ -114,13 +109,6 @@ export default function DiscoverCanvas({ setHeaderActionMenu, history, optionalR
       prevIndexPattern.current = indexPattern;
     }
   }, [dispatch, filteredColumns, indexPattern]);
-
-  useEffect(() => {
-    setHeaderVariant?.(HeaderVariant.APPLICATION);
-    return () => {
-      setHeaderVariant?.();
-    };
-  }, [setHeaderVariant]);
 
   const timeField = indexPattern?.timeFieldName ? indexPattern.timeFieldName : undefined;
   const scrollToTop = () => {

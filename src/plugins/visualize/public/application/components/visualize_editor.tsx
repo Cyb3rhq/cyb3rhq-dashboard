@@ -44,7 +44,6 @@ import {
 import { VisualizeServices } from '../types';
 import { VisualizeEditorCommon } from './visualize_editor_common';
 import { VisualizeAppProps } from '../app';
-import { HeaderVariant } from '../../../../../core/public/index';
 
 export const VisualizeEditor = ({ onAppLeave }: VisualizeAppProps) => {
   const { id: visualizationIdFromUrl } = useParams<{ id: string }>();
@@ -52,9 +51,6 @@ export const VisualizeEditor = ({ onAppLeave }: VisualizeAppProps) => {
   const { services } = useOpenSearchDashboards<VisualizeServices>();
   const [eventEmitter] = useState(new EventEmitter());
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(!visualizationIdFromUrl);
-  const { chrome, uiSettings } = services;
-  const showActionsInGroup = uiSettings.get('home:useNewHomePage');
-  const { setHeaderVariant } = chrome;
 
   const isChromeVisible = useChromeVisibility(services.chrome);
   const { savedVisInstance, visEditorRef, visEditorController } = useSavedVisInstance(
@@ -77,14 +73,6 @@ export const VisualizeEditor = ({ onAppLeave }: VisualizeAppProps) => {
     visEditorController
   );
   useLinkedSearchUpdates(services, eventEmitter, appState, savedVisInstance);
-
-  useEffect(() => {
-    if (showActionsInGroup) setHeaderVariant?.(HeaderVariant.APPLICATION);
-
-    return () => {
-      setHeaderVariant?.();
-    };
-  }, [setHeaderVariant, showActionsInGroup]);
 
   useEffect(() => {
     const { originatingApp: value } =

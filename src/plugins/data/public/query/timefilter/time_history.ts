@@ -29,13 +29,14 @@
  */
 
 import moment from 'moment';
+import { IStorageWrapper } from 'src/plugins/opensearch_dashboards_utils/public';
 import { PersistedLog } from '../persisted_log';
-import { DataStorage, TimeRange } from '../../../common';
+import { TimeRange } from '../../../common';
 
 export class TimeHistory {
   private history: PersistedLog<TimeRange>;
 
-  constructor(storage: DataStorage) {
+  constructor(storage: IStorageWrapper) {
     const historyOptions = {
       maxLength: 10,
       filterDuplicates: true,
@@ -43,7 +44,11 @@ export class TimeHistory {
         return oldItem.from === newItem.from && oldItem.to === newItem.to;
       },
     };
-    this.history = new PersistedLog('timepicker.timeHistory', historyOptions, storage);
+    this.history = new PersistedLog(
+      'opensearchDashboards.timepicker.timeHistory',
+      historyOptions,
+      storage
+    );
   }
 
   add(time: TimeRange) {

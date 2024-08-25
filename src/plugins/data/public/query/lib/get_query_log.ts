@@ -29,13 +29,14 @@
  */
 
 import { IUiSettingsClient } from 'src/core/public';
+import { IStorageWrapper } from 'src/plugins/opensearch_dashboards_utils/public';
 import { PersistedLog } from '../persisted_log';
-import { DataStorage, UI_SETTINGS } from '../../../common';
+import { UI_SETTINGS } from '../../../common';
 
 /** @internal */
 export function getQueryLog(
   uiSettings: IUiSettingsClient,
-  storage: DataStorage,
+  storage: IStorageWrapper,
   appName: string,
   language: string
 ) {

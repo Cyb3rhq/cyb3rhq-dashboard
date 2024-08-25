@@ -32,11 +32,6 @@ import { i18n } from '@osd/i18n';
 import { ViewMode } from '../../../../../../embeddable/public';
 import { TopNavIds } from './top_nav_ids';
 import { NavAction } from '../../../../types';
-import {
-  TopNavControlIconData,
-  TopNavMenuIconData,
-  TopNavMenuSwitchData,
-} from '../../../../../../navigation/public';
 
 /**
  * @param actions - A mapping of TopNavIds to an action function that should run when the
@@ -44,7 +39,7 @@ import {
  * @param hideWriteControls if true, does not include any controls that allow editing or creating objects.
  * @return an array of objects for a top nav configuration, based on the mode.
  */
-export function getTopNavLegacyConfig(
+export function getTopNavConfig(
   dashboardMode: ViewMode,
   actions: { [key: string]: NavAction },
   hideWriteControls: boolean
@@ -53,30 +48,30 @@ export function getTopNavLegacyConfig(
     case ViewMode.VIEW:
       return hideWriteControls
         ? [
-            getLegacyFullScreenConfig(actions[TopNavIds.FULL_SCREEN]),
-            getLegacyShareConfig(actions[TopNavIds.SHARE]),
+            getFullScreenConfig(actions[TopNavIds.FULL_SCREEN]),
+            getShareConfig(actions[TopNavIds.SHARE]),
           ]
         : [
-            getLegacyFullScreenConfig(actions[TopNavIds.FULL_SCREEN]),
-            getLegacyShareConfig(actions[TopNavIds.SHARE]),
-            getLegacyCloneConfig(actions[TopNavIds.CLONE]),
-            getLegacyEditConfig(actions[TopNavIds.ENTER_EDIT_MODE]),
+            getFullScreenConfig(actions[TopNavIds.FULL_SCREEN]),
+            getShareConfig(actions[TopNavIds.SHARE]),
+            getCloneConfig(actions[TopNavIds.CLONE]),
+            getEditConfig(actions[TopNavIds.ENTER_EDIT_MODE]),
           ];
     case ViewMode.EDIT:
       return [
-        getLegacyOptionsConfig(actions[TopNavIds.OPTIONS]),
-        getLegacyShareConfig(actions[TopNavIds.SHARE]),
-        getLegacyAddConfig(actions[TopNavIds.ADD_EXISTING]),
-        getLegacyViewConfig(actions[TopNavIds.EXIT_EDIT_MODE]),
-        getLegacySaveConfig(actions[TopNavIds.SAVE]),
-        getLegacyCreateNewConfig(actions[TopNavIds.VISUALIZE]),
+        getOptionsConfig(actions[TopNavIds.OPTIONS]),
+        getShareConfig(actions[TopNavIds.SHARE]),
+        getAddConfig(actions[TopNavIds.ADD_EXISTING]),
+        getViewConfig(actions[TopNavIds.EXIT_EDIT_MODE]),
+        getSaveConfig(actions[TopNavIds.SAVE]),
+        getCreateNewConfig(actions[TopNavIds.VISUALIZE]),
       ];
     default:
       return [];
   }
 }
 
-function getLegacyFullScreenConfig(action: NavAction) {
+function getFullScreenConfig(action: NavAction) {
   return {
     id: 'full-screen',
     label: i18n.translate('dashboard.topNave.fullScreenButtonAriaLabel', {
@@ -93,7 +88,7 @@ function getLegacyFullScreenConfig(action: NavAction) {
 /**
  * @returns {osdTopNavConfig}
  */
-function getLegacyEditConfig(action: NavAction) {
+function getEditConfig(action: NavAction) {
   return {
     emphasize: true,
     id: 'edit',
@@ -115,7 +110,7 @@ function getLegacyEditConfig(action: NavAction) {
 /**
  * @returns {osdTopNavConfig}
  */
-function getLegacySaveConfig(action: NavAction) {
+function getSaveConfig(action: NavAction) {
   return {
     id: 'save',
     label: i18n.translate('dashboard.topNave.saveButtonAriaLabel', {
@@ -132,7 +127,7 @@ function getLegacySaveConfig(action: NavAction) {
 /**
  * @returns {osdTopNavConfig}
  */
-function getLegacyViewConfig(action: NavAction) {
+function getViewConfig(action: NavAction) {
   return {
     id: 'cancel',
     label: i18n.translate('dashboard.topNave.cancelButtonAriaLabel', {
@@ -149,7 +144,7 @@ function getLegacyViewConfig(action: NavAction) {
 /**
  * @returns {osdTopNavConfig}
  */
-function getLegacyCloneConfig(action: NavAction) {
+function getCloneConfig(action: NavAction) {
   return {
     id: 'clone',
     label: i18n.translate('dashboard.topNave.cloneButtonAriaLabel', {
@@ -166,7 +161,7 @@ function getLegacyCloneConfig(action: NavAction) {
 /**
  * @returns {osdTopNavConfig}
  */
-function getLegacyAddConfig(action: NavAction) {
+function getAddConfig(action: NavAction) {
   return {
     id: 'add',
     label: i18n.translate('dashboard.topNave.addButtonAriaLabel', {
@@ -183,7 +178,7 @@ function getLegacyAddConfig(action: NavAction) {
 /**
  * @returns {osdTopNavConfig}
  */
-function getLegacyCreateNewConfig(action: NavAction) {
+function getCreateNewConfig(action: NavAction) {
   return {
     emphasize: true,
     iconType: 'plus',
@@ -202,7 +197,7 @@ function getLegacyCreateNewConfig(action: NavAction) {
 /**
  * @returns {osdTopNavConfig}
  */
-function getLegacyShareConfig(action: NavAction | undefined) {
+function getShareConfig(action: NavAction | undefined) {
   return {
     id: 'share',
     label: i18n.translate('dashboard.topNave.shareButtonAriaLabel', {
@@ -221,7 +216,7 @@ function getLegacyShareConfig(action: NavAction | undefined) {
 /**
  * @returns {osdTopNavConfig}
  */
-function getLegacyOptionsConfig(action: NavAction) {
+function getOptionsConfig(action: NavAction) {
   return {
     id: 'options',
     label: i18n.translate('dashboard.topNave.optionsButtonAriaLabel', {
@@ -232,148 +227,5 @@ function getLegacyOptionsConfig(action: NavAction) {
     }),
     testId: 'dashboardOptionsButton',
     run: action,
-  };
-}
-
-export function getTopNavConfig(
-  dashboardMode: ViewMode,
-  actions: { [key: string]: NavAction },
-  hideWriteControls: boolean
-) {
-  switch (dashboardMode) {
-    case ViewMode.VIEW:
-      return hideWriteControls
-        ? [getShareConfig(actions[TopNavIds.SHARE])]
-        : [
-            getEditConfig(actions[TopNavIds.ENTER_EDIT_MODE], false),
-            getCloneConfig(actions[TopNavIds.CLONE]),
-            getShareConfig(actions[TopNavIds.SHARE]),
-          ];
-    case ViewMode.EDIT:
-      return [
-        getEditConfig(actions[TopNavIds.EXIT_EDIT_MODE], true),
-        getSaveConfig(actions[TopNavIds.SAVE]),
-        getAddConfig(actions[TopNavIds.ADD_EXISTING]),
-        getOptionsConfig(actions[TopNavIds.OPTIONS]),
-        getShareConfig(actions[TopNavIds.SHARE]),
-      ];
-    default:
-      return [];
-  }
-}
-
-export function getTopNavRightConfig(
-  dashboardMode: ViewMode,
-  actions: { [key: string]: NavAction }
-) {
-  switch (dashboardMode) {
-    case ViewMode.VIEW:
-      return [getFullScreenConfig(actions[TopNavIds.FULL_SCREEN])];
-
-    default:
-      return [];
-  }
-}
-
-function getFullScreenConfig(action: NavAction): TopNavControlIconData {
-  return {
-    id: 'full-screen',
-    ariaLabel: i18n.translate('dashboard.topNave.fullScreenConfigDescription', {
-      defaultMessage: 'Full Screen Mode',
-    }),
-    testId: 'dashboardFullScreenMode',
-    run: action,
-    iconType: 'fullScreen',
-    display: 'base',
-    controlType: 'icon',
-  };
-}
-
-function getEditConfig(action: NavAction, checked: boolean): TopNavMenuSwitchData {
-  return {
-    label: i18n.translate('dashboard.topNav.editSwitchLabel', {
-      defaultMessage: 'Edit',
-    }),
-    testId: 'dashboardEditSwitch',
-    run: action,
-    checked,
-    controlType: 'switch',
-  };
-}
-
-function getSaveConfig(action: NavAction): TopNavMenuIconData {
-  return {
-    tooltip: i18n.translate('dashboard.topNav.saveButtonTooltip', {
-      defaultMessage: 'Save',
-    }),
-    ariaLabel: i18n.translate('dashboard.topNav.saveButtonAriaLabel', {
-      defaultMessage: 'Save your dashboard',
-    }),
-    testId: 'dashboardSaveMenuItem',
-    run: action,
-    iconType: 'save',
-    controlType: 'icon',
-  };
-}
-
-function getCloneConfig(action: NavAction): TopNavMenuIconData {
-  return {
-    tooltip: i18n.translate('dashboard.topNav.cloneButtonTooltip', {
-      defaultMessage: 'Clone',
-    }),
-    ariaLabel: i18n.translate('dashboard.topNav.cloneButtonAriaLabel', {
-      defaultMessage: 'Create a copy of your dashboard',
-    }),
-    testId: 'dashboardClone',
-    run: action,
-    iconType: 'copy',
-    controlType: 'icon',
-  };
-}
-
-function getAddConfig(action: NavAction): TopNavMenuIconData {
-  return {
-    tooltip: i18n.translate('dashboard.topNav.addButtonTooltip', {
-      defaultMessage: 'Add',
-    }),
-    ariaLabel: i18n.translate('dashboard.topNav.addButtonAriaLabel', {
-      defaultMessage: 'Add a panel to the dashboard',
-    }),
-    testId: 'dashboardAddPanelButton',
-    run: action,
-    iconType: 'plusInCircle',
-    controlType: 'icon',
-  };
-}
-
-function getShareConfig(action: NavAction | undefined): TopNavMenuIconData {
-  return {
-    tooltip: i18n.translate('dashboard.topNav.shareButtonTooltip', {
-      defaultMessage: 'Share',
-    }),
-    ariaLabel: i18n.translate('dashboard.topNav.shareButtonAriaLabel', {
-      defaultMessage: 'Share Dashboard',
-    }),
-    testId: 'shareTopNavButton',
-    run: action || (() => {}),
-    // disable the Share button if no action specified
-    disabled: !action,
-    iconType: 'share',
-    controlType: 'icon',
-  };
-}
-
-function getOptionsConfig(action: NavAction) {
-  return {
-    tooltip: i18n.translate('dashboard.topNav.optionsButtonTooltip', {
-      defaultMessage: 'Options',
-    }),
-    ariaLabel: i18n.translate('dashboard.topNav.optionsButtonAriaLabel', {
-      defaultMessage: 'Options',
-    }),
-    testId: 'dashboardOptionsButton',
-    run: action,
-    iconType: 'gear',
-    controlType: 'icon',
   };
 }

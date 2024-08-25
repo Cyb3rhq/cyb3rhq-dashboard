@@ -28,6 +28,7 @@
  * under the License.
  */
 
+import url from 'url';
 import { HttpStart } from 'opensearch-dashboards/public';
 import { CREATE_PATH, getGotoPath } from '../../common/short_url_routes';
 
@@ -35,15 +36,20 @@ export async function shortenUrl(
   absoluteUrl: string,
   { basePath, post }: { basePath: string; post: HttpStart['post'] }
 ) {
-  const parsedUrl = new URL(absoluteUrl);
-  if (!parsedUrl || !parsedUrl.pathname) {
+  const parsedUrl = url.parse(absoluteUrl);
+  if (!parsedUrl || !parsedUrl.path) {
     return;
   }
-  parsedUrl.pathname = parsedUrl.pathname.replace(basePath, '');
-  const relativeUrl = parsedUrl.toString().substring(parsedUrl.origin.length);
+  const path = parsedUrl.path.replace(basePath, '');
+  const hash = parsedUrl.hash ? parsedUrl.hash : '';
+  const relativeUrl = path + hash;
 
   const body = JSON.stringify({ url: relativeUrl });
 
   const resp = await post(CREATE_PATH, { body });
-  return new URL(`${basePath}${getGotoPath(resp.urlId)}`, parsedUrl.origin).toString();
+  return url.format({
+    protocol: parsedUrl.protocol,
+    host: parsedUrl.host,
+    pathname: `${basePath}${getGotoPath(resp.urlId)}`,
+  });
 }

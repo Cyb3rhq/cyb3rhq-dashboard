@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ApiResponse } from '@opensearch-project/opensearch';
+import { ApiResponse } from '@opensearch-project/opensearch-next';
 import {
   ConnectionError,
   NoLivingConnectionsError,
   ResponseError,
-} from '@opensearch-project/opensearch/lib/errors';
+} from '@opensearch-project/opensearch-next/lib/errors';
 import { SavedObjectsErrorHelpers } from '../../../../../src/core/server';
 import { createDataSourceError } from './error';
 import { DataSourceError } from '../../common/data_sources';

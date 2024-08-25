@@ -33,7 +33,6 @@ describe('test redux state persistence', () => {
       metadata: {
         editor: { errors: {}, state: 'loading' },
         originatingApp: undefined,
-        isMigrated: false,
       },
       ui: {},
     };

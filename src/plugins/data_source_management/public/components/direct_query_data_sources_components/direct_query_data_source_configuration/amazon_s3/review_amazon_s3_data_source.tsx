@@ -5,6 +5,7 @@
 
 import {
   EuiPanel,
+  EuiTitle,
   EuiSpacer,
   EuiText,
   EuiFlexGroup,
@@ -40,9 +41,9 @@ export const ReviewS3Datasource = (props: ConfigureS3DatasourceProps) => {
   return (
     <div>
       <EuiPanel>
-        <EuiText size="s">
+        <EuiTitle>
           <h1 data-test-subj="reviewTitle">{`Review Amazon S3 data source configuration`}</h1>
-        </EuiText>
+        </EuiTitle>
         <EuiSpacer size="s" />
         <EuiSpacer />
         <EuiFlexGroup justifyContent="spaceBetween">

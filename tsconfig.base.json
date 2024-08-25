@@ -11,7 +11,10 @@
         "src/test_utils/public/*"
       ],
       "fixtures/*": ["src/fixtures/*"],
-      "@opensearch-project/opensearch": ["node_modules/@opensearch-project/opensearch/api/new"]
+      "@opensearch-project/opensearch": ["node_modules/@opensearch-project/opensearch/api/new"],
+      "@opensearch-project/opensearch-next": [
+        "node_modules/@opensearch-project/opensearch-next/api/new"
+      ]
     },
     // Support .tsx files and transform JSX into calls to React.createElement
     "jsx": "react",
@@ -50,7 +53,6 @@
     "downlevelIteration": true,
     // import tslib helpers rather than inlining helpers for iteration or spreading, for instance
     "importHelpers": true,
-    "useUnknownInCatchVariables": false,
     // adding global typings
     "types": [
       "node",

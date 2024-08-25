@@ -5,6 +5,7 @@
 
 import {
   EuiPanel,
+  EuiTitle,
   EuiSpacer,
   EuiText,
   EuiLink,
@@ -87,9 +88,9 @@ export const ConfigurePrometheusDatasourcePanel = (props: ConfigurePrometheusDat
   return (
     <div>
       <EuiPanel>
-        <EuiText size="s">
-          <h1>{`Configure Prometheus data source`}</h1>
-        </EuiText>
+        <EuiTitle>
+          <h4>{`Configure Prometheus data source`}</h4>
+        </EuiTitle>
         <EuiSpacer size="s" />
         <EuiText size="s" color="subdued">
           {`Connect to Prometheus with OpenSearch and OpenSearch Dashboards. `}

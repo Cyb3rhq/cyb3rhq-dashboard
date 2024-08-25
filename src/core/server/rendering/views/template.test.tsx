@@ -20,12 +20,12 @@ function mockProps() {
     themeVersion: 'v7',
     i18n: () => '',
     bootstrapScriptUrl: `${http.basePath}/bootstrap.js`,
-    startupScriptUrl: `${http.basePath}/startup.js`,
     strictCsp: true,
     injectedMetadata: {
       version: injectedMetadata.getOpenSearchDashboardsVersion(),
       buildNumber: 1,
       branch: injectedMetadata.getBasePath(),
+      cyb3rhqVersion: injectedMetadata.getCyb3rhqVersion(),
       basePath: '',
       serverBasePath: '',
       env: {
@@ -35,6 +35,7 @@ function mockProps() {
           buildNum: 1,
           buildSha: '',
           dist: true,
+          cyb3rhqVersion: '',
         },
         mode: {
           name: 'production' as 'development' | 'production',

@@ -38,7 +38,7 @@ import { InternalMetricsServiceSetup, InternalMetricsServiceStart, OpsMetrics } 
 import { OpsMetricsCollector } from './ops_metrics_collector';
 import { opsConfig, OpsConfigType } from './ops_config';
 
-export interface MetricsServiceSetupDeps {
+interface MetricsServiceSetupDeps {
   http: InternalHttpServiceSetup;
 }
 

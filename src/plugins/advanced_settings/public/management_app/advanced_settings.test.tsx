@@ -40,11 +40,7 @@ import {
 } from '../../../../core/public';
 import { FieldSetting } from './types';
 import { AdvancedSettingsComponent } from './advanced_settings';
-import {
-  notificationServiceMock,
-  docLinksServiceMock,
-  applicationServiceMock,
-} from '../../../../core/public/mocks';
+import { notificationServiceMock, docLinksServiceMock } from '../../../../core/public/mocks';
 import { ComponentRegistry } from '../component_registry';
 
 jest.mock('./components/field', () => ({
@@ -291,22 +287,5 @@ describe('AdvancedSettings', () => {
         )
         .prop('enableSaving')
     ).toBe(false);
-  });
-
-  it('should render normally when use updated UX', async () => {
-    const component = mountWithI18nProvider(
-      <AdvancedSettingsComponent
-        queryText="test:string:setting"
-        enableSaving={false}
-        toasts={notificationServiceMock.createStartContract().toasts}
-        dockLinks={docLinksServiceMock.createStartContract().links}
-        uiSettings={mockConfig().core.uiSettings}
-        componentRegistry={new ComponentRegistry().start}
-        useUpdatedUX={true}
-        navigationUI={{ HeaderControl: () => null, TopNavMenu: () => null }}
-        application={applicationServiceMock.createStartContract()}
-      />
-    );
-    expect(component).toMatchSnapshot();
   });
 });

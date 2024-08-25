@@ -5,16 +5,11 @@
 
 import { schema } from '@osd/config-schema';
 import { CoreSetup, Logger, PrincipalType, ACL } from '../../../../core/server';
-import {
-  WorkspacePermissionMode,
-  MAX_WORKSPACE_NAME_LENGTH,
-  MAX_WORKSPACE_DESCRIPTION_LENGTH,
-} from '../../common/constants';
+import { WorkspacePermissionMode } from '../../common/constants';
 import { IWorkspaceClientImpl, WorkspaceAttributeWithPermission } from '../types';
 import { SavedObjectsPermissionControlContract } from '../permission_control/client';
 import { registerDuplicateRoute } from './duplicate';
 import { transferCurrentUserInPermissions } from '../utils';
-import { validateWorkspaceColor } from '../../common/utils';
 
 export const WORKSPACES_API_BASE_URL = '/api/workspaces';
 
@@ -43,38 +38,21 @@ const settingsSchema = schema.object({
 });
 
 const workspaceOptionalAttributesSchema = {
-  description: schema.maybe(schema.string({ maxLength: MAX_WORKSPACE_DESCRIPTION_LENGTH })),
+  description: schema.maybe(schema.string()),
   features: schema.maybe(schema.arrayOf(schema.string())),
-  color: schema.maybe(
-    schema.string({
-      validate: (color) => {
-        if (!validateWorkspaceColor(color)) {
-          return 'invalid workspace color format';
-        }
-      },
-    })
-  ),
+  color: schema.maybe(schema.string()),
   icon: schema.maybe(schema.string()),
   defaultVISTheme: schema.maybe(schema.string()),
   reserved: schema.maybe(schema.boolean()),
 };
 
-const workspaceNameSchema = schema.string({
-  maxLength: MAX_WORKSPACE_NAME_LENGTH,
-  validate(value) {
-    if (!value || value.trim().length === 0) {
-      return "can't be empty or blank.";
-    }
-  },
-});
-
 const createWorkspaceAttributesSchema = schema.object({
-  name: workspaceNameSchema,
+  name: schema.string(),
   ...workspaceOptionalAttributesSchema,
 });
 
 const updateWorkspaceAttributesSchema = schema.object({
-  name: schema.maybe(workspaceNameSchema),
+  name: schema.maybe(schema.string()),
   ...workspaceOptionalAttributesSchema,
 });
 
@@ -112,6 +90,7 @@ export function registerRoutes({
     router.handleLegacyErrors(async (context, req, res) => {
       const result = await client.list(
         {
+          context,
           request: req,
           logger,
         },
@@ -138,6 +117,7 @@ export function registerRoutes({
       const { id } = req.params;
       const result = await client.get(
         {
+          context,
           request: req,
           logger,
         },
@@ -181,6 +161,7 @@ export function registerRoutes({
 
       const result = await client.create(
         {
+          context,
           request: req,
           logger,
         },
@@ -208,6 +189,7 @@ export function registerRoutes({
 
       const result = await client.update(
         {
+          context,
           request: req,
           logger,
         },
@@ -235,6 +217,7 @@ export function registerRoutes({
 
       const result = await client.delete(
         {
+          context,
           request: req,
           logger,
         },

@@ -29,6 +29,7 @@
  */
 
 import { Client } from '@opensearch-project/opensearch';
+import { Client as ClientNext } from '@opensearch-project/opensearch-next';
 import { Logger } from '../../logging';
 import { GetAuthHeaders, Headers, isOpenSearchDashboardsRequest, isRealRequest } from '../../http';
 import { ensureRawRequest, filterHeaders } from '../../http/router';
@@ -76,8 +77,8 @@ export interface ICustomClusterClient extends IClusterClient {
 export class ClusterClient implements ICustomClusterClient {
   public readonly asInternalUser: Client;
   private readonly rootScopedClient: Client;
-  public readonly asInternalUserWithLongNumeralsSupport: Client;
-  private readonly rootScopedClientWithLongNumeralsSupport: Client;
+  public readonly asInternalUserWithLongNumeralsSupport: ClientNext;
+  private readonly rootScopedClientWithLongNumeralsSupport: ClientNext;
 
   private isClosed = false;
 

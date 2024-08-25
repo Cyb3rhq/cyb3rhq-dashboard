@@ -161,28 +161,10 @@ describe('validateWorkspaceForm', () => {
       message: 'Name is required. Enter a name.',
     });
   });
-  it('should return error if name is empty string', () => {
-    expect(validateWorkspaceForm({ name: '' }, false).name).toEqual({
-      code: WorkspaceFormErrorCode.WorkspaceNameMissing,
-      message: 'Name is required. Enter a name.',
-    });
-  });
-  it('should return error if name is blank string', () => {
-    expect(validateWorkspaceForm({ name: '   ' }, false).name).toEqual({
-      code: WorkspaceFormErrorCode.WorkspaceNameMissing,
-      message: 'Name is required. Enter a name.',
-    });
-  });
   it('should return error if name is invalid', () => {
     expect(validateWorkspaceForm({ name: '~' }, false).name).toEqual({
       code: WorkspaceFormErrorCode.InvalidWorkspaceName,
       message: 'Name is invalid. Enter a valid name.',
-    });
-  });
-  it('should return error if color is invalid', () => {
-    expect(validateWorkspaceForm({ color: 'QWERTY' }, false).color).toEqual({
-      code: WorkspaceFormErrorCode.InvalidColor,
-      message: 'Color is invalid. Enter a valid color.',
     });
   });
   it('should return error if use case is empty', () => {
@@ -399,18 +381,6 @@ describe('getNumberOfErrors', () => {
       })
     ).toEqual(1);
   });
-
-  it('should return consistent color errors count', () => {
-    expect(
-      getNumberOfErrors({
-        name: {
-          code: WorkspaceFormErrorCode.InvalidColor,
-          message: '',
-        },
-      })
-    ).toEqual(1);
-  });
-
   it('should return consistent permission settings errors count', () => {
     expect(
       getNumberOfErrors({
@@ -475,32 +445,6 @@ describe('getNumberOfChanges', () => {
         {
           name: 'foo',
           description: 'bar',
-        }
-      )
-    ).toEqual(1);
-  });
-  it('should return consistent color changes count', () => {
-    expect(
-      getNumberOfChanges(
-        {
-          name: 'foo',
-          color: '#000',
-        },
-        {
-          name: 'foo',
-          color: '#000',
-        }
-      )
-    ).toEqual(0);
-    expect(
-      getNumberOfChanges(
-        {
-          name: 'foo',
-          color: '#000',
-        },
-        {
-          name: 'foo',
-          color: '#001',
         }
       )
     ).toEqual(1);

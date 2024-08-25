@@ -28,6 +28,7 @@
  * under the License.
  */
 
+import Url from 'url';
 import { readFileSync } from 'fs';
 import { CA_CERT_PATH, OSD_CERT_PATH, OSD_KEY_PATH } from '@osd/dev-utils';
 
@@ -38,9 +39,6 @@ export default async function ({ readConfigFile }) {
   const certificateAuthorities = [readFileSync(CA_CERT_PATH)];
 
   const redirectPort = httpConfig.get('servers.opensearchDashboards.port') + 1234;
-  const opensearchDashboardsUrl = new URL(httpConfig.get('servers.opensearchDashboards.fullURL'));
-  opensearchDashboardsUrl.port = redirectPort;
-  opensearchDashboardsUrl.protocol = 'http';
 
   return {
     testFiles: [require.resolve('./')],
@@ -48,7 +46,12 @@ export default async function ({ readConfigFile }) {
       ...httpConfig.get('services'),
       supertest: createOpenSearchDashboardsSupertestProvider({
         certificateAuthorities,
-        opensearchDashboardsUrl: opensearchDashboardsUrl.toString().slice(0, -1),
+        opensearchDashboardsUrl: Url.format({
+          ...httpConfig.get('servers.opensearchDashboards'),
+          port: redirectPort,
+          // test with non ssl protocol
+          protocol: 'http',
+        }),
       }),
     },
     servers: {

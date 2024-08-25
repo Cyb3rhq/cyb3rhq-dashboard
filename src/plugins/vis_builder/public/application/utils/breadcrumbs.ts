@@ -21,17 +21,13 @@ export function getVisualizeLandingBreadcrumbs(navigateToApp) {
   ];
 }
 
-export function getCreateBreadcrumbs(navigateToApp, isMigrated: boolean) {
+export function getCreateBreadcrumbs(navigateToApp) {
   return [
     ...getVisualizeLandingBreadcrumbs(navigateToApp),
     {
-      text: isMigrated
-        ? i18n.translate('visBuilder.editor.newVisualizationBreadcrumb', {
-            defaultMessage: 'New visualization',
-          })
-        : i18n.translate('visBuilder.editor.createBreadcrumb', {
-            defaultMessage: 'Create',
-          }),
+      text: i18n.translate('visBuilder.editor.createBreadcrumb', {
+        defaultMessage: 'Create',
+      }),
     },
   ];
 }

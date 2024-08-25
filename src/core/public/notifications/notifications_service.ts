@@ -36,11 +36,11 @@ import { ToastsService, ToastsSetup, ToastsStart } from './toasts';
 import { IUiSettingsClient } from '../ui_settings';
 import { OverlayStart } from '../overlays';
 
-export interface SetupDeps {
+interface SetupDeps {
   uiSettings: IUiSettingsClient;
 }
 
-export interface StartDeps {
+interface StartDeps {
   i18n: I18nStart;
   overlays: OverlayStart;
   targetDomElement: HTMLElement;

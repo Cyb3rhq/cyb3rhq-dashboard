@@ -30,9 +30,9 @@
 
 import { format } from 'util';
 
-import Mocha from 'mocha';
-import { create as createSuite } from 'mocha/lib/suite';
-import Test from 'mocha/lib/test';
+import Mocha from 'mocha-next';
+import { create as createSuite } from 'mocha-next/lib/suite';
+import Test from 'mocha-next/lib/test';
 
 import { filterSuitesByTags } from './filter_suites_by_tags';
 

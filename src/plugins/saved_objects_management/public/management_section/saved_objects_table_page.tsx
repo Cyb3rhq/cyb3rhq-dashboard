@@ -41,7 +41,6 @@ import {
   SavedObjectsManagementNamespaceServiceStart,
 } from '../services';
 import { SavedObjectsTable } from './objects_table';
-import { NavigationPublicPluginStart } from '../../../navigation/public';
 
 const SavedObjectsTablePage = ({
   coreStart,
@@ -54,8 +53,6 @@ const SavedObjectsTablePage = ({
   setBreadcrumbs,
   dataSourceEnabled,
   dataSourceManagement,
-  navigation,
-  useUpdatedUX,
 }: {
   coreStart: CoreStart;
   dataStart: DataPublicPluginStart;
@@ -67,8 +64,6 @@ const SavedObjectsTablePage = ({
   setBreadcrumbs: (crumbs: ChromeBreadcrumb[]) => void;
   dataSourceEnabled: boolean;
   dataSourceManagement?: DataSourceManagementPluginSetup;
-  navigation: NavigationPublicPluginStart;
-  useUpdatedUX: boolean;
 }) => {
   const capabilities = coreStart.application.capabilities;
   const itemsPerPage = coreStart.uiSettings.get<number>('savedObjects:perPage', 50);
@@ -76,20 +71,14 @@ const SavedObjectsTablePage = ({
 
   useEffect(() => {
     setBreadcrumbs([
-      useUpdatedUX
-        ? {
-            text: i18n.translate('savedObjectsManagement.updatedUX.title', {
-              defaultMessage: 'Assets',
-            }),
-          }
-        : {
-            text: i18n.translate('savedObjectsManagement.breadcrumb.index', {
-              defaultMessage: 'Saved objects',
-            }),
-            href: '/',
-          },
+      {
+        text: i18n.translate('savedObjectsManagement.breadcrumb.index', {
+          defaultMessage: 'Saved objects',
+        }),
+        href: '/',
+      },
     ]);
-  }, [setBreadcrumbs, useUpdatedUX]);
+  }, [setBreadcrumbs]);
 
   return (
     <SavedObjectsTable
@@ -109,13 +98,9 @@ const SavedObjectsTablePage = ({
       perPageConfig={itemsPerPage}
       goInspectObject={(savedObject) => {
         const { editUrl } = savedObject.meta;
-        let finalEditUrl = editUrl;
-        if (useUpdatedUX && finalEditUrl) {
-          finalEditUrl = finalEditUrl.replace(/^\/management\/opensearch-dashboards/, '');
-        }
-        if (finalEditUrl) {
+        if (editUrl) {
           return coreStart.application.navigateToUrl(
-            coreStart.http.basePath.prepend(`/app${finalEditUrl}`)
+            coreStart.http.basePath.prepend(`/app${editUrl}`)
           );
         }
       }}
@@ -126,8 +111,6 @@ const SavedObjectsTablePage = ({
       }}
       dataSourceEnabled={dataSourceEnabled}
       dataSourceManagement={dataSourceManagement}
-      navigationUI={navigation.ui}
-      useUpdatedUX={useUpdatedUX}
     />
   );
 };

@@ -22,20 +22,12 @@ describe('Test on PopoverButton', () => {
     const component = mount(
       <DataSourceMenuPopoverButton className="random" label={label} onClick={jest.fn()} />
     );
-    expect(component.find('EuiButton').text()).toBe(label);
-  });
-
-  // ToDo: Find out if this is actually the correct behavior
-  // https://github.com/opensearch-project/OpenSearch-Dashboards/issues/7674
-  it('renders a blank label', () => {
-    const component = mount(<DataSourceMenuPopoverButton className="random" onClick={jest.fn()} />);
-    expect(component.find('EuiButton').text()).toBe('');
+    expect(component.find('EuiButtonEmpty').text()).toBe(label);
   });
 
   it('calls onClick when button is clicked', () => {
-    const onClick = jest.fn();
-    const component = mount(<DataSourceMenuPopoverButton className="random" onClick={onClick} />);
-    component.find('.dataSourceMenuPopoverButtonLabel').first().simulate('click');
-    expect(onClick).toBeCalledTimes(1);
+    const component = mount(<DataSourceMenuPopoverButton className="random" onClick={jest.fn()} />);
+    component.find('.dataSourceComponentButtonTitle').first().simulate('click');
+    expect(component.find('EuiButtonEmpty').text()).toBe('');
   });
 });

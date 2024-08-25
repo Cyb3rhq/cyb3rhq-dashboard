@@ -91,13 +91,8 @@ export class UiSettingsClient implements IUiSettingsClient {
     return copiedDefaults;
   }
 
-  getOverrideOrDefault<T = unknown>(key: string): T {
-    // Note: this.overrides is an object with simple values, whereas this.defaults contains UiSettingsParams as the value for each key.
-    return this.isOverridden(key) ? this.overrides[key] : this.defaults[key]?.value;
-  }
-
-  getDefault(key: string): unknown {
-    return this.defaults[key]?.value;
+  getOverrideOrDefault(key: string): unknown {
+    return this.isOverridden(key) ? this.overrides[key].value : this.defaults[key]?.value;
   }
 
   async get<T = any>(key: string): Promise<T> {

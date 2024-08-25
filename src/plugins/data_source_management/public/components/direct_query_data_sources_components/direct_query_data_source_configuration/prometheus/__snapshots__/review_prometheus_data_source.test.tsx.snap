@@ -57,19 +57,14 @@ exports[`ReviewPrometheusDatasource renders correctly 1`] = `
           <div
             className="euiPanel euiPanel--paddingMedium euiPanel--borderRadiusMedium euiPanel--plain euiPanel--hasShadow"
           >
-            <EuiText
-              size="s"
-            >
-              <div
-                className="euiText euiText--small"
+            <EuiTitle>
+              <h1
+                className="euiTitle euiTitle--medium"
+                data-test-subj="reviewTitle"
               >
-                <h1
-                  data-test-subj="reviewTitle"
-                >
-                  Review Prometheus data source configuration
-                </h1>
-              </div>
-            </EuiText>
+                Review Prometheus data source configuration
+              </h1>
+            </EuiTitle>
             <EuiSpacer
               size="s"
             >
@@ -146,7 +141,6 @@ exports[`ReviewPrometheusDatasource renders correctly 1`] = `
                           >
                             <EuiButtonContent
                               className="euiButton__content"
-                              iconGap="m"
                               iconSide="left"
                               textProps={
                                 Object {

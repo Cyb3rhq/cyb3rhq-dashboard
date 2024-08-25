@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { EuiFlexGroup, EuiFlexItem, EuiSpacer, EuiText } from '@elastic/eui';
+import { EuiFlexGroup, EuiFlexItem, EuiSpacer, EuiText, EuiTitle } from '@elastic/eui';
 import React from 'react';
 import { FormattedMessage } from '@osd/i18n/react';
 
@@ -11,16 +11,16 @@ export const CreateDataSourcePanelHeader: React.FC = () => {
   return (
     <EuiFlexGroup justifyContent="spaceBetween" alignItems="center">
       <EuiFlexItem grow={false}>
-        <EuiText size="s">
-          <h1>
+        <EuiTitle>
+          <h2>
             <FormattedMessage
               id="dataSourcesManagement.createDataSourcePanel.title"
               defaultMessage="Create Data Source"
             />
-          </h1>
-        </EuiText>
+          </h2>
+        </EuiTitle>
         <EuiSpacer size="s" />
-        <EuiText size="s">
+        <EuiText>
           <p>
             <FormattedMessage
               id="dataSourcesManagement.createDataSourcePanel.description"

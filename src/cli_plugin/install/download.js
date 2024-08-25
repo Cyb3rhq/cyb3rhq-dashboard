@@ -28,6 +28,8 @@
  * under the License.
  */
 
+import { parse } from 'url';
+
 import { UnsupportedProtocolError } from '../lib/errors';
 import { downloadHttpFile } from './downloaders/http';
 import { downloadLocalFile } from './downloaders/file';
@@ -54,19 +56,14 @@ export function _checkFilePathDeprecation(sourceUrl, logger) {
 }
 
 export function _downloadSingle(settings, logger, sourceUrl) {
-  let urlInfo;
-  try {
-    urlInfo = new URL('', sourceUrl);
-  } catch (e) {
-    return Promise.reject(new UnsupportedProtocolError());
-  }
+  const urlInfo = parse(sourceUrl);
   let downloadPromise;
 
   if (/^file/.test(urlInfo.protocol)) {
     _checkFilePathDeprecation(sourceUrl, logger);
     downloadPromise = downloadLocalFile(
       logger,
-      _getFilePath(urlInfo.pathname, sourceUrl),
+      _getFilePath(urlInfo.path, sourceUrl),
       settings.tempArchiveFile
     );
   } else if (/^https?/.test(urlInfo.protocol)) {

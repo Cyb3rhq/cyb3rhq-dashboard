@@ -13,7 +13,6 @@ export const workspaceClientMock = {
   list: jest.fn(),
   get: jest.fn(),
   update: jest.fn(),
-  copy: jest.fn(),
   stop: jest.fn(),
 };
 

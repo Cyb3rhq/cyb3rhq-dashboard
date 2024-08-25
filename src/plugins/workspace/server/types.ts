@@ -32,6 +32,7 @@ export interface WorkspaceFindOptions {
 
 export interface IRequestDetail {
   request: OpenSearchDashboardsRequest;
+  context: RequestHandlerContext;
   logger: Logger;
 }
 

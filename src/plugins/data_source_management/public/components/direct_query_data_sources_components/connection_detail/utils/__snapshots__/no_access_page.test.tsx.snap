@@ -13,9 +13,7 @@ exports[`NoAccess renders correctly 1`] = `
       </EuiButton>
     }
     body={
-      <EuiText
-        size="s"
-      >
+      <EuiText>
         You are missing permissions to view connection details. Contact your administrator for permissions.
       </EuiText>
     }

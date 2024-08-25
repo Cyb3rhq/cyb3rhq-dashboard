@@ -28,6 +28,7 @@
  * under the License.
  */
 
+import { URL, format as formatUrl } from 'url';
 import { Request } from '@hapi/hapi';
 import { merge } from 'lodash';
 import { Socket } from 'net';
@@ -139,7 +140,10 @@ type DeepPartialObject<T> = { [P in keyof T]+?: DeepPartial<T[P]> };
 function createRawRequestMock(customization: DeepPartial<Request> = {}) {
   const pathname = customization.url?.pathname || '/';
   const path = `${pathname}${customization.url?.search || ''}`;
-  const url = new URL(path, 'http://localhost');
+  const url = new URL(
+    formatUrl(Object.assign({ pathname, path, href: path }, customization.url)),
+    'http://localhost'
+  );
 
   return merge(
     {},

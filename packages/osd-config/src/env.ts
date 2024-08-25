@@ -67,6 +67,9 @@ export interface RawPackageInfo {
     number: number;
     sha: string;
   };
+  cyb3rhq: {
+    version: string;
+  };
 }
 
 export class Env {
@@ -159,6 +162,7 @@ export class Env {
         : 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
       version: pkg.version,
       dist: isOpenSearchDashboardsDistributable,
+      cyb3rhqVersion: pkg.cyb3rhq.version,
     });
   }
 }

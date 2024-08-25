@@ -99,7 +99,7 @@ export const DataSourceHomePanel: React.FC<DataSourceHomePanelProps> = ({
         </EuiFlexItem>
         <EuiFlexItem>
           <EuiSpacer size="s" />
-          <EuiTabs size="s">{renderTabs()}</EuiTabs>
+          <EuiTabs>{renderTabs()}</EuiTabs>
         </EuiFlexItem>
         <EuiFlexItem>
           <EuiSpacer size="s" />

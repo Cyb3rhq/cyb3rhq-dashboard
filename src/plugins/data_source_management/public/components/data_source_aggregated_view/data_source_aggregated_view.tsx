@@ -224,7 +224,6 @@ export class DataSourceAggregatedView extends React.Component<
             <DataSourceMenuPopoverButton
               className={'dataSourceAggregatedView'}
               onClick={this.onDataSourcesClick.bind(this)}
-              isDisabled
             />
           }
           isOpen={this.state.isPopoverOpen}

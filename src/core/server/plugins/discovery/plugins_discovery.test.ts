@@ -82,6 +82,9 @@ const packageMock = {
     number: 1,
     sha: '',
   },
+  cyb3rhq: {
+    version: '4.x.x',
+  },
 };
 
 const manifestPath = (...pluginPath: string[]) =>
